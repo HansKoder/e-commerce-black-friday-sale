@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:black-friday
+    username: hans
+    password: hans2025
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include=health,info,metrics:
