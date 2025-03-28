@@ -2,13 +2,12 @@ package org.ecommerce.blackfriday.e_commerce_black_friday_sale.api;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.ecommerce.blackfriday.e_commerce_black_friday_sale.ent.Product;
 import org.ecommerce.blackfriday.e_commerce_black_friday_sale.serv.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "Product-API", description = "Controller to handler a CRUD")
 @CrossOrigin("*")
@@ -26,5 +25,10 @@ public class ProductAPI {
     @GetMapping("/")
     ResponseEntity<?> getProducts () {
         return ResponseEntity.ok(productService.getProducts());
+    }
+
+    @PostMapping("/")
+    ResponseEntity<?> addProduct (@RequestBody Product entity) {
+        return ResponseEntity.ok(productService.saveProduct(entity));
     }
 }
