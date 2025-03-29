@@ -5,7 +5,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.ecommerce.blackfriday.e_commerce_black_friday_sale.ent.Product;
 import org.ecommerce.blackfriday.e_commerce_black_friday_sale.serv.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +26,10 @@ public class ProductAPI {
         return ResponseEntity.ok(productService.getProducts());
     }
 
+    @Operation(
+            summary = "Add new Product",
+            description = "Create new product in the DB"
+    )
     @PostMapping("/")
     ResponseEntity<?> addProduct (@RequestBody Product entity) {
         return ResponseEntity.ok(productService.saveProduct(entity));

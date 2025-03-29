@@ -1,0 +1,20 @@
+meta {
+  name: add-item
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/api/v1/shopping-cart/add-item
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "customerId": "1",
+    "itemId": 2,
+    "cant": 3,
+    "price": 1500
+  }
+}

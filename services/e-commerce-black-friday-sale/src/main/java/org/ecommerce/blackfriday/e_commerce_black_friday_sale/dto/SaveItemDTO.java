@@ -1,0 +1,54 @@
+package org.ecommerce.blackfriday.e_commerce_black_friday_sale.dto;
+
+import java.math.BigDecimal;
+
+public class SaveItemDTO {
+
+    private String customerId;
+    private Long itemId;
+    private int cant;
+
+    private BigDecimal price;
+
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+
+    public Long getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(Long itemId) {
+        this.itemId = itemId;
+    }
+
+    public int getCant() {
+        return cant;
+    }
+
+    public void setCant(int cant) {
+        this.cant = cant;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "AddItemDTO{" +
+                "customerId='" + customerId + '\'' +
+                ", itemId=" + itemId +
+                ", cant=" + cant +
+                ", price=" + price +
+                '}';
+    }
+}
