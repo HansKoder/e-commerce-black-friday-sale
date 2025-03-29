@@ -3,10 +3,13 @@ package org.ecommerce.blackfriday.e_commerce_black_friday_sale.api;
 import jakarta.validation.constraints.Positive;
 import org.ecommerce.blackfriday.e_commerce_black_friday_sale.dto.DeleteItemDTO;
 import org.ecommerce.blackfriday.e_commerce_black_friday_sale.dto.SaveItemDTO;
+import org.ecommerce.blackfriday.e_commerce_black_friday_sale.models.ShoppingCart;
 import org.ecommerce.blackfriday.e_commerce_black_friday_sale.serv.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/shopping-cart")
@@ -31,5 +34,13 @@ public class ShoppingCartAPI {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/get-cart/{customerId}")
+    ResponseEntity<?> getCart (@PathVariable("customerId") String customerId) {
+        Optional<ShoppingCart> cart = shoppingCartService.getCartByCustomerId(customerId);
+        if (cart.isEmpty())
+            return ResponseEntity.notFound().build();
+
+        return ResponseEntity.ok(cart.get());
+    }
 
 }

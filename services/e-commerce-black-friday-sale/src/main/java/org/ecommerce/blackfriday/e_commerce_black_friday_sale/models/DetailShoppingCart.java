@@ -37,4 +37,13 @@ public class DetailShoppingCart {
         return price.multiply(BigDecimal.valueOf(cant));
     }
 
+    @Override
+    public String toString() {
+        return "DetailShoppingCart{" +
+                "itemId=" + itemId +
+                ", price=" + price +
+                ", cant=" + cant +
+                ", amount=" + amount +
+                '}';
+    }
 }

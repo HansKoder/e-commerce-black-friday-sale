@@ -7,8 +7,8 @@ import org.ecommerce.blackfriday.e_commerce_black_friday_sale.models.ShoppingCar
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ShoppingCartServiceImpl implements ShoppingCartService{
@@ -40,6 +40,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService{
     private ShoppingCart buildShoppingCart (SaveItemDTO itemDTO) {
         ShoppingCart cart = new ShoppingCart();
         cart.setCustomerId(itemDTO.getCustomerId());
+
         return cart;
     }
 
@@ -69,5 +70,12 @@ public class ShoppingCartServiceImpl implements ShoppingCartService{
                 .orElseThrow(Exception::new);
 
         cart.removeItem(deleteItemDTO.getItemId());
+    }
+
+    @Override
+    public Optional<ShoppingCart> getCartByCustomerId(String customerId) {
+        return cartList.stream()
+                .filter(cart -> cart.getCustomerId().equals(customerId))
+                .findFirst();
     }
 }

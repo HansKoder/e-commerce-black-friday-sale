@@ -8,7 +8,6 @@ public class ShoppingCart {
 
     private String customerId;
     private List<DetailShoppingCart> items;
-    private BigDecimal total;
 
     public ShoppingCart() {
         items = new ArrayList<>();
@@ -16,6 +15,16 @@ public class ShoppingCart {
 
     public String getCustomerId() {
         return customerId;
+    }
+
+    public List<DetailShoppingCart> getItems() {
+        return items;
+    }
+
+    public BigDecimal getTotal() {
+        return items.stream()
+                .map(DetailShoppingCart::getAmount)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public void setCustomerId(String customerId) {
@@ -38,5 +47,14 @@ public class ShoppingCart {
                 .ifPresent(data -> {
                     items.set(items.indexOf(data), item);
                 });
+    }
+
+    @Override
+    public String toString() {
+        return "ShoppingCart{" +
+                "customerId='" + customerId + '\'' +
+                ", items=" + items +
+                ", total=" + getTotal() +
+                '}';
     }
 }
