@@ -9,11 +9,12 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 @Service
 public class ShoppingCartServiceImpl implements ShoppingCartService{
 
-    private final List<ShoppingCart> cartList = new ArrayList<>();
+    private final List<ShoppingCart> cartList =  new CopyOnWriteArrayList<>();
 
     @Override
     public ShoppingCart addItem(SaveItemDTO itemDTO) {
@@ -77,5 +78,10 @@ public class ShoppingCartServiceImpl implements ShoppingCartService{
         return cartList.stream()
                 .filter(cart -> cart.getCustomerId().equals(customerId))
                 .findFirst();
+    }
+
+    @Override
+    public List<ShoppingCart> getList() {
+        return cartList;
     }
 }

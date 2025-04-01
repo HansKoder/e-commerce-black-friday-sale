@@ -12,4 +12,5 @@ public interface ProductService {
     Product saveProduct (Product entity);
 
     Optional<Product> getProduct (Long id);
+
 }
