@@ -1,6 +1,5 @@
 package org.ecommerce.blackfriday.e_commerce_black_friday_sale.api;
 
-import jakarta.validation.constraints.Positive;
 import org.ecommerce.blackfriday.e_commerce_black_friday_sale.dto.DeleteItemDTO;
 import org.ecommerce.blackfriday.e_commerce_black_friday_sale.dto.SaveItemDTO;
 import org.ecommerce.blackfriday.e_commerce_black_friday_sale.models.ShoppingCart;
