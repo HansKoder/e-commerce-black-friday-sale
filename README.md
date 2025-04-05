@@ -42,3 +42,44 @@ npm install
 npm run shopping-cart
 ```
 
+## Redis Cluster
+
+Located the folder `redis-cluster`
+
+### Running docker-compose
+
+```bash
+docker exec -it redis-cluster-redis-node-1-1 redis-cli --cluster create \
+  redis-cluster-redis-node-1-1:6379 \
+  redis-cluster-redis-node-2-1:6379 \
+  redis-cluster-redis-node-3-1:6379 \
+  redis-cluster-redis-node-4-1:6379 \
+  redis-cluster-redis-node-5-1:6379 \
+  redis-cluster-redis-node-6-1:6379 \
+  --cluster-replicas 1
+```
+
+### Create Cluster
+
+```bash
+docker exec -it redis-cluster-redis-node-1-1 redis-cli -c
+```
+
+Into `'yes'`
+
+### Test Redis Cluster
+
+```bash
+cluster info 
+cluster nodes
+```
+
+### This should be the output
+
+```text
+cluster_state:ok
+cluster_slots_assigned:16384
+cluster_slots_ok:16384
+cluster_known_nodes:6
+cluster_size:3
+```
