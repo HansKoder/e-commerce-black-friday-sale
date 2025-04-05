@@ -2,11 +2,12 @@ package org.ecommerce.blackfriday.e_commerce_black_friday_sale.serv;
 
 import org.ecommerce.blackfriday.e_commerce_black_friday_sale.dto.DeleteItemDTO;
 import org.ecommerce.blackfriday.e_commerce_black_friday_sale.dto.SaveItemDTO;
-import org.ecommerce.blackfriday.e_commerce_black_friday_sale.models.DetailShoppingCart;
-import org.ecommerce.blackfriday.e_commerce_black_friday_sale.models.ShoppingCart;
+import org.ecommerce.blackfriday.e_commerce_black_friday_sale.domain.DetailShoppingCart;
+import org.ecommerce.blackfriday.e_commerce_black_friday_sale.domain.ShoppingCart;
+import org.ecommerce.blackfriday.e_commerce_black_friday_sale.dto.ShoppingCartDTO;
+import org.ecommerce.blackfriday.e_commerce_black_friday_sale.mapper.ShoppingCartMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -81,7 +82,9 @@ public class ShoppingCartServiceImpl implements ShoppingCartService{
     }
 
     @Override
-    public List<ShoppingCart> getList() {
-        return cartList;
+    public List<ShoppingCartDTO> getList() {
+        return cartList.stream()
+                .map(ShoppingCartMapper::toDTO)
+                .toList();
     }
 }

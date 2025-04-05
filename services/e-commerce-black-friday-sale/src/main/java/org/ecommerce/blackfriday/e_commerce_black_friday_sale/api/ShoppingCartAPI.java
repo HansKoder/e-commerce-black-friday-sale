@@ -3,7 +3,7 @@ package org.ecommerce.blackfriday.e_commerce_black_friday_sale.api;
 import jakarta.validation.Valid;
 import org.ecommerce.blackfriday.e_commerce_black_friday_sale.dto.DeleteItemDTO;
 import org.ecommerce.blackfriday.e_commerce_black_friday_sale.dto.SaveItemDTO;
-import org.ecommerce.blackfriday.e_commerce_black_friday_sale.models.ShoppingCart;
+import org.ecommerce.blackfriday.e_commerce_black_friday_sale.domain.ShoppingCart;
 import org.ecommerce.blackfriday.e_commerce_black_friday_sale.serv.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

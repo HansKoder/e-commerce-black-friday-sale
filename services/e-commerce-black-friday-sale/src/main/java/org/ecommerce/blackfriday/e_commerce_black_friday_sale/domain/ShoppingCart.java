@@ -1,4 +1,4 @@
-package org.ecommerce.blackfriday.e_commerce_black_friday_sale.models;
+package org.ecommerce.blackfriday.e_commerce_black_friday_sale.domain;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

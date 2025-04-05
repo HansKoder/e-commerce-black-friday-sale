@@ -46,7 +46,14 @@ npm run shopping-cart
 
 Located the folder `redis-cluster`
 
-### Running docker-compose
+
+### Running docker-compsoe
+
+```bash
+docker-compose up -d
+```
+
+### Create Cluster Redis
 
 ```bash
 docker exec -it redis-cluster-redis-node-1-1 redis-cli --cluster create \
@@ -59,22 +66,17 @@ docker exec -it redis-cluster-redis-node-1-1 redis-cli --cluster create \
   --cluster-replicas 1
 ```
 
-### Create Cluster
-
-```bash
-docker exec -it redis-cluster-redis-node-1-1 redis-cli -c
-```
-
-Into `'yes'`
+Type `'yes'`
 
 ### Test Redis Cluster
 
 ```bash
+docker exec -it redis-cluster-redis-node-1-1 redis-cli -c
 cluster info 
 cluster nodes
 ```
 
-### This should be the output
+### This should be the possible output
 
 ```text
 cluster_state:ok

@@ -1,4 +1,4 @@
-package org.ecommerce.blackfriday.e_commerce_black_friday_sale.models;
+package org.ecommerce.blackfriday.e_commerce_black_friday_sale.domain;
 
 import java.math.BigDecimal;
 
@@ -7,7 +7,6 @@ public class DetailShoppingCart {
     private Long itemId;
     private BigDecimal price;
     private int cant;
-    private BigDecimal amount;
 
     public Long getItemId() {
         return itemId;
@@ -43,7 +42,6 @@ public class DetailShoppingCart {
                 "itemId=" + itemId +
                 ", price=" + price +
                 ", cant=" + cant +
-                ", amount=" + amount +
                 '}';
     }
 }
