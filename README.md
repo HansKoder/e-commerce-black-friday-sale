@@ -26,8 +26,36 @@ This Side Project has as goal to simulate the popular event called Black Friday 
 - Artillery (Now)
 - Migrate to K6 (Next Goal)
 
+## Monitoring with prometheus and grafana
 
-## Run Load Testing 
+Located this path
+```bash
+cd ./monitoring
+```
+
+### Run docker-compose 
+
+```bash
+docker-compose up -d
+```
+
+### Prometheus
+
+Website is `localhost:9000`
+
+### Grafana 
+
+Website is `localhost:3000`
+
+### Credentials Grafana
+After accesing, you need to put your credentials for example admin - Admin2025
+
+### Grafana Datasource
+
+You need to add prometheus as datasource.
+Save and test.
+
+## Run Load Testing with Artillery
 
 ### Install dependencies
 
