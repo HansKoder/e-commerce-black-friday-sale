@@ -2,89 +2,85 @@ package org.ecommerce.blackfriday.e_commerce_black_friday_sale.serv;
 
 import org.ecommerce.blackfriday.e_commerce_black_friday_sale.dto.DeleteItemDTO;
 import org.ecommerce.blackfriday.e_commerce_black_friday_sale.dto.SaveItemDTO;
-import org.ecommerce.blackfriday.e_commerce_black_friday_sale.domain.DetailShoppingCart;
+import org.ecommerce.blackfriday.e_commerce_black_friday_sale.domain.Item;
 import org.ecommerce.blackfriday.e_commerce_black_friday_sale.domain.ShoppingCart;
 import org.ecommerce.blackfriday.e_commerce_black_friday_sale.dto.ShoppingCartDTO;
+import org.ecommerce.blackfriday.e_commerce_black_friday_sale.exceptions.CartItemNotFoundException;
+import org.ecommerce.blackfriday.e_commerce_black_friday_sale.exceptions.CartNotFoundException;
+import org.ecommerce.blackfriday.e_commerce_black_friday_sale.mapper.ItemMapper;
 import org.ecommerce.blackfriday.e_commerce_black_friday_sale.mapper.ShoppingCartMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 @Service
 public class ShoppingCartServiceImpl implements ShoppingCartService{
 
-    private final List<ShoppingCart> cartList =  new CopyOnWriteArrayList<>();
+    @Autowired
+    private ShoppingCartRedisService shoppingCartRedisService;
 
     @Override
-    public ShoppingCart addItem(SaveItemDTO itemDTO) {
-        ShoppingCart cart = cartList.stream()
-                .filter(data -> data.getCustomerId().equals(itemDTO.getCustomerId()))
-                .findFirst()
-                .orElseGet(() -> createShoppingCart(itemDTO));
+    public ShoppingCartDTO createCart(SaveItemDTO itemDTO) {
+        ShoppingCart domain = ShoppingCartMapper.fromSaveDTO(itemDTO);
+        ShoppingCartDTO dto = ShoppingCartMapper.toDTO(domain);
+        shoppingCartRedisService.saveCart(dto);
 
-        cart.addItem(buildItem(itemDTO));
-
-        return cart;
-    }
-
-    private DetailShoppingCart buildItem (SaveItemDTO itemDTO) {
-        DetailShoppingCart item = new DetailShoppingCart();
-
-        item.setItemId(itemDTO.getItemId());
-        item.setPrice(itemDTO.getPrice());
-        item.setCant(itemDTO.getCant());
-
-        return item;
-    }
-
-    private ShoppingCart buildShoppingCart (SaveItemDTO itemDTO) {
-        ShoppingCart cart = new ShoppingCart();
-        cart.setCustomerId(itemDTO.getCustomerId());
-
-        return cart;
-    }
-
-    private ShoppingCart createShoppingCart (SaveItemDTO itemDTO) {
-        ShoppingCart cart = buildShoppingCart(itemDTO);
-        cartList.add(cart);
-        return cart;
+        return dto;
     }
 
     @Override
-    public ShoppingCart updateItem(SaveItemDTO itemDTO) throws Exception{
-        ShoppingCart cart = cartList.stream()
-                .filter(data -> data.getCustomerId().equals(itemDTO.getCustomerId()))
-                .findFirst()
-                .orElseThrow(Exception::new);
+    public ShoppingCartDTO addItem(SaveItemDTO saveItemDTO) {
+        ShoppingCartDTO cartDTO = getCartByCustomerId(saveItemDTO.getCustomerId());
 
-        cart.updateItem(buildItem(itemDTO));
+        ShoppingCart cart = ShoppingCartMapper.fromDTO(cartDTO);
+        cart.addItem(ItemMapper.fromSaveDTO(saveItemDTO));
 
-        return cart;
+        ShoppingCartDTO response = ShoppingCartMapper.toDTO(cart);
+        shoppingCartRedisService.saveCart(response);
+
+        return response;
     }
 
     @Override
-    public void deleteItem(DeleteItemDTO deleteItemDTO) throws Exception {
-        ShoppingCart cart = cartList.stream()
-                .filter(data -> data.getCustomerId().equals(deleteItemDTO.getCustomerId()))
-                .findFirst()
-                .orElseThrow(Exception::new);
+    public ShoppingCartDTO updateItem(SaveItemDTO saveItemDTO) {
+        ShoppingCartDTO cartDTO = getCartByCustomerId(saveItemDTO.getCustomerId());
 
-        cart.removeItem(deleteItemDTO.getItemId());
-    }
-
-    @Override
-    public Optional<ShoppingCart> getCartByCustomerId(String customerId) {
-        return cartList.stream()
-                .filter(cart -> cart.getCustomerId().equals(customerId))
+        ShoppingCart cartEntity = ShoppingCartMapper.fromDTO(cartDTO);
+        Optional<Item> itemOptional = cartEntity.getItems()
+                .stream().filter(find -> find.getItemId().equals(saveItemDTO.getItemId()))
                 .findFirst();
+
+        /*
+        if (itemOptional.isEmpty())
+            throw new CartItemNotFoundException(saveItemDTO.getCustomerId(), saveItemDTO.getItemId().toString());
+
+         */
+
+        cartEntity.updateItem(ItemMapper.fromSaveDTO(saveItemDTO));
+
+        ShoppingCartDTO response = ShoppingCartMapper.toDTO(cartEntity);
+        shoppingCartRedisService.saveCart(response);
+
+        return response;
     }
 
     @Override
-    public List<ShoppingCartDTO> getList() {
-        return cartList.stream()
-                .map(ShoppingCartMapper::toDTO)
-                .toList();
+    public void deleteItem(DeleteItemDTO deleteItemDTO) {
+        ShoppingCartDTO cartDTO = getCartByCustomerId(deleteItemDTO.getCustomerId());
+        ShoppingCart cart = ShoppingCartMapper.fromDTO(cartDTO);
+        cart.removeItem(deleteItemDTO.getItemId());
+        shoppingCartRedisService.saveCart(ShoppingCartMapper.toDTO(cart));
     }
+
+    @Override
+    public ShoppingCartDTO getCartByCustomerId(String customerId) {
+        Optional<ShoppingCartDTO> cart = Optional
+                .ofNullable(shoppingCartRedisService.getCart(customerId));
+
+        if (cart.isEmpty()) throw new CartNotFoundException(customerId);
+
+        return cart.get();
+    }
+
 }

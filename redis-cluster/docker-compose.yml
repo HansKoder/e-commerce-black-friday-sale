@@ -6,60 +6,76 @@ services:
     ports:
       - 7001:6379
     volumes:
-      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./redis-node-1/redis.conf:/usr/local/etc/redis/redis.conf
     command: ["redis-server", "/usr/local/etc/redis/redis.conf", "--cluster-enabled", "yes", "--port", "6379"]
     networks:
-      - redis-cluster-net
+      redis-cluster-net:
+        ipv4_address: 172.28.0.2
 
   redis-node-2:
     image: redis:7.2
     ports:
       - 7002:6379
     volumes:
-      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./redis-node-2/redis.conf:/usr/local/etc/redis/redis.conf
     command: ["redis-server", "/usr/local/etc/redis/redis.conf", "--cluster-enabled", "yes", "--port", "6379"]
     networks:
-      - redis-cluster-net
+      redis-cluster-net:
+        ipv4_address: 172.28.0.3
 
   redis-node-3:
     image: redis:7.2
     ports:
       - 7003:6379
     volumes:
-      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./redis-node-3/redis.conf:/usr/local/etc/redis/redis.conf
     command: ["redis-server", "/usr/local/etc/redis/redis.conf", "--cluster-enabled", "yes", "--port", "6379"]
     networks:
-      - redis-cluster-net
+      redis-cluster-net:
+        ipv4_address: 172.28.0.4
+
 
   redis-node-4:
     image: redis:7.2
     ports:
       - 7004:6379
     volumes:
-      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./redis-node-4/redis.conf:/usr/local/etc/redis/redis.conf
     command: ["redis-server", "/usr/local/etc/redis/redis.conf", "--cluster-enabled", "yes", "--port", "6379"]
     networks:
-      - redis-cluster-net
+      redis-cluster-net:
+        ipv4_address: 172.28.0.5
+
 
   redis-node-5:
     image: redis:7.2
     ports:
       - 7005:6379
     volumes:
-      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./redis-node-5/redis.conf:/usr/local/etc/redis/redis.conf
     command: ["redis-server", "/usr/local/etc/redis/redis.conf", "--cluster-enabled", "yes", "--port", "6379"]
     networks:
-      - redis-cluster-net
+      redis-cluster-net:
+        ipv4_address: 172.28.0.6
+
 
   redis-node-6:
     image: redis:7.2
     ports:
       - 7006:6379
     volumes:
-      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./redis-node-6/redis.conf:/usr/local/etc/redis/redis.conf
     command: ["redis-server", "/usr/local/etc/redis/redis.conf", "--cluster-enabled", "yes", "--port", "6379"]
     networks:
-      - redis-cluster-net
+      redis-cluster-net:
+        ipv4_address: 172.28.0.7
+
 
 networks:
   redis-cluster-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
+
+    

@@ -1,5 +1,7 @@
 package org.ecommerce.blackfriday.e_commerce_black_friday_sale.domain;
 
+import org.ecommerce.blackfriday.e_commerce_black_friday_sale.exceptions.CartItemNotFoundException;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +9,7 @@ import java.util.List;
 public class ShoppingCart {
 
     private String customerId;
-    private List<DetailShoppingCart> items;
+    private List<Item> items;
 
     public ShoppingCart() {
         items = new ArrayList<>();
@@ -17,13 +19,13 @@ public class ShoppingCart {
         return customerId;
     }
 
-    public List<DetailShoppingCart> getItems() {
+    public List<Item> getItems() {
         return items;
     }
 
     public BigDecimal getTotal() {
         return items.stream()
-                .map(DetailShoppingCart::getAmount)
+                .map(Item::getAmount)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
@@ -31,7 +33,7 @@ public class ShoppingCart {
         this.customerId = customerId;
     }
 
-    public void addItem (DetailShoppingCart item) {
+    public void addItem (Item item) {
         items.add(item);
     }
 
@@ -39,14 +41,15 @@ public class ShoppingCart {
         items.removeIf(item -> item.getItemId().equals(itemId));
     }
 
-    public void updateItem (DetailShoppingCart item) {
+    public void updateItem (Item item) {
         items
                 .stream()
                 .filter(i -> i.getItemId().equals(item.getItemId()))
                 .findFirst()
-                .ifPresent(data -> {
-                    items.set(items.indexOf(data), item);
-                });
+                .ifPresentOrElse(
+                        success -> items.set(items.indexOf(success), item),
+                        () -> {throw new CartItemNotFoundException(customerId, item.getItemId().toString());}
+                );
     }
 
     @Override

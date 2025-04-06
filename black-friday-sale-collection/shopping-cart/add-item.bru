@@ -4,7 +4,7 @@ meta {
   seq: 1
 }
 
-post {
+put {
   url: http://localhost:8080/api/v1/shopping-cart/add-item
   body: json
   auth: none
@@ -12,9 +12,9 @@ post {
 
 body:json {
   {
-    "customerId": "",
-    "itemId": 3,
-    "cant": 1,
-    "price": 1100
+    "customerId": "101",
+    "itemId": 4,
+    "cant": 4,
+    "price": 500
   }
 }

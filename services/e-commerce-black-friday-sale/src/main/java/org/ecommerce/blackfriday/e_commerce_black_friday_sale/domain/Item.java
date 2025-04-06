@@ -2,7 +2,7 @@ package org.ecommerce.blackfriday.e_commerce_black_friday_sale.domain;
 
 import java.math.BigDecimal;
 
-public class DetailShoppingCart {
+public class Item {
 
     private Long itemId;
     private BigDecimal price;

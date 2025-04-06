@@ -1,11 +1,11 @@
 meta {
-  name: update-item
+  name: create-cart
   type: http
-  seq: 2
+  seq: 6
 }
 
-put {
-  url: http://localhost:8080/api/v1/shopping-cart/update-item
+post {
+  url: http://localhost:8080/api/v1/shopping-cart/create-cart
   body: json
   auth: none
 }
@@ -15,6 +15,6 @@ body:json {
     "customerId": "101",
     "itemId": 3,
     "cant": 1,
-    "price": 100
+    "price": 1100
   }
 }

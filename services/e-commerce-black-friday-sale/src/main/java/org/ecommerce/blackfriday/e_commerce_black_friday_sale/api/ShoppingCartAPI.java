@@ -3,9 +3,9 @@ package org.ecommerce.blackfriday.e_commerce_black_friday_sale.api;
 import jakarta.validation.Valid;
 import org.ecommerce.blackfriday.e_commerce_black_friday_sale.dto.DeleteItemDTO;
 import org.ecommerce.blackfriday.e_commerce_black_friday_sale.dto.SaveItemDTO;
-import org.ecommerce.blackfriday.e_commerce_black_friday_sale.domain.ShoppingCart;
 import org.ecommerce.blackfriday.e_commerce_black_friday_sale.serv.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -20,13 +20,20 @@ public class ShoppingCartAPI {
     @Autowired
     private ShoppingCartService shoppingCartService;
 
-    @PostMapping("/add-item")
+    @PostMapping("/create-cart")
+    ResponseEntity<?> createCart (@Valid @RequestBody SaveItemDTO itemDTO) {
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(shoppingCartService.createCart(itemDTO));
+    }
+
+    @PutMapping("/add-item")
     ResponseEntity<?> addItem (@Valid @RequestBody SaveItemDTO itemDTO) {
         return ResponseEntity.ok(shoppingCartService.addItem(itemDTO));
     }
 
     @PutMapping("/update-item")
-    ResponseEntity<?> updateItem (@Valid @RequestBody SaveItemDTO itemDTO) throws Exception {
+    ResponseEntity<?> updateItem (@Valid @RequestBody SaveItemDTO itemDTO)  {
         return ResponseEntity.ok(shoppingCartService.updateItem(itemDTO));
     }
 
@@ -38,16 +45,7 @@ public class ShoppingCartAPI {
 
     @GetMapping("/get-cart/{customerId}")
     ResponseEntity<?> getCart (@PathVariable("customerId") String customerId) {
-        Optional<ShoppingCart> cart = shoppingCartService.getCartByCustomerId(customerId);
-        if (cart.isEmpty())
-            return ResponseEntity.notFound().build();
-
-        return ResponseEntity.ok(cart.get());
-    }
-
-    @GetMapping("/find-all")
-    ResponseEntity<?> getAll () {
-        return ResponseEntity.ok(shoppingCartService.getList());
+        return ResponseEntity.ok(shoppingCartService.getCartByCustomerId(customerId));
     }
 
 }
