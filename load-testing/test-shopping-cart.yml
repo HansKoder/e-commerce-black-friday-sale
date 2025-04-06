@@ -9,18 +9,25 @@ scenarios:
   - name: "Simulate a real shopping cart - add items, update items, remove item, get cart"
     flow:
       - post:
-          url: "/api/v1/shopping-cart/add-item"
+          url: "/api/v1/shopping-cart/create-cart"
           json:
             customerId: "{{$uuid}}"
             itemId: 1
             cant: 1
-            price: 100
-      - think: 1
-      - post:
+            price: 100    
+      - put:
           url: "/api/v1/shopping-cart/add-item"
           json:
             customerId: "{{$uuid}}"
             itemId: 2
+            cant: 2
+            price: 100
+      - think: 1
+      - put:
+          url: "/api/v1/shopping-cart/add-item"
+          json:
+            customerId: "{{$uuid}}"
+            itemId: 3
             cant: 1
             price: 120
       - think: 1
@@ -28,9 +35,9 @@ scenarios:
           url: "/api/v1/shopping-cart/update-item"
           json:
             customerId: "{{$uuid}}"
-            itemId: 2
-            cant: 4
-            price: 120
+            itemId: 3
+            cant: 2
+            price: 100
       - think: 1
       - delete:
           url: "/api/v1/shopping-cart/delete-item"
