@@ -1,0 +1,18 @@
+meta {
+  name: delete-item
+  type: http
+  seq: 3
+}
+
+delete {
+  url: http://localhost:8080/api/v1/shopping-cart/delete-item
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "customerId": "1",
+    "itemId": 3
+  }
+}

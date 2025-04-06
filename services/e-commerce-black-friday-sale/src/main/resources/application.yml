@@ -1,0 +1,44 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:black-friday
+    username: hans
+    password: hans2025
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  redis:
+    cluster:
+      nodes:
+        - 172.28.0.2:6379
+        - 172.28.0.3:6379
+        - 172.28.0.4:6379
+        - 172.28.0.5:6379
+        - 172.28.0.6:6379
+        - 172.28.0.7:6379
+    timeout: 6000
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 10
+        min-idle: 2
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    prometheus:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled:
+
+
+logging:
+  level:
+    io.lettuce.core: DEBUG
+

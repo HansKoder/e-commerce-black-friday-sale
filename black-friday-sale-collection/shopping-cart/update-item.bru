@@ -1,0 +1,20 @@
+meta {
+  name: update-item
+  type: http
+  seq: 2
+}
+
+put {
+  url: http://localhost:8080/api/v1/shopping-cart/update-item
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "customerId": "101",
+    "itemId": 3,
+    "cant": 1,
+    "price": 100
+  }
+}
