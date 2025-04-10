@@ -41,4 +41,10 @@ management:
 logging:
   level:
     io.lettuce.core: DEBUG
+    org:
+      springframework:
+        web: DEBUG
+        boot:
+          autoconfigure:
+            web: DEBUG
 

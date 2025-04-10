@@ -1,5 +1,6 @@
 package org.ecommerce.blackfriday.shopping.cart.api;
 
+import jakarta.annotation.PostConstruct;
 import jakarta.validation.Valid;
 import org.ecommerce.blackfriday.shopping.cart.dto.DeleteItemDTO;
 import org.ecommerce.blackfriday.shopping.cart.dto.SaveItemDTO;
@@ -14,6 +15,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/v1/shopping-cart")
 @Validated
 public class ShoppingCartAPI {
+
+    @PostConstruct()
+    public void init () {
+        System.out.println("API Shopping cart loaded");
+    }
 
     @Autowired
     private ShoppingCartService shoppingCartService;

@@ -1,4 +1,4 @@
-package org.ecommerce.blackfriday.application;
+package org.ecommerce.blackfriday;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

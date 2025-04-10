@@ -1,4 +1,4 @@
-package org.ecommerce.blackfriday.e_commerce_black_friday_sale;
+package org.ecommerce.blackfriday.application;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
