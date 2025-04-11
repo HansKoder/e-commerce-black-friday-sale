@@ -1,9 +1,9 @@
-package org.ecommerce.blackfriday.products.product.api;
+package org.ecommerce.blackfriday.product.managment.api;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.ecommerce.blackfriday.products.product.ent.Product;
-import org.ecommerce.blackfriday.products.product.serv.ProductService;
+import org.ecommerce.blackfriday.product.managment.ent.Product;
+import org.ecommerce.blackfriday.product.managment.serv.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,7 @@
-package org.ecommerce.blackfriday.products.product.serv;
+package org.ecommerce.blackfriday.product.managment.serv;
 
-import org.ecommerce.blackfriday.products.product.ent.Product;
-import org.ecommerce.blackfriday.products.product.repo.ProductRepo;
+import org.ecommerce.blackfriday.product.managment.ent.Product;
+import org.ecommerce.blackfriday.product.managment.repo.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

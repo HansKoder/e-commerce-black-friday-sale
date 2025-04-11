@@ -1,4 +1,4 @@
-package org.ecommerce.blackfriday.products.product.ent;
+package org.ecommerce.blackfriday.product.managment.ent;
 
 import jakarta.persistence.*;
 
