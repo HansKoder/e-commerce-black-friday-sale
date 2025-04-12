@@ -3,12 +3,15 @@ package org.ecommerce.blackfriday.product.managment.domain.entity;
 import org.ecommerce.blackfriday.common.entity.AggregateRoot;
 import org.ecommerce.blackfriday.common.valueobject.Money;
 import org.ecommerce.blackfriday.common.valueobject.ProductId;
+import org.ecommerce.blackfriday.product.managment.domain.exception.ProductDomainException;
+import org.ecommerce.blackfriday.product.managment.domain.valueobject.ProductDescription;
 import org.ecommerce.blackfriday.product.managment.domain.valueobject.ProductName;
 import org.ecommerce.blackfriday.product.managment.domain.valueobject.ProductStatus;
 
 public class Product extends AggregateRoot<ProductId> {
 
     private ProductName productName;
+    private ProductDescription productDescription;
     private ProductStatus status;
     private Money price;
 
@@ -16,7 +19,7 @@ public class Product extends AggregateRoot<ProductId> {
         return productName;
     }
 
-    private void setProductName(ProductName productName) {
+    public void setProductName(ProductName productName) {
         this.productName = productName;
     }
 
@@ -36,55 +39,28 @@ public class Product extends AggregateRoot<ProductId> {
         this.price = price;
     }
 
-    public static final class Builder {
-        private ProductName productName;
-        private ProductStatus status;
-        private Money price;
-        private ProductId productId;
-
-        private Builder() {
-        }
-
-        public static Builder aProduct() {
-            return new Builder();
-        }
-
-        public Builder withProductName(ProductName productName) {
-            this.productName = productName;
-            return this;
-        }
-
-        public Builder withStatus(ProductStatus status) {
-            this.status = status;
-            return this;
-        }
-
-        public Builder withPrice(Money price) {
-            this.price = price;
-            return this;
-        }
-
-        public Builder withProductId(ProductId id) {
-            this.productId = id;
-            return this;
-        }
-
-        public Product build() {
-            Product product = new Product();
-            product.setId(productId);
-            product.setProductName(this.productName);
-            product.setPrice(this.price);
-            product.setStatus(this.status);
-
-            return product;
-        }
+    public ProductDescription getProductDescription() {
+        return productDescription;
     }
 
-    // methods
-
-    public void validateProduct () {
-
+    public void setProductDescription(ProductDescription productDescription) {
+        this.productDescription = productDescription;
     }
 
+    // Business Rules
+    private void validateInitialProduct() {
+        productName.validateProductName();
+        productDescription.validateProductName();
+        validateInitialStatusProduct();
+    }
+
+    private void validateInitialStatusProduct () {
+        if (!status.equals(ProductStatus.DRAFT))
+            throw new ProductDomainException("Product Status Initial must be DRAFT");
+    }
+
+    public void setInitialPrice (Money money) {
+        this.price = money;
+    }
 
 }

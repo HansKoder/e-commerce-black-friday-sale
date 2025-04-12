@@ -10,7 +10,7 @@ public abstract class BaseEntity<ID> {
         return id;
     }
 
-    protected void setId(ID id) {
+    public void setId(ID id) {
         this.id = id;
     }
 

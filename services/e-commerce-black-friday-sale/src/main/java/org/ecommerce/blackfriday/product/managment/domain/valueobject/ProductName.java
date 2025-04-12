@@ -2,22 +2,16 @@ package org.ecommerce.blackfriday.product.managment.domain.valueobject;
 
 import java.util.Objects;
 
-public class ProductName {
+public record ProductName (String name) {
 
-    private final String name;
-
-    public ProductName(String name) {
-        this.name = name;
-        this.validateProductName();
-    }
-
-    private void validateProductName () {
+    public void validateProductName () {
         if (Objects.isNull(this.name) || this.name.isBlank()) {
             throw new IllegalArgumentException("Product Name is required");
         }
 
-        if (this.name.length() < 5) {
-            throw new IllegalArgumentException("Product Name is invalid, must be 5 characters");
+        final int CANT_MIN_CHARACTERS = 3;
+        if (this.name.length() < CANT_MIN_CHARACTERS) {
+            throw new IllegalArgumentException("Product Name is invalid, must have min 5 characters");
         }
     }
 
