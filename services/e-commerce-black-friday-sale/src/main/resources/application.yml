@@ -6,6 +6,10 @@ spring:
     driverClassName: org.h2.Driver
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
+    show_sql: true
+    properties:
+      hibernate:
+        format_sql: true
   redis:
     cluster:
       nodes:
@@ -42,6 +46,11 @@ logging:
   level:
     io.lettuce.core: DEBUG
     org:
+      hibernate:
+        sql: DEBUG
+        type:
+          descriptor:
+            sql: TRACE
       springframework:
         web: DEBUG
         boot:

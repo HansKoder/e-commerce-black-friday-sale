@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
-public class GlobalExceptionHandler {
+public class ShoppingCartGlobalExceptionHandler {
 
     @ExceptionHandler(CartNotFoundException.class)
     public ResponseEntity<ApiError> handlerCartNotFound (CartNotFoundException ex) {

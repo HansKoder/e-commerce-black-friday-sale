@@ -1,12 +1,14 @@
 package org.ecommerce.blackfriday.product.managment.domain.entity;
 
-import org.ecommerce.blackfriday.common.entity.AggregateRoot;
-import org.ecommerce.blackfriday.common.valueobject.Money;
-import org.ecommerce.blackfriday.common.valueobject.ProductId;
+import org.ecommerce.blackfriday.common.domain.model.entity.AggregateRoot;
+import org.ecommerce.blackfriday.common.domain.model.valueobject.Money;
+import org.ecommerce.blackfriday.common.domain.model.valueobject.ProductId;
 import org.ecommerce.blackfriday.product.managment.domain.exception.ProductDomainException;
 import org.ecommerce.blackfriday.product.managment.domain.valueobject.ProductDescription;
 import org.ecommerce.blackfriday.product.managment.domain.valueobject.ProductName;
 import org.ecommerce.blackfriday.product.managment.domain.valueobject.ProductStatus;
+
+import java.util.Objects;
 
 public class Product extends AggregateRoot<ProductId> {
 
@@ -48,13 +50,16 @@ public class Product extends AggregateRoot<ProductId> {
     }
 
     // Business Rules
-    private void validateInitialProduct() {
+    public void validateInitialProduct() {
         productName.validateProductName();
         productDescription.validateProductName();
         validateInitialStatusProduct();
     }
 
     private void validateInitialStatusProduct () {
+        if (Objects.isNull(status))
+            throw new ProductDomainException("Status is not defined");
+
         if (!status.equals(ProductStatus.DRAFT))
             throw new ProductDomainException("Product Status Initial must be DRAFT");
     }

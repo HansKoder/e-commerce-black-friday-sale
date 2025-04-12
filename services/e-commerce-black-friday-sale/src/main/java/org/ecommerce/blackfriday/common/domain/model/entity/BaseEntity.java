@@ -1,4 +1,4 @@
-package org.ecommerce.blackfriday.common.entity;
+package org.ecommerce.blackfriday.common.domain.model.entity;
 
 import java.util.Objects;
 
@@ -6,7 +6,7 @@ public abstract class BaseEntity<ID> {
 
     private ID id;
 
-    protected ID getId() {
+    public ID getId() {
         return id;
     }
 

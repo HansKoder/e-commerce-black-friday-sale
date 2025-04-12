@@ -1,7 +1,7 @@
 package org.ecommerce.blackfriday.product.managment.infraestructure.persistence.mapper;
 
-import org.ecommerce.blackfriday.common.valueobject.Money;
-import org.ecommerce.blackfriday.common.valueobject.ProductId;
+import org.ecommerce.blackfriday.common.domain.model.valueobject.Money;
+import org.ecommerce.blackfriday.common.domain.model.valueobject.ProductId;
 import org.ecommerce.blackfriday.product.managment.domain.builder.ProductBuilder;
 import org.ecommerce.blackfriday.product.managment.domain.entity.Product;
 import org.ecommerce.blackfriday.product.managment.domain.valueobject.ProductDescription;
@@ -14,6 +14,8 @@ public class ProductEntityMapper {
 
     public static ProductEntity toEntity (Product product) {
         ProductEntity productEntity = new ProductEntity();
+
+        productEntity.setId(product.getId().getValue());
         productEntity.setName(product.getProductName().name());
         productEntity.setDescription(product.getProductDescription().description());
 

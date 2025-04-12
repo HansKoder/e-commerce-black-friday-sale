@@ -1,7 +1,7 @@
 package org.ecommerce.blackfriday.product.managment.domain.builder;
 
-import org.ecommerce.blackfriday.common.valueobject.Money;
-import org.ecommerce.blackfriday.common.valueobject.ProductId;
+import org.ecommerce.blackfriday.common.domain.model.valueobject.Money;
+import org.ecommerce.blackfriday.common.domain.model.valueobject.ProductId;
 import org.ecommerce.blackfriday.product.managment.domain.entity.Product;
 import org.ecommerce.blackfriday.product.managment.domain.valueobject.ProductDescription;
 import org.ecommerce.blackfriday.product.managment.domain.valueobject.ProductName;

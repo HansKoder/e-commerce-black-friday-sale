@@ -1,4 +1,4 @@
-package org.ecommerce.blackfriday.common.valueobject;
+package org.ecommerce.blackfriday.common.domain.model.valueobject;
 
 import java.util.UUID;
 
