@@ -37,9 +37,24 @@ public class Cart extends BaseEntity<CartId> {
         return cartItemOptional.get();
     }
 
-    private void deleteCartItem (String uuid) {
+    public void deleteCartItem (String uuid) {
         CartItem cartItem = getCartItemByID(uuid);
         cartItems.remove(cartItem);
+    }
+
+    public void incrementQuantity (String uuid) {
+        CartItem cartItem = getCartItemByID(uuid);
+        cartItem.incrementQuantity();
+    }
+
+    public void decrementQuantity (String uuid) {
+        CartItem cartItem = getCartItemByID(uuid);
+        cartItem.decrementQuantity();
+    }
+
+    public void updateQuantity (String uuid, int quantity) {
+        CartItem cartItem = getCartItemByID(uuid);
+        cartItem.updateQuantity(quantity);
     }
 
 }
