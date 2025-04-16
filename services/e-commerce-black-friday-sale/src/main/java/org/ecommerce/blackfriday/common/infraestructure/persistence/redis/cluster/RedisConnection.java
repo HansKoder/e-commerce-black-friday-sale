@@ -1,4 +1,4 @@
-package org.ecommerce.blackfriday.application.redis;
+package org.ecommerce.blackfriday.common.infraestructure.persistence.redis.cluster;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -8,7 +8,7 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 
 @Configuration
-public class AppConfig {
+public class RedisConnection {
 
     /**
      * Type safe representation of application.properties

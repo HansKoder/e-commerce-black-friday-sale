@@ -1,4 +1,4 @@
-package org.ecommerce.blackfriday.common.exception;
+package org.ecommerce.blackfriday.common.domain.model.exception;
 
 public class DomainException extends RuntimeException{
 

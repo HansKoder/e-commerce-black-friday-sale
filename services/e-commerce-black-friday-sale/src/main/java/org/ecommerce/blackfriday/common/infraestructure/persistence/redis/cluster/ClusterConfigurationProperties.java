@@ -1,4 +1,4 @@
-package org.ecommerce.blackfriday.application.redis;
+package org.ecommerce.blackfriday.common.infraestructure.persistence.redis.cluster;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package org.ecommerce.blackfriday.application.config;
+package org.ecommerce.blackfriday.common.infraestructure.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
