@@ -4,7 +4,9 @@ import org.ecommerce.blackfriday.cart.domain.model.exception.CartItemNotFoundDom
 import org.ecommerce.blackfriday.cart.domain.model.valueobject.CartItemId;
 import org.ecommerce.blackfriday.common.domain.model.entity.BaseEntity;
 import org.ecommerce.blackfriday.cart.domain.model.valueobject.CartId;
+import org.ecommerce.blackfriday.common.domain.model.valueobject.Money;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -12,14 +14,13 @@ import java.util.UUID;
 
 public class Cart extends BaseEntity<CartId> {
 
-    private Customer customer;
     private final List<CartItem> cartItems;
 
     public Cart() {
         cartItems = new ArrayList<>();
     }
 
-    private void addCartItem (CartItem cartItem) {
+    public void addCartItem (CartItem cartItem) {
         this.cartItems.add(cartItem);
     }
 
@@ -55,6 +56,17 @@ public class Cart extends BaseEntity<CartId> {
     public void updateQuantity (String uuid, int quantity) {
         CartItem cartItem = getCartItemByID(uuid);
         cartItem.updateQuantity(quantity);
+    }
+
+    public List<CartItem> getCartItems () {
+        return List.copyOf(cartItems);
+    }
+
+    public BigDecimal getTotal () {
+        return cartItems
+                .stream()
+                .map(item -> item.getTotal().getAmount())
+                .reduce(Money.ZERO, BigDecimal::add);
     }
 
 }

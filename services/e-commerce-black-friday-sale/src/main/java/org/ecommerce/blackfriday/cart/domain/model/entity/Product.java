@@ -15,6 +15,7 @@ public class Product extends BaseEntity<ProductId> {
     private Product(Builder builder) {
         productName = builder.productName;
         price = builder.price;
+        super.setId(builder.productId);
     }
 
     public String getProductName() {
@@ -26,9 +27,14 @@ public class Product extends BaseEntity<ProductId> {
     }
 
     public static class Builder {
-
+        private ProductId productId;
         private String productName;
         private Money price;
+
+        public Builder withProductId (ProductId productId) {
+            this.productId = productId;
+            return this;
+        }
 
         public Builder withProductName (String productName) {
             this.productName = productName;

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(NullPointerException.class)
-    public ResponseEntity<ApiErrorResponse> handlerCartItemNotFound (NullPointerException ex) {
+    public ResponseEntity<ApiErrorResponse> handlerNullPointerException (NullPointerException ex) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(new ApiErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage()));
     }
