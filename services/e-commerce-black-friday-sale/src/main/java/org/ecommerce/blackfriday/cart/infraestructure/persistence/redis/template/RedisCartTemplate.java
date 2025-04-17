@@ -12,7 +12,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 public class RedisCartTemplate {
 
     @Bean
-    public RedisTemplate<String, RedisCartModel> redisCartTemplate (RedisConnectionFactory factory) {
+    public RedisTemplate<String, RedisCartModel> configRedisCartTemplate (RedisConnectionFactory factory) {
         RedisTemplate<String, RedisCartModel> template = new RedisTemplate<>();
         template.setConnectionFactory(factory);
         template.setKeySerializer(new StringRedisSerializer());

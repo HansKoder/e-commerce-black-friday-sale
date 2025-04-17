@@ -4,16 +4,13 @@ import org.ecommerce.blackfriday.cart.domain.model.exception.InvalidQuantityDoma
 
 import java.util.Objects;
 
-public class Quantity {
+public record Quantity (int value) {
 
-    private final int value;
-
-    public Quantity(int value) {
-        if (value < 1) {
+    public Quantity {
+        int LIMIT_VALUE_QUANTITY = 1;
+        if (value < LIMIT_VALUE_QUANTITY) {
             throw new InvalidQuantityDomainException("Invalid Quantity, must be greater to ZERO");
         }
-
-        this.value = value;
     }
 
     public int getValue() {

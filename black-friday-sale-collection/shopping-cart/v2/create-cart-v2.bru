@@ -1,0 +1,20 @@
+meta {
+  name: create-cart-v2
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/api/v2/shopping-cart/create-cart
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "customerId": "4f9e33c0-cc67-4c7d-a8b1-50af229cf301",
+    "productId": "e8a40c12-bf71-4213-bc39-58d3d00a0e32",
+    "cant": 10,
+    "price": 1100
+  }
+}

@@ -5,14 +5,16 @@ import org.ecommerce.blackfriday.cart.domain.model.repository.CartRepository;
 import org.ecommerce.blackfriday.cart.infraestructure.persistence.redis.mapper.RedisCartMapper;
 import org.ecommerce.blackfriday.cart.infraestructure.persistence.redis.model.RedisCartModel;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-public class CartRepositoryAdapter implements CartRepository {
+@Repository
+public class RedisCartRepository implements CartRepository {
 
     private final RedisTemplate<String, RedisCartModel> redisTemplate;
 
-    public CartRepositoryAdapter(RedisTemplate<String, RedisCartModel> redisTemplate) {
+    public RedisCartRepository(RedisTemplate<String, RedisCartModel> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
 

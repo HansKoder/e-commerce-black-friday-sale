@@ -2,7 +2,9 @@ package org.ecommerce.blackfriday.cart.application.service;
 
 import org.ecommerce.blackfriday.cart.domain.model.entity.Cart;
 import org.ecommerce.blackfriday.cart.domain.model.repository.CartRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CreateCartService {
 
     private final CartRepository cartRepository;

@@ -38,8 +38,7 @@ public class CartItem extends BaseEntity<CartItemId> {
     }
 
     public Money getTotal () {
-        product.validatePrice();
-        return product.getPrice().multiply(quantity.getValue());
+        return product.getPrice().value().multiply(quantity.getValue());
     }
 
     @Override
