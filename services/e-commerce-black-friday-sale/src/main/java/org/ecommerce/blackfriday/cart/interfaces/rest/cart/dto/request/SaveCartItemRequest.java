@@ -7,13 +7,13 @@ import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 
-public class CreateCartRequest {
+public class SaveCartItemRequest {
 
     @NotNull(message = "CustomerId cannot be null")
     @NotEmpty(message = "CustomerId cannot be empty")
     private String customerId;
 
-    @NotNull(message = "ItemId cannot be null")
+    @NotNull(message = "ProductId cannot be null")
     private String productId;
 
     @Min(value = 0, message = "Cant must be greater or equal to zero")

@@ -1,10 +1,11 @@
 package org.ecommerce.blackfriday.cart.interfaces.rest.cart;
 
 import jakarta.validation.Valid;
-import org.ecommerce.blackfriday.cart.application.service.CreateCartService;
+import org.ecommerce.blackfriday.cart.application.service.SaveCartItemService;
 import org.ecommerce.blackfriday.cart.domain.model.entity.Cart;
-import org.ecommerce.blackfriday.cart.interfaces.rest.cart.dto.request.CreateCartRequest;
+import org.ecommerce.blackfriday.cart.interfaces.rest.cart.dto.request.SaveCartItemRequest;
 import org.ecommerce.blackfriday.cart.interfaces.rest.cart.dto.response.GetCartResponse;
+import org.ecommerce.blackfriday.cart.interfaces.rest.cart.mapper.CartItemMapper;
 import org.ecommerce.blackfriday.cart.interfaces.rest.cart.mapper.CartMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,15 +18,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/v2/shopping-cart")
 public class CartRestController {
 
-    private final CreateCartService service;
+    private final SaveCartItemService service;
 
-    public CartRestController(CreateCartService service) {
+    public CartRestController(SaveCartItemService service) {
         this.service = service;
     }
 
-    @PostMapping("/create-cart")
-    ResponseEntity<GetCartResponse> createCart (@Valid @RequestBody CreateCartRequest cartDto) {
-        Cart domain = service.handler(cartDto.getCustomerId(), CartMapper.toDomain(cartDto));
+    @PostMapping("/save-cart")
+    ResponseEntity<GetCartResponse> addCartItem (@Valid @RequestBody SaveCartItemRequest cartDto) {
+        Cart domain = service.addCartItem(cartDto.getCustomerId(), CartItemMapper.toDomain(cartDto));
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(CartMapper.toDto(domain, cartDto.getCustomerId()));

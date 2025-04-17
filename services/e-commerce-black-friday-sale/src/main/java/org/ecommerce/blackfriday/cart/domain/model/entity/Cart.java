@@ -7,21 +7,37 @@ import org.ecommerce.blackfriday.cart.domain.model.valueobject.CartId;
 import org.ecommerce.blackfriday.common.domain.model.valueobject.Money;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 public class Cart extends BaseEntity<CartId> {
 
     private final List<CartItem> cartItems;
 
-    public Cart() {
+    private Cart() {
         cartItems = new ArrayList<>();
+        setId(new CartId(UUID.randomUUID()));
+    }
+
+    private Cart (CartId cartId, List<CartItem> items) {
+        this.cartItems = new ArrayList<>(items);
+        setId(cartId);
+    }
+
+    public static Cart create () {
+        return new Cart();
+    }
+
+    public static Cart recreate (CartId cartId, List<CartItem> items) {
+        return new Cart(cartId, items);
     }
 
     public void addCartItem (CartItem cartItem) {
+        System.out.println("here....");
+        System.out.println("stop...");
+        System.out.println(cartItem.toString());
+
         this.cartItems.add(cartItem);
+        System.out.println("Size items domain " + cartItems.size());
     }
 
     private CartItem getCartItemByID (String uuid) {
@@ -59,7 +75,8 @@ public class Cart extends BaseEntity<CartId> {
     }
 
     public List<CartItem> getCartItems () {
-        return List.copyOf(cartItems);
+        // return List.copyOf(cartItems);
+        return cartItems;
     }
 
     public BigDecimal getTotal () {
@@ -69,4 +86,16 @@ public class Cart extends BaseEntity<CartId> {
                 .reduce(Money.ZERO, BigDecimal::add);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Cart cart = (Cart) o;
+        return Objects.equals(cartItems, cart.cartItems) && Objects.equals(getId(), cart.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), cartItems, getId());
+    }
 }

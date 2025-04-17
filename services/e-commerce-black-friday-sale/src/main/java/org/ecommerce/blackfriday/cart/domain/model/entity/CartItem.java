@@ -6,15 +6,31 @@ import org.ecommerce.blackfriday.common.domain.model.valueobject.Money;
 import org.ecommerce.blackfriday.cart.domain.model.valueobject.CartItemId;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public class CartItem extends BaseEntity<CartItemId> {
 
     private final Product product;
     private final Quantity quantity;
 
-    public CartItem(Product product, Quantity quantity) {
+    private CartItem(Product product, Quantity quantity) {
         this.product = product;
         this.quantity = quantity;
+        this.setId(new CartItemId(UUID.randomUUID()));
+    }
+
+    private CartItem(CartItemId cartItemId, Product product, Quantity quantity) {
+        this.product = product;
+        this.quantity = quantity;
+        this.setId(cartItemId);
+    }
+
+    public static CartItem create (Product product, Quantity quantity) {
+        return new CartItem(product, quantity);
+    }
+
+    public static CartItem recreate (CartItemId cartItemId, Product product, Quantity quantity) {
+        return new CartItem(cartItemId, product, quantity);
     }
 
     public Product getProduct() {
@@ -46,11 +62,13 @@ public class CartItem extends BaseEntity<CartItemId> {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         CartItem cartItem = (CartItem) o;
-        return Objects.equals(product, cartItem.product) && Objects.equals(quantity, cartItem.quantity);
+        return Objects.equals(product, cartItem.product)
+                && Objects.equals(quantity, cartItem.quantity)
+                && Objects.equals(getId(), cartItem.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), product, quantity);
+        return Objects.hash(super.hashCode(), product, quantity, getId());
     }
 }

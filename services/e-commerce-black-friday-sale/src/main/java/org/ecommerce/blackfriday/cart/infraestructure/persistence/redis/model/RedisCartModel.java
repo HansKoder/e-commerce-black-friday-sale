@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public record RedisCartModel (
-    List<RedisCartItemModel> items,
-    BigDecimal total
+        String cartId,
+        List<RedisCartItemModel> items,
+        BigDecimal total
 ) { }
