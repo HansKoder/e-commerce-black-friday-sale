@@ -75,8 +75,7 @@ public class Cart extends BaseEntity<CartId> {
     }
 
     public List<CartItem> getCartItems () {
-        // return List.copyOf(cartItems);
-        return cartItems;
+        return List.copyOf(cartItems);
     }
 
     public BigDecimal getTotal () {
