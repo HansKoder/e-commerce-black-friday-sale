@@ -32,12 +32,7 @@ public class Cart extends BaseEntity<CartId> {
     }
 
     public void addCartItem (CartItem cartItem) {
-        System.out.println("here....");
-        System.out.println("stop...");
-        System.out.println(cartItem.toString());
-
         this.cartItems.add(cartItem);
-        System.out.println("Size items domain " + cartItems.size());
     }
 
     private CartItem getCartItemByID (String uuid) {
