@@ -11,7 +11,7 @@ import java.util.UUID;
 public class CartItem extends BaseEntity<CartItemId> {
 
     private final Product product;
-    private final Quantity quantity;
+    private Quantity quantity;
 
     private CartItem(Product product, Quantity quantity) {
         this.product = product;
@@ -42,15 +42,15 @@ public class CartItem extends BaseEntity<CartItemId> {
     }
 
     public void incrementQuantity () {
-        this.quantity.increment();
+        this.quantity = this.quantity.increment();
     }
 
     public void decrementQuantity () {
-        this.quantity.decrement();
+        this.quantity = this.quantity.decrement();
     }
 
     public void updateQuantity (int quantityUpdated) {
-        this.quantity.set(quantityUpdated);
+        this.quantity = this.quantity.set(quantityUpdated);
     }
 
     public Money getTotal () {
