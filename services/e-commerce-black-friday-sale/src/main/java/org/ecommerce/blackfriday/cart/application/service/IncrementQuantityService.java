@@ -8,11 +8,11 @@ import org.ecommerce.blackfriday.cart.interfaces.rest.common.exception.CartByCus
 import org.springframework.stereotype.Service;
 
 @Service
-public class CartItemIncrementQuantityService {
+public class IncrementQuantityService {
 
     private final CartRepository cartRepository;
 
-    public CartItemIncrementQuantityService(CartRepository cartRepository) {
+    public IncrementQuantityService(CartRepository cartRepository) {
         this.cartRepository = cartRepository;
     }
 

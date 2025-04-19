@@ -1,0 +1,18 @@
+meta {
+  name: decrement-quantity
+  type: http
+  seq: 5
+}
+
+put {
+  url: http://localhost:8080/api/v2/cart/item/quantity/decrement
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "customerId": "168a1448-bd14-4ee2-98ed-ffd2b619830c",
+    "cartItemId": "73127f30-bc5a-4b82-b2c8-f5705973a882"
+  }
+}
