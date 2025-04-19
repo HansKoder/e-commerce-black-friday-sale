@@ -24,6 +24,7 @@ public class CartItemMapper {
 
     public static CartItemResponse toDTO (CartItem domain) {
         return new CartItemResponse(
+                domain.getId().getValue().toString(),
                 domain.getProduct().getId().getValue().toString(),
                 domain.getProduct().getPrice().value().getAmount(),
                 domain.getQuantity().getValue(),
