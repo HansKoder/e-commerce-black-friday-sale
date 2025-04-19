@@ -1,4 +1,4 @@
-package org.ecommerce.blackfriday.cart.interfaces.rest.cart.exception;
+package org.ecommerce.blackfriday.cart.interfaces.rest.common.exception;
 
 public class CartByCustomerNotFoundRestException extends RuntimeException {
 

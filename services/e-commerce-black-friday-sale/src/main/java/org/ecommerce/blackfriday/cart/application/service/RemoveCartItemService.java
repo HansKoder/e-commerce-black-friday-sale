@@ -4,7 +4,7 @@ import org.ecommerce.blackfriday.cart.domain.model.entity.Cart;
 import org.ecommerce.blackfriday.cart.domain.model.repository.CartRepository;
 import org.ecommerce.blackfriday.cart.domain.model.valueobject.CartItemId;
 import org.ecommerce.blackfriday.cart.domain.model.valueobject.CustomerId;
-import org.ecommerce.blackfriday.cart.interfaces.rest.cart.exception.CartByCustomerNotFoundRestException;
+import org.ecommerce.blackfriday.cart.interfaces.rest.common.exception.CartByCustomerNotFoundRestException;
 import org.springframework.stereotype.Service;
 
 @Service

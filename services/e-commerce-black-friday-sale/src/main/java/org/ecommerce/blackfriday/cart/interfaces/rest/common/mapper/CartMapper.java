@@ -1,7 +1,7 @@
-package org.ecommerce.blackfriday.cart.interfaces.rest.cart.mapper;
+package org.ecommerce.blackfriday.cart.interfaces.rest.common.mapper;
 
 import org.ecommerce.blackfriday.cart.domain.model.entity.Cart;
-import org.ecommerce.blackfriday.cart.interfaces.rest.cart.dto.response.GetCartResponse;
+import org.ecommerce.blackfriday.cart.interfaces.rest.common.dto.GetCartResponse;
 
 public class CartMapper {
 

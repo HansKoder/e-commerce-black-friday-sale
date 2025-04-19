@@ -1,4 +1,4 @@
-package org.ecommerce.blackfriday.cart.interfaces.rest.cart.dto.request;
+package org.ecommerce.blackfriday.cart.interfaces.rest.item.dto;
 
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;

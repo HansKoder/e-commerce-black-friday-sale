@@ -1,4 +1,4 @@
-package org.ecommerce.blackfriday.cart.interfaces.rest.cart.exception;
+package org.ecommerce.blackfriday.cart.interfaces.rest.common.exception;
 
 import org.ecommerce.blackfriday.cart.domain.model.exception.CartItemNotFoundDomainException;
 import org.ecommerce.blackfriday.common.interfaces.rest.dto.ApiErrorResponse;

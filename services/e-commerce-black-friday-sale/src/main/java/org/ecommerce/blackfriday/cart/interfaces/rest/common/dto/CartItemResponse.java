@@ -1,4 +1,4 @@
-package org.ecommerce.blackfriday.cart.interfaces.rest.cart.dto.response;
+package org.ecommerce.blackfriday.cart.interfaces.rest.common.dto;
 
 import java.math.BigDecimal;
 

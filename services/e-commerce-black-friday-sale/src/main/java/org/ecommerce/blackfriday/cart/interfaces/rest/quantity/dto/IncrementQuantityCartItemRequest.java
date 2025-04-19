@@ -1,9 +1,9 @@
-package org.ecommerce.blackfriday.cart.interfaces.rest.cart.dto.request;
+package org.ecommerce.blackfriday.cart.interfaces.rest.quantity.dto;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
-public final class DeleteCartItemRequest {
+public final class IncrementQuantityCartItemRequest {
 
     @NotNull(message = "CustomerId cannot be null")
     @NotEmpty(message = "CustomerId cannot be empty")
@@ -13,7 +13,7 @@ public final class DeleteCartItemRequest {
     @NotEmpty(message = "Cart Item ID must be mandatory")
     private final String cartItemId;
 
-    public DeleteCartItemRequest(String customerId, String cartItemId) {
+    public IncrementQuantityCartItemRequest(String customerId, String cartItemId) {
         this.customerId = customerId;
         this.cartItemId = cartItemId;
     }
