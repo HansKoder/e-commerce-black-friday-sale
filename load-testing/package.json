@@ -3,6 +3,7 @@
     "artillery": "^2.0.22"
   },
   "scripts": {
-    "shopping-cart": "artillery run test-shopping-cart.yml --output shopping-cart-load-testing.json"
+    "shopping-cart-v1-crud-cart": "artillery run scripts/case/shopping-cart/v1/test-shopping-cart.yml --output shopping-cart-load-testing.json",
+    "cart-v2-post-save-items": "artillery run cart/v2/scripts/endpoint/post-save-items.yml --output cart/v2/reports/ednpoint-post-save-items.json"
   }
 }
