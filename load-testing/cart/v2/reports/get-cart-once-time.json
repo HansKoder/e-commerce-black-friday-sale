@@ -1,0 +1,1059 @@
+{
+  "aggregate": {
+    "counters": {
+      "vusers.created_by_name.[GET] Get cart by custemer, note, this cart must be record of way manual": 60,
+      "vusers.created": 60,
+      "http.requests": 60,
+      "http.codes.200": 60,
+      "http.responses": 60,
+      "http.downloaded_bytes": 184080,
+      "plugins.metrics-by-endpoint./api/v2/cart/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c.codes.200": 60,
+      "vusers.failed": 0,
+      "vusers.completed": 60
+    },
+    "rates": {
+      "http.request_rate": 1
+    },
+    "firstCounterAt": 1745207522567,
+    "firstHistogramAt": 1745207527586,
+    "lastCounterAt": 1745207586571,
+    "lastHistogramAt": 1745207586571,
+    "firstMetricAt": 1745207522567,
+    "lastMetricAt": 1745207586571,
+    "period": 1745207580000,
+    "summaries": {
+      "http.response_time": {
+        "min": 1,
+        "max": 2,
+        "count": 60,
+        "mean": 1.5,
+        "p50": 1,
+        "median": 1,
+        "p75": 2,
+        "p90": 2,
+        "p95": 2,
+        "p99": 2,
+        "p999": 2
+      },
+      "http.response_time.2xx": {
+        "min": 1,
+        "max": 2,
+        "count": 60,
+        "mean": 1.5,
+        "p50": 1,
+        "median": 1,
+        "p75": 2,
+        "p90": 2,
+        "p95": 2,
+        "p99": 2,
+        "p999": 2
+      },
+      "plugins.metrics-by-endpoint.response_time./api/v2/cart/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c": {
+        "min": 1,
+        "max": 2,
+        "count": 60,
+        "mean": 1.5,
+        "p50": 1,
+        "median": 1,
+        "p75": 2,
+        "p90": 2,
+        "p95": 2,
+        "p99": 2,
+        "p999": 2
+      },
+      "vusers.session_length": {
+        "min": 5002,
+        "max": 5021.6,
+        "count": 60,
+        "mean": 5003.6,
+        "p50": 4965.3,
+        "median": 4965.3,
+        "p75": 4965.3,
+        "p90": 4965.3,
+        "p95": 4965.3,
+        "p99": 4965.3,
+        "p999": 4965.3
+      }
+    },
+    "histograms": {
+      "http.response_time": {
+        "min": 1,
+        "max": 2,
+        "count": 60,
+        "mean": 1.5,
+        "p50": 1,
+        "median": 1,
+        "p75": 2,
+        "p90": 2,
+        "p95": 2,
+        "p99": 2,
+        "p999": 2
+      },
+      "http.response_time.2xx": {
+        "min": 1,
+        "max": 2,
+        "count": 60,
+        "mean": 1.5,
+        "p50": 1,
+        "median": 1,
+        "p75": 2,
+        "p90": 2,
+        "p95": 2,
+        "p99": 2,
+        "p999": 2
+      },
+      "plugins.metrics-by-endpoint.response_time./api/v2/cart/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c": {
+        "min": 1,
+        "max": 2,
+        "count": 60,
+        "mean": 1.5,
+        "p50": 1,
+        "median": 1,
+        "p75": 2,
+        "p90": 2,
+        "p95": 2,
+        "p99": 2,
+        "p999": 2
+      },
+      "vusers.session_length": {
+        "min": 5002,
+        "max": 5021.6,
+        "count": 60,
+        "mean": 5003.6,
+        "p50": 4965.3,
+        "median": 4965.3,
+        "p75": 4965.3,
+        "p90": 4965.3,
+        "p95": 4965.3,
+        "p99": 4965.3,
+        "p999": 4965.3
+      }
+    }
+  },
+  "intermediate": [
+    {
+      "counters": {
+        "vusers.created_by_name.[GET] Get cart by custemer, note, this cart must be record of way manual": 8,
+        "vusers.created": 8,
+        "http.requests": 3,
+        "http.codes.200": 3,
+        "http.responses": 3,
+        "http.downloaded_bytes": 9204,
+        "plugins.metrics-by-endpoint./api/v2/cart/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c.codes.200": 3,
+        "vusers.failed": 0,
+        "vusers.completed": 3
+      },
+      "rates": {
+        "http.request_rate": 2
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1745207522567,
+      "firstHistogramAt": 1745207527586,
+      "lastCounterAt": 1745207529570,
+      "lastHistogramAt": 1745207529570,
+      "firstMetricAt": 1745207522567,
+      "lastMetricAt": 1745207529570,
+      "period": "1745207520000",
+      "summaries": {
+        "http.response_time": {
+          "min": 1,
+          "max": 2,
+          "count": 3,
+          "mean": 1.3,
+          "p50": 1,
+          "median": 1,
+          "p75": 1,
+          "p90": 1,
+          "p95": 1,
+          "p99": 1,
+          "p999": 1
+        },
+        "http.response_time.2xx": {
+          "min": 1,
+          "max": 2,
+          "count": 3,
+          "mean": 1.3,
+          "p50": 1,
+          "median": 1,
+          "p75": 1,
+          "p90": 1,
+          "p95": 1,
+          "p99": 1,
+          "p999": 1
+        },
+        "plugins.metrics-by-endpoint.response_time./api/v2/cart/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c": {
+          "min": 1,
+          "max": 2,
+          "count": 3,
+          "mean": 1.3,
+          "p50": 1,
+          "median": 1,
+          "p75": 1,
+          "p90": 1,
+          "p95": 1,
+          "p99": 1,
+          "p999": 1
+        },
+        "vusers.session_length": {
+          "min": 5003.5,
+          "max": 5021.6,
+          "count": 3,
+          "mean": 5009.6,
+          "p50": 4965.3,
+          "median": 4965.3,
+          "p75": 4965.3,
+          "p90": 4965.3,
+          "p95": 4965.3,
+          "p99": 4965.3,
+          "p999": 4965.3
+        }
+      },
+      "histograms": {
+        "http.response_time": {
+          "min": 1,
+          "max": 2,
+          "count": 3,
+          "mean": 1.3,
+          "p50": 1,
+          "median": 1,
+          "p75": 1,
+          "p90": 1,
+          "p95": 1,
+          "p99": 1,
+          "p999": 1
+        },
+        "http.response_time.2xx": {
+          "min": 1,
+          "max": 2,
+          "count": 3,
+          "mean": 1.3,
+          "p50": 1,
+          "median": 1,
+          "p75": 1,
+          "p90": 1,
+          "p95": 1,
+          "p99": 1,
+          "p999": 1
+        },
+        "plugins.metrics-by-endpoint.response_time./api/v2/cart/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c": {
+          "min": 1,
+          "max": 2,
+          "count": 3,
+          "mean": 1.3,
+          "p50": 1,
+          "median": 1,
+          "p75": 1,
+          "p90": 1,
+          "p95": 1,
+          "p99": 1,
+          "p999": 1
+        },
+        "vusers.session_length": {
+          "min": 5003.5,
+          "max": 5021.6,
+          "count": 3,
+          "mean": 5009.6,
+          "p50": 4965.3,
+          "median": 4965.3,
+          "p75": 4965.3,
+          "p90": 4965.3,
+          "p95": 4965.3,
+          "p99": 4965.3,
+          "p999": 4965.3
+        }
+      }
+    },
+    {
+      "counters": {
+        "http.requests": 10,
+        "vusers.created_by_name.[GET] Get cart by custemer, note, this cart must be record of way manual": 10,
+        "vusers.created": 10,
+        "http.codes.200": 10,
+        "http.responses": 10,
+        "http.downloaded_bytes": 30680,
+        "plugins.metrics-by-endpoint./api/v2/cart/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c.codes.200": 10,
+        "vusers.failed": 0,
+        "vusers.completed": 10
+      },
+      "rates": {
+        "http.request_rate": 1
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1745207530567,
+      "firstHistogramAt": 1745207530570,
+      "lastCounterAt": 1745207539569,
+      "lastHistogramAt": 1745207539569,
+      "firstMetricAt": 1745207530567,
+      "lastMetricAt": 1745207539569,
+      "period": "1745207530000",
+      "summaries": {
+        "http.response_time": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.5,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "http.response_time.2xx": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.5,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "plugins.metrics-by-endpoint.response_time./api/v2/cart/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.5,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "vusers.session_length": {
+          "min": 5002.3,
+          "max": 5007.3,
+          "count": 10,
+          "mean": 5003.8,
+          "p50": 4965.3,
+          "median": 4965.3,
+          "p75": 4965.3,
+          "p90": 4965.3,
+          "p95": 4965.3,
+          "p99": 4965.3,
+          "p999": 4965.3
+        }
+      },
+      "histograms": {
+        "http.response_time": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.5,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "http.response_time.2xx": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.5,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "plugins.metrics-by-endpoint.response_time./api/v2/cart/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.5,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "vusers.session_length": {
+          "min": 5002.3,
+          "max": 5007.3,
+          "count": 10,
+          "mean": 5003.8,
+          "p50": 4965.3,
+          "median": 4965.3,
+          "p75": 4965.3,
+          "p90": 4965.3,
+          "p95": 4965.3,
+          "p99": 4965.3,
+          "p999": 4965.3
+        }
+      }
+    },
+    {
+      "counters": {
+        "http.requests": 10,
+        "vusers.created_by_name.[GET] Get cart by custemer, note, this cart must be record of way manual": 10,
+        "vusers.created": 10,
+        "http.codes.200": 10,
+        "http.responses": 10,
+        "http.downloaded_bytes": 30680,
+        "plugins.metrics-by-endpoint./api/v2/cart/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c.codes.200": 10,
+        "vusers.failed": 0,
+        "vusers.completed": 10
+      },
+      "rates": {
+        "http.request_rate": 1
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1745207540567,
+      "firstHistogramAt": 1745207540569,
+      "lastCounterAt": 1745207549570,
+      "lastHistogramAt": 1745207549570,
+      "firstMetricAt": 1745207540567,
+      "lastMetricAt": 1745207549570,
+      "period": "1745207540000",
+      "summaries": {
+        "http.response_time": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.5,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "http.response_time.2xx": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.5,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "plugins.metrics-by-endpoint.response_time./api/v2/cart/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.5,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "vusers.session_length": {
+          "min": 5002.5,
+          "max": 5004.1,
+          "count": 10,
+          "mean": 5003.3,
+          "p50": 4965.3,
+          "median": 4965.3,
+          "p75": 4965.3,
+          "p90": 4965.3,
+          "p95": 4965.3,
+          "p99": 4965.3,
+          "p999": 4965.3
+        }
+      },
+      "histograms": {
+        "http.response_time": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.5,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "http.response_time.2xx": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.5,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "plugins.metrics-by-endpoint.response_time./api/v2/cart/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.5,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "vusers.session_length": {
+          "min": 5002.5,
+          "max": 5004.1,
+          "count": 10,
+          "mean": 5003.3,
+          "p50": 4965.3,
+          "median": 4965.3,
+          "p75": 4965.3,
+          "p90": 4965.3,
+          "p95": 4965.3,
+          "p99": 4965.3,
+          "p999": 4965.3
+        }
+      }
+    },
+    {
+      "counters": {
+        "http.requests": 10,
+        "vusers.created_by_name.[GET] Get cart by custemer, note, this cart must be record of way manual": 10,
+        "vusers.created": 10,
+        "http.codes.200": 10,
+        "http.responses": 10,
+        "http.downloaded_bytes": 30680,
+        "plugins.metrics-by-endpoint./api/v2/cart/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c.codes.200": 10,
+        "vusers.failed": 0,
+        "vusers.completed": 10
+      },
+      "rates": {
+        "http.request_rate": 1
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1745207550567,
+      "firstHistogramAt": 1745207550569,
+      "lastCounterAt": 1745207559569,
+      "lastHistogramAt": 1745207559569,
+      "firstMetricAt": 1745207550567,
+      "lastMetricAt": 1745207559569,
+      "period": "1745207550000",
+      "summaries": {
+        "http.response_time": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.5,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "http.response_time.2xx": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.5,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "plugins.metrics-by-endpoint.response_time./api/v2/cart/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.5,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "vusers.session_length": {
+          "min": 5002.3,
+          "max": 5004.4,
+          "count": 10,
+          "mean": 5003.1,
+          "p50": 4965.3,
+          "median": 4965.3,
+          "p75": 4965.3,
+          "p90": 4965.3,
+          "p95": 4965.3,
+          "p99": 4965.3,
+          "p999": 4965.3
+        }
+      },
+      "histograms": {
+        "http.response_time": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.5,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "http.response_time.2xx": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.5,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "plugins.metrics-by-endpoint.response_time./api/v2/cart/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.5,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "vusers.session_length": {
+          "min": 5002.3,
+          "max": 5004.4,
+          "count": 10,
+          "mean": 5003.1,
+          "p50": 4965.3,
+          "median": 4965.3,
+          "p75": 4965.3,
+          "p90": 4965.3,
+          "p95": 4965.3,
+          "p99": 4965.3,
+          "p999": 4965.3
+        }
+      }
+    },
+    {
+      "counters": {
+        "http.requests": 10,
+        "vusers.created_by_name.[GET] Get cart by custemer, note, this cart must be record of way manual": 10,
+        "vusers.created": 10,
+        "http.codes.200": 10,
+        "http.responses": 10,
+        "http.downloaded_bytes": 30680,
+        "plugins.metrics-by-endpoint./api/v2/cart/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c.codes.200": 10,
+        "vusers.failed": 0,
+        "vusers.completed": 10
+      },
+      "rates": {
+        "http.request_rate": 1
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1745207560567,
+      "firstHistogramAt": 1745207560569,
+      "lastCounterAt": 1745207569570,
+      "lastHistogramAt": 1745207569570,
+      "firstMetricAt": 1745207560567,
+      "lastMetricAt": 1745207569570,
+      "period": "1745207560000",
+      "summaries": {
+        "http.response_time": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.3,
+          "p50": 1,
+          "median": 1,
+          "p75": 1,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "http.response_time.2xx": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.3,
+          "p50": 1,
+          "median": 1,
+          "p75": 1,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "plugins.metrics-by-endpoint.response_time./api/v2/cart/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.3,
+          "p50": 1,
+          "median": 1,
+          "p75": 1,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "vusers.session_length": {
+          "min": 5002.6,
+          "max": 5003.6,
+          "count": 10,
+          "mean": 5003.2,
+          "p50": 4965.3,
+          "median": 4965.3,
+          "p75": 4965.3,
+          "p90": 4965.3,
+          "p95": 4965.3,
+          "p99": 4965.3,
+          "p999": 4965.3
+        }
+      },
+      "histograms": {
+        "http.response_time": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.3,
+          "p50": 1,
+          "median": 1,
+          "p75": 1,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "http.response_time.2xx": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.3,
+          "p50": 1,
+          "median": 1,
+          "p75": 1,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "plugins.metrics-by-endpoint.response_time./api/v2/cart/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.3,
+          "p50": 1,
+          "median": 1,
+          "p75": 1,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "vusers.session_length": {
+          "min": 5002.6,
+          "max": 5003.6,
+          "count": 10,
+          "mean": 5003.2,
+          "p50": 4965.3,
+          "median": 4965.3,
+          "p75": 4965.3,
+          "p90": 4965.3,
+          "p95": 4965.3,
+          "p99": 4965.3,
+          "p999": 4965.3
+        }
+      }
+    },
+    {
+      "counters": {
+        "http.requests": 10,
+        "vusers.created_by_name.[GET] Get cart by custemer, note, this cart must be record of way manual": 10,
+        "vusers.created": 10,
+        "http.codes.200": 10,
+        "http.responses": 10,
+        "http.downloaded_bytes": 30680,
+        "plugins.metrics-by-endpoint./api/v2/cart/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c.codes.200": 10,
+        "vusers.failed": 0,
+        "vusers.completed": 10
+      },
+      "rates": {
+        "http.request_rate": 1
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1745207570567,
+      "firstHistogramAt": 1745207570569,
+      "lastCounterAt": 1745207579570,
+      "lastHistogramAt": 1745207579570,
+      "firstMetricAt": 1745207570567,
+      "lastMetricAt": 1745207579570,
+      "period": "1745207570000",
+      "summaries": {
+        "http.response_time": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.5,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "http.response_time.2xx": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.5,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "plugins.metrics-by-endpoint.response_time./api/v2/cart/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.5,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "vusers.session_length": {
+          "min": 5002.1,
+          "max": 5003.7,
+          "count": 10,
+          "mean": 5002.9,
+          "p50": 4965.3,
+          "median": 4965.3,
+          "p75": 4965.3,
+          "p90": 4965.3,
+          "p95": 4965.3,
+          "p99": 4965.3,
+          "p999": 4965.3
+        }
+      },
+      "histograms": {
+        "http.response_time": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.5,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "http.response_time.2xx": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.5,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "plugins.metrics-by-endpoint.response_time./api/v2/cart/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c": {
+          "min": 1,
+          "max": 2,
+          "count": 10,
+          "mean": 1.5,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "vusers.session_length": {
+          "min": 5002.1,
+          "max": 5003.7,
+          "count": 10,
+          "mean": 5002.9,
+          "p50": 4965.3,
+          "median": 4965.3,
+          "p75": 4965.3,
+          "p90": 4965.3,
+          "p95": 4965.3,
+          "p99": 4965.3,
+          "p999": 4965.3
+        }
+      }
+    },
+    {
+      "counters": {
+        "http.requests": 7,
+        "vusers.created_by_name.[GET] Get cart by custemer, note, this cart must be record of way manual": 2,
+        "vusers.created": 2,
+        "http.codes.200": 7,
+        "http.responses": 7,
+        "http.downloaded_bytes": 21476,
+        "plugins.metrics-by-endpoint./api/v2/cart/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c.codes.200": 7,
+        "vusers.failed": 0,
+        "vusers.completed": 7
+      },
+      "rates": {
+        "http.request_rate": 1
+      },
+      "http.request_rate": null,
+      "firstCounterAt": 1745207580567,
+      "firstHistogramAt": 1745207580569,
+      "lastCounterAt": 1745207586571,
+      "lastHistogramAt": 1745207586571,
+      "firstMetricAt": 1745207580567,
+      "lastMetricAt": 1745207586571,
+      "period": "1745207580000",
+      "summaries": {
+        "http.response_time": {
+          "min": 1,
+          "max": 2,
+          "count": 7,
+          "mean": 1.4,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "http.response_time.2xx": {
+          "min": 1,
+          "max": 2,
+          "count": 7,
+          "mean": 1.4,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "plugins.metrics-by-endpoint.response_time./api/v2/cart/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c": {
+          "min": 1,
+          "max": 2,
+          "count": 7,
+          "mean": 1.4,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "vusers.session_length": {
+          "min": 5002,
+          "max": 5005.2,
+          "count": 7,
+          "mean": 5003.8,
+          "p50": 4965.3,
+          "median": 4965.3,
+          "p75": 4965.3,
+          "p90": 4965.3,
+          "p95": 4965.3,
+          "p99": 4965.3,
+          "p999": 4965.3
+        }
+      },
+      "histograms": {
+        "http.response_time": {
+          "min": 1,
+          "max": 2,
+          "count": 7,
+          "mean": 1.4,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "http.response_time.2xx": {
+          "min": 1,
+          "max": 2,
+          "count": 7,
+          "mean": 1.4,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "plugins.metrics-by-endpoint.response_time./api/v2/cart/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c": {
+          "min": 1,
+          "max": 2,
+          "count": 7,
+          "mean": 1.4,
+          "p50": 1,
+          "median": 1,
+          "p75": 2,
+          "p90": 2,
+          "p95": 2,
+          "p99": 2,
+          "p999": 2
+        },
+        "vusers.session_length": {
+          "min": 5002,
+          "max": 5005.2,
+          "count": 7,
+          "mean": 5003.8,
+          "p50": 4965.3,
+          "median": 4965.3,
+          "p75": 4965.3,
+          "p90": 4965.3,
+          "p95": 4965.3,
+          "p99": 4965.3,
+          "p999": 4965.3
+        }
+      }
+    }
+  ]
+}

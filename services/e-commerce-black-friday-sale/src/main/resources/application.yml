@@ -19,7 +19,7 @@ spring:
         - 172.28.0.5:6379
         - 172.28.0.6:6379
         - 172.28.0.7:6379
-    timeout: 6000
+    timeout: 3000
     lettuce:
       pool:
         max-active: 10

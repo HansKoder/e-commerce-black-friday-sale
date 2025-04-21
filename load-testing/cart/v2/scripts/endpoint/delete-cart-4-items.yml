@@ -31,7 +31,8 @@ scenarios:
             price: 100    
           capture:
             - json: "$.items[0].cartItemId"
-              as: "cartItemId_zero"            
+              as: "cartItemId_one"
+      - think: 1       
       - post:
           url: "/items/save"
           json:
@@ -41,7 +42,8 @@ scenarios:
             price: 100
           capture:
             - json: "$.items[1].cartItemId"
-              as: "cartItemId_one"             
+              as: "cartItemId_two"    
+      - think: 1                       
       - post:
           url: "/items/save"
           json:
@@ -51,7 +53,8 @@ scenarios:
             price: 120
           capture:
             - json: "$.items[2].cartItemId"
-              as: "cartItemId_two"             
+              as: "cartItemId_three"  
+      - think: 1                         
       - post:
           url: "/items/save"
           json:
@@ -61,34 +64,30 @@ scenarios:
             price: 100
           capture:
             - json: "$.items[3].cartItemId"
-              as: "cartItemId_three"              
-      - post:
-          url: "/items/save"
-          json:
-            customerId: "{{$uuid}}"
-            productId: "1b10cc0a-0606-4d1d-8d8d-4658fe7ea3ed"
-            cant: 3
-            price: 500            
-          capture:
-            - json: "$.items[4].cartItemId"
-              as: "cartItemId_four"              
-      - put:
-          url: "/item/quantity/increment"
-          json:
-            customerId: "{{$uuid}}"
-            cartItemId: "{{cartItemId_zero}}"
-      - put:
-          url: "/item/quantity/increment"
-          json:
-            customerId: "{{$uuid}}"
-            cartItemId: "{{cartItemId_zero}}"                                 
-      - put:
-          url: "/item/quantity/decrement"
-          json:
-            customerId: "{{$uuid}}"
-            cartItemId: "{{cartItemId_zero}}"             
+              as: "cartItemId_four"                                      
+      - think: 1              
       - delete:
           url: "/items/delete"
           json:
             customerId: "{{$uuid}}"
-            cartItemId: "{{cartItemId_zero}}"
+            cartItemId: "{{cartItemId_one}}"
+      - think: 1              
+      - delete:
+          url: "/items/delete"
+          json:
+            customerId: "{{$uuid}}"
+            cartItemId: "{{cartItemId_two}}"
+      - think: 1              
+      - delete:
+          url: "/items/delete"
+          json:
+            customerId: "{{$uuid}}"
+            cartItemId: "{{cartItemId_three}}"
+      - think: 1              
+      - delete:
+          url: "/items/delete"
+          json:
+            customerId: "{{$uuid}}"
+            cartItemId: "{{cartItemId_four}}"
+
+

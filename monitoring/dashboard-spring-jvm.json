@@ -1,0 +1,94 @@
+{
+    "id": "cc55e709-8304-4fa1-9250-e72c8ec8e7c5",
+    "title": "E-commerce [Black Friday Sale] | Spring Boot + JVM Overview",
+    "timezone": "browser",
+    "panels": [
+      {
+        "type": "graph",
+        "title": "Heap Memory Used",
+        "targets": [
+          {
+            "expr": "jvm_memory_used_bytes{area=\"heap\"}",
+            "legendFormat": "{{id}}",
+            "refId": "A"
+          }
+        ],
+        "datasource": "Prometheus",
+        "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 }
+      },
+      {
+        "type": "graph",
+        "title": "Non-Heap Memory Used",
+        "targets": [
+          {
+            "expr": "jvm_memory_used_bytes{area=\"nonheap\"}",
+            "legendFormat": "{{id}}",
+            "refId": "A"
+          }
+        ],
+        "datasource": "Prometheus",
+        "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 }
+      },
+      {
+        "type": "graph",
+        "title": "JVM Threads",
+        "targets": [
+          {
+            "expr": "jvm_threads_live_threads",
+            "legendFormat": "Live Threads",
+            "refId": "A"
+          },
+          {
+            "expr": "jvm_threads_peak_threads",
+            "legendFormat": "Peak Threads",
+            "refId": "B"
+          }
+        ],
+        "datasource": "Prometheus",
+        "gridPos": { "x": 0, "y": 9, "w": 12, "h": 8 }
+      },
+      {
+        "type": "graph",
+        "title": "GC Pause Duration (Seconds)",
+        "targets": [
+          {
+            "expr": "rate(jvm_gc_pause_seconds_sum[1m])",
+            "legendFormat": "{{gc}}",
+            "refId": "A"
+          }
+        ],
+        "datasource": "Prometheus",
+        "gridPos": { "x": 12, "y": 9, "w": 12, "h": 8 }
+      },
+      {
+        "type": "graph",
+        "title": "HTTP Request Duration (Seconds)",
+        "targets": [
+          {
+            "expr": "rate(http_server_requests_seconds_sum[1m]) / rate(http_server_requests_seconds_count[1m])",
+            "legendFormat": "{{uri}}",
+            "refId": "A"
+          }
+        ],
+        "datasource": "Prometheus",
+        "gridPos": { "x": 0, "y": 18, "w": 24, "h": 8 }
+      },
+      {
+        "type": "graph",
+        "title": "HTTP Request Count",
+        "targets": [
+          {
+            "expr": "rate(http_server_requests_seconds_count[1m])",
+            "legendFormat": "{{uri}} - {{status}}",
+            "refId": "A"
+          }
+        ],
+        "datasource": "Prometheus",
+        "gridPos": { "x": 0, "y": 27, "w": 24, "h": 8 }
+      }
+    ],
+    "schemaVersion": 37,
+    "version": 1,
+    "refresh": "10s"
+  }
+  

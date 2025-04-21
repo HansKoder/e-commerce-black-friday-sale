@@ -1,0 +1,40 @@
+config:
+  target: "http://localhost:8080/api/v2/cart"
+  phases:
+    - duration: 30
+      arrivalRate: 10
+      rampTo: 100
+      name: Ramp up
+    - duration: 60
+      arrivalRate: 100
+      name: Sustained load
+    - duration: 15
+      arrivalRate: 100
+      rampTo: 200
+      name: Spike to max
+    - duration: 30
+      arrivalRate: 200
+      name: Hold max
+    - duration: 15
+      arrivalRate: 200
+      rampTo: 0
+      name: Cooldown
+scenarios:
+  - name: "[POST] Cart with 1 Item | [DELETE] remove 1 item"
+    flow:
+      - post:
+          url: "/items/save"
+          json:
+            customerId: "{{$uuid}}"
+            productId: "168a1448-bd14-4ee2-98ed-ffd2b619830c"
+            cant: 1
+            price: 100    
+          capture:
+            - json: "$.items[0].cartItemId"
+              as: "cartItemId_one"   
+      - think: 1                             
+      - delete:
+          url: "/items/delete"
+          json:
+            customerId: "{{$uuid}}"
+            cartItemId: "{{cartItemId_one}}"
