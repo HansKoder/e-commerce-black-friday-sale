@@ -1,0 +1,23 @@
+config:
+  target: "http://localhost:8080/api/v2/cart"
+  phases:
+    - duration: 30
+      arrivalRate: 10
+      rampTo: 100
+      name: Ramp up
+    - duration: 60
+      arrivalRate: 100
+      name: Stress
+    - duration: 30
+      arrivalRate: 100
+      rampTo: 0
+      name: Cooldown
+scenarios:
+  - name: "[GET] Get cart - retry three times"
+    flow:                                          
+      - get:
+          url: "/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c"  
+      - get:
+          url: "/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c"                     
+      - get:
+          url: "/customer/168a1448-bd14-4ee2-98ed-ffd2b619830c"                               

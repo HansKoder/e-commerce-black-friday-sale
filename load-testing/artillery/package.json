@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "artillery": "^2.0.22"
+  },
+  "scripts": {
+    "shopping-cart-v1-crud-cart": "artillery run scripts/case/shopping-cart/v1/test-shopping-cart.yml --output shopping-cart-load-testing.json",
+    "post-save-with-1-item": "artillery run cart/v2/scripts/endpoint/post-save-with-1-item.yml --output cart/v2/reports/post-save-with-1-item.json",
+    "post-save-with-4-items": "artillery run cart/v2/scripts/endpoint/post-save-with-4-items.yml --output cart/v2/reports/post-save-with-4-items.json",
+    "del-cart-1-item": "artillery run cart/v2/scripts/endpoint/delete-cart-1-item.yml --output cart/v2/reports/delete-cart-1-item.json",
+    "del-cart-4-items": "artillery run cart/v2/scripts/endpoint/delete-cart-4-items.yml --output cart/v2/reports/delete-cart-4-items.json",
+    "get-cart-1-item": "artillery run cart/v2/scripts/endpoint/get-cart-1-item.yml --output cart/v2/reports/get-cart-1-item.json",
+    "get-cart-once-time": "artillery run cart/v2/scripts/endpoint/get-cart-once-time.yml --output cart/v2/reports/get-cart-once-time.json",
+    "get-cart-three-times": "artillery run cart/v2/scripts/endpoint/get-cart-three-times.yml --output cart/v2/reports/get-cart-three-times.json"
+  }
+}

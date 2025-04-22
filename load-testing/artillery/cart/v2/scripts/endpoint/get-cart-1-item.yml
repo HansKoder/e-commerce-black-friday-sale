@@ -1,0 +1,27 @@
+config:
+  target: "http://localhost:8080/api/v2/cart"
+  phases:
+    - duration: 180
+      arrivalRate: 20
+      rampTo: 600
+      name: Ramp up
+    - duration: 480
+      arrivalRate: 600
+      name: Stress
+    - duration: 180
+      arrivalRate: 600
+      rampTo: 0
+      name: Cooldown
+scenarios:
+  - name: "[POST] Cart with 1 Item | [GET] Get cart with 1 item"
+    flow:
+      - post:
+          url: "/items/save"
+          json:
+            customerId: "{{$uuid}}"
+            productId: "168a1448-bd14-4ee2-98ed-ffd2b619830c"
+            cant: 1
+            price: 100    
+      - think: 1                             
+      - get:
+          url: "/customer/{{$uuid}}"          
