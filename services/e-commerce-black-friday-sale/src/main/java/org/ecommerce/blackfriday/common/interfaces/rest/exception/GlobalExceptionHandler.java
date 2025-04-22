@@ -22,4 +22,10 @@ public class GlobalExceptionHandler {
                 .body(new ApiErrorResponse(HttpStatus.BAD_REQUEST.value(), ex.getMessage()));
     }
 
+    @ExceptionHandler(TimeoutException.class)
+    public ResponseEntity<ApiErrorResponse> handlerTimeoutException (TimeoutException ex) {
+        return ResponseEntity.status(HttpStatus.GATEWAY_TIMEOUT)
+                .body(new ApiErrorResponse(HttpStatus.GATEWAY_TIMEOUT.value(), ex.getMessage()));
+    }
+
 }

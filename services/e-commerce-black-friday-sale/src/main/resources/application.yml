@@ -52,8 +52,11 @@ logging:
           descriptor:
             sql: TRACE
       springframework:
+        data:
+          redis: DEBUG
         web: DEBUG
         boot:
           autoconfigure:
             web: DEBUG
+
 

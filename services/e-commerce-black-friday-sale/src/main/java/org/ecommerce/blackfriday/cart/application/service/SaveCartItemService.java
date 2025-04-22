@@ -15,6 +15,7 @@ public class SaveCartItemService {
     }
 
     public Cart addCartItem (String customerId, CartItem cartItem) {
+        System.out.println("Use Case Save Cart Item " + cartItem.toString());
         Cart domain = cartRepository.getCartByCustomer(customerId)
                 .orElse(Cart.create());
 

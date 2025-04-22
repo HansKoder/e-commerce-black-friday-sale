@@ -5,7 +5,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisClusterConfiguration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.connection.lettuce.LettuceClientConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
+
+import java.time.Duration;
 
 @Configuration
 public class RedisConnection {
@@ -17,7 +20,14 @@ public class RedisConnection {
     ClusterConfigurationProperties clusterProperties;
 
     public @Bean RedisConnectionFactory connectionFactory() {
-        return new LettuceConnectionFactory(
-                new RedisClusterConfiguration(clusterProperties.getNodes()));
+        // Lettuce Client Timeout Settings
+        LettuceClientConfiguration clientConfig = LettuceClientConfiguration.builder()
+                .commandTimeout(Duration.ofMillis(2000))         // time for commands
+                .shutdownTimeout(Duration.ofMillis(100))         // time for closeling operations
+                .build();
+
+        RedisClusterConfiguration clusterConfig = new RedisClusterConfiguration(clusterProperties.getNodes());
+
+        return new LettuceConnectionFactory(clusterConfig, clientConfig);
     }
 }

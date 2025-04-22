@@ -14,6 +14,7 @@ public class RedisCartTemplate {
     @Bean
     public RedisTemplate<String, RedisCartModel> configRedisCartTemplate (RedisConnectionFactory factory) {
         RedisTemplate<String, RedisCartModel> template = new RedisTemplate<>();
+
         template.setConnectionFactory(factory);
         template.setKeySerializer(new StringRedisSerializer());
         template.setValueSerializer(new Jackson2JsonRedisSerializer<>(RedisCartModel.class));

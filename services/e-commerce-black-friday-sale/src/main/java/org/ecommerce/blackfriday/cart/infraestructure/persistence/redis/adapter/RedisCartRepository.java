@@ -20,12 +20,14 @@ public class RedisCartRepository implements CartRepository {
 
     @Override
     public Optional<Cart> getCartByCustomer(String customerId) {
+        System.out.println("Redis Cart Repository GET " + customerId);
         return Optional.ofNullable(redisTemplate.opsForValue().get(customerId))
                 .map(RedisCartMapper::toDomain);
     }
 
     @Override
     public void save(String customerId, Cart cart) {
+        System.out.println("Redis Cart Repo Save " + cart.toString());
         redisTemplate.opsForValue().set(customerId, RedisCartMapper.toRedisCart(cart));
     }
 }
