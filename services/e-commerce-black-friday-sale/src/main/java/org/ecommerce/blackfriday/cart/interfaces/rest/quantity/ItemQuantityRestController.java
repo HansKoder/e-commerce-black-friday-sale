@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("api/v2/cart/item/quantity")
+@RequestMapping("api/v1/cart/item/quantity")
 public class ItemQuantityRestController {
 
     private final IncrementQuantityService incrementQuantityService;

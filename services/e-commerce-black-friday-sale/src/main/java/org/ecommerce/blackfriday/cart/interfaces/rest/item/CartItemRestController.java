@@ -22,7 +22,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeoutException;
 
 @RestController
-@RequestMapping("api/v2/cart/items")
+@RequestMapping("api/v1/cart/items")
 public class CartItemRestController {
 
     private final SaveCartItemService saveCartItemService;
