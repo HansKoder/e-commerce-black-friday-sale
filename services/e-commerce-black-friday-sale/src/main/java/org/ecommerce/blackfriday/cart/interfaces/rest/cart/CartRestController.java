@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("api/v2/cart")
+@RequestMapping("api/v1/cart")
 public class CartRestController {
 
     private final GetCartByCustomerService getCartByCustomerService;
