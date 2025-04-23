@@ -18,7 +18,7 @@ import java.util.List;
 @Tag(name = "Product-API version 2", description = "Product Management handler product")
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/api/v2/products")
+@RequestMapping("/api/v1/products")
 @Validated
 public class ProductRestController {
 
