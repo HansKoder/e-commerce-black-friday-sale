@@ -26,8 +26,8 @@ public class ProductDTOMapper {
     public static Product toCreateProductDomain (CreateProductRequest request) {
         return ProductBuilder.aProduct()
                 .withProductId(new ProductId(UUID.randomUUID()))
-                .withProductName(new ProductName(request.getProductName()))
-                .withProductDescription(new ProductDescription(request.getProductDescription()))
+                .withProductName(new ProductName(request.productName()))
+                .withProductDescription(new ProductDescription(request.productDescription()))
                 .build();
     }
 
