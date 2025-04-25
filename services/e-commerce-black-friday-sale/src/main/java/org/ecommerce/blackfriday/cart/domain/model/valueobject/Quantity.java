@@ -29,6 +29,9 @@ public record Quantity (int value) {
     }
 
     public Quantity set(int newValue) {
+        if (newValue < 1)
+            throw new InvalidQuantityDomainException("Invalid operation, Quantity must be great to ZERO");
+
         return new Quantity(newValue);
     }
 
