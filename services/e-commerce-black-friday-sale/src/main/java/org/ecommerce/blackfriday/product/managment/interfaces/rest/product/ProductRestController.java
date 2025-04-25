@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Tag(name = "Product-API version 2", description = "Product Management handler product")
+@Tag(name = "Management Product, Version V1", description = "Add new product and get Products with pagination and filters")
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/api/v1/products")
@@ -37,7 +37,7 @@ public class ProductRestController {
 
     @Operation(
             summary = "Get Products",
-            description = "Get a list of products without having any filter"
+            description = "Get a list of products with pagination and filters (name, description)"
     )
     @GetMapping("/")
     ResponseEntity<List<GetProductResponse>> getProducts (
