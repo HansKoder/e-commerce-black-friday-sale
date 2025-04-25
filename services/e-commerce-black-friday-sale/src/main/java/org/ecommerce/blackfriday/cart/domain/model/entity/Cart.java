@@ -12,6 +12,7 @@ import java.util.*;
 public class Cart extends BaseEntity<CartId> {
 
     private final List<CartItem> cartItems;
+    private BigDecimal total = BigDecimal.ZERO;
 
     private Cart() {
         cartItems = new ArrayList<>();
@@ -21,6 +22,7 @@ public class Cart extends BaseEntity<CartId> {
     private Cart (CartId cartId, List<CartItem> items) {
         this.cartItems = new ArrayList<>(items);
         setId(cartId);
+        calculateTotal();
     }
 
     public static Cart create () {
@@ -33,6 +35,7 @@ public class Cart extends BaseEntity<CartId> {
 
     public void addCartItem (CartItem cartItem) {
         this.cartItems.add(cartItem);
+        total = total.add(cartItem.getSubTotal());
     }
 
     private CartItem getCartItemByID (String uuid) {
@@ -51,33 +54,44 @@ public class Cart extends BaseEntity<CartId> {
 
     public void deleteCartItem (String uuid) {
         CartItem cartItem = getCartItemByID(uuid);
+        total = total.subtract(cartItem.getSubTotal());
         cartItems.remove(cartItem);
     }
 
     public void incrementQuantity (String uuid) {
         CartItem cartItem = getCartItemByID(uuid);
+        total = total.subtract(cartItem.getSubTotal());
         cartItem.incrementQuantity();
+        total = total.add(cartItem.getSubTotal());
     }
 
     public void decrementQuantity (String uuid) {
         CartItem cartItem = getCartItemByID(uuid);
+        total = total.subtract(cartItem.getSubTotal());
         cartItem.decrementQuantity();
+        total = total.add(cartItem.getSubTotal());
     }
 
     public void updateQuantity (String uuid, int quantity) {
         CartItem cartItem = getCartItemByID(uuid);
+        total = total.subtract(cartItem.getSubTotal());
         cartItem.updateQuantity(quantity);
+        total = total.add(cartItem.getSubTotal());
     }
 
     public List<CartItem> getCartItems () {
         return List.copyOf(cartItems);
     }
 
-    public BigDecimal getTotal () {
-        return cartItems
+    public void calculateTotal () {
+        total = cartItems
                 .stream()
                 .map(item -> item.getTotal().getAmount())
                 .reduce(Money.ZERO, BigDecimal::add);
+    }
+
+    public BigDecimal getTotal () {
+        return total;
     }
 
     @Override
