@@ -1,6 +1,4 @@
-package org.ecommerce.blackfriday.cart.domain.model.exception;
-
-import org.ecommerce.blackfriday.common.domain.model.exception.DomainException;
+package org.ecommerce.blackfriday.common.domain.model.exception;
 
 public class InvalidQuantityDomainException extends DomainException {
     public InvalidQuantityDomainException(String message) {

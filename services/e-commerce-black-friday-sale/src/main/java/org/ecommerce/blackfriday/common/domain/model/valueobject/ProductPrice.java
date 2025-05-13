@@ -1,8 +1,7 @@
-package org.ecommerce.blackfriday.cart.domain.model.valueobject;
+package org.ecommerce.blackfriday.common.domain.model.valueobject;
 
 import org.ecommerce.blackfriday.cart.domain.model.exception.PriceIsNegativeDomainException;
 import org.ecommerce.blackfriday.cart.domain.model.exception.ProductPriceIsMandatoryDomainException;
-import org.ecommerce.blackfriday.common.domain.model.valueobject.Money;
 
 import java.util.Objects;
 

@@ -1,5 +1,6 @@
 package org.ecommerce.blackfriday.cart.domain.model.entity;
 
+import org.ecommerce.blackfriday.common.domain.model.entity.Product;
 import org.ecommerce.blackfriday.cart.domain.model.valueobject.Quantity;
 import org.ecommerce.blackfriday.common.domain.model.entity.BaseEntity;
 import org.ecommerce.blackfriday.common.domain.model.valueobject.Money;

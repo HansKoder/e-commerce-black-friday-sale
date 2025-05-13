@@ -1,8 +1,8 @@
 package org.ecommerce.blackfriday.cart.interfaces.rest.common.mapper;
 
 import org.ecommerce.blackfriday.cart.domain.model.entity.CartItem;
-import org.ecommerce.blackfriday.cart.domain.model.entity.Product;
-import org.ecommerce.blackfriday.cart.domain.model.valueobject.ProductPrice;
+import org.ecommerce.blackfriday.common.domain.model.entity.Product;
+import org.ecommerce.blackfriday.common.domain.model.valueobject.ProductPrice;
 import org.ecommerce.blackfriday.cart.domain.model.valueobject.Quantity;
 import org.ecommerce.blackfriday.cart.interfaces.rest.common.dto.CartItemResponse;
 import org.ecommerce.blackfriday.cart.interfaces.rest.item.dto.SaveCartItemRequest;
