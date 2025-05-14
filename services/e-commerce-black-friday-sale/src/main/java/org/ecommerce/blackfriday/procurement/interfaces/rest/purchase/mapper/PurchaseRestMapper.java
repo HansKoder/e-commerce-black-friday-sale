@@ -34,10 +34,11 @@ public class PurchaseRestMapper {
                 .toList();
 
         return new GetPurchaseResponse(
-                domain.getId().toString(),
+                domain.getId().getValue().toString(),
                 domain.getPurchaseDate().value(),
                 ProviderRestMapper.toResponse(domain.getProvider()),
-                items
+                items,
+                domain.getTotal()
         );
     }
 

@@ -7,6 +7,7 @@ import org.ecommerce.blackfriday.procurement.domain.model.valueobject.PurchaseSt
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.UUID;
 
 public class Purchase extends BaseEntity<PurchaseId> {
     private final Provider provider;
@@ -14,11 +15,13 @@ public class Purchase extends BaseEntity<PurchaseId> {
     private final PurchaseDate purchaseDate;
     private final List<PurchaseItem> items;
 
-    private Purchase(Provider provider, PurchaseStatus status, PurchaseDate purchaseDate, List<PurchaseItem> items) {
+
+    private Purchase(PurchaseId uuid, Provider provider, PurchaseStatus status, PurchaseDate purchaseDate, List<PurchaseItem> items) {
         this.provider = provider;
         this.status = status;
         this.purchaseDate = purchaseDate;
         this.items = items;
+        super.setId(uuid);
     }
 
     public Provider getProvider() {
@@ -38,20 +41,26 @@ public class Purchase extends BaseEntity<PurchaseId> {
     }
 
     public static Purchase create (Provider provider, PurchaseDate date, List<PurchaseItem> items) {
-        return new Purchase(provider, PurchaseStatus.CREATE, date, items);
+        return new Purchase(new PurchaseId(UUID.randomUUID()), provider, PurchaseStatus.CREATE, date, items);
     }
 
-    public static Purchase create (Provider provider, List<PurchaseItem> items) {
-        return new Purchase(provider, PurchaseStatus.CREATE, PurchaseDate.now(), items);
-    }
-
-    public static Purchase rebuild (Provider provider, PurchaseStatus status, PurchaseDate date, List<PurchaseItem> items) {
-        return new Purchase(provider, status, date, items);
+    public static Purchase rebuild (PurchaseId uuid, Provider provider, PurchaseStatus status, PurchaseDate date, List<PurchaseItem> items) {
+        return new Purchase(uuid, provider, status, date, items);
     }
 
     public BigDecimal getTotal () {
         return items.stream()
                 .map(item -> item.getSubTotal().getAmount())
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    @Override
+    public String toString() {
+        return "Purchase{" +
+                "provider=" + provider +
+                ", status=" + status +
+                ", purchaseDate=" + purchaseDate +
+                ", items=" + items +
+                '}';
     }
 }

@@ -12,7 +12,7 @@ public class PurchaseItemRestMapper {
     public static PurchaseItem toDomain (PurchaseItemRequest request) {
         if (Objects.isNull(request)) return null;
 
-        return new PurchaseItem(
+        return PurchaseItem.create(
                 ProductRestMapper.toDomain(request),
                 new Quantity(request.quantity())
         );
@@ -22,8 +22,8 @@ public class PurchaseItemRestMapper {
         if (Objects.isNull(domain)) return null;
 
         return new PurchaseItemResponse(
-                domain.getId().toString(),
-                domain.getProduct().getId().toString(),
+                domain.getId().getValue().toString(),
+                domain.getProduct().getId().getValue().toString(),
                 domain.getProduct().getPrice().value().getAmount(),
                 domain.getQuantity().getValue(),
                 domain.getSubTotal().getAmount()

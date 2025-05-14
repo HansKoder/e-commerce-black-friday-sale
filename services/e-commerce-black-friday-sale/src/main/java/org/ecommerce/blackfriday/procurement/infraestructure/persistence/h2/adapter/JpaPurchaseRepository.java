@@ -17,6 +17,7 @@ public class JpaPurchaseRepository implements PurchaseRepository {
 
     @Override
     public void save(Purchase domain) {
+        System.out.println("[REPOSITORY] (save) param Purchase {" + domain + "}");
         springDataRepository.save(PurchaseMapper.toEntity(domain));
     }
 }

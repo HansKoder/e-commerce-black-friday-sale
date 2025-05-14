@@ -13,40 +13,55 @@ import java.util.UUID;
 public class PurchaseItemEntity {
 
     @Id
-    private final UUID id;
-    private final UUID productId;
+    private UUID id;
+    private UUID productId;
 
     @Column(name = "COST_PER_UNIT")
-    private final BigDecimal costPerUnit;
+    private BigDecimal costPerUnit;
 
-    private final int quantity;
-    private final BigDecimal subtotal;
+    private int quantity;
+    private BigDecimal subtotal;
 
-    public PurchaseItemEntity(UUID id, UUID productId, BigDecimal costPerUnit, int quantity, BigDecimal subtotal) {
-        this.id = id;
-        this.productId = productId;
-        this.costPerUnit = costPerUnit;
-        this.quantity = quantity;
-        this.subtotal = subtotal;
+    public PurchaseItemEntity() {
     }
 
     public UUID getId() {
         return id;
     }
 
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
     public UUID getProductId() {
         return productId;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public void setProductId(UUID productId) {
+        this.productId = productId;
     }
 
     public BigDecimal getCostPerUnit() {
         return costPerUnit;
     }
 
+    public void setCostPerUnit(BigDecimal costPerUnit) {
+        this.costPerUnit = costPerUnit;
+    }
+
     public BigDecimal getSubtotal() {
         return subtotal;
+    }
+
+    public void setSubtotal(BigDecimal subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

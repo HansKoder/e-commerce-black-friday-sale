@@ -11,13 +11,15 @@ import org.ecommerce.blackfriday.procurement.infraestructure.persistence.h2.enti
 public class PurchaseItemMapper {
 
     public static PurchaseItemEntity toEntity (PurchaseItem domain) {
-        return new PurchaseItemEntity(
-                domain.getId().getValue(),
-                domain.getProduct().getId().getValue(),
-                domain.getProduct().getPrice().value().getAmount(),
-                domain.getQuantity().getValue(),
-                domain.getSubTotal().getAmount()
-        );
+        PurchaseItemEntity entity = new PurchaseItemEntity();
+
+        entity.setId(domain.getId().getValue());
+        entity.setProductId(domain.getProduct().getId().getValue());
+        entity.setCostPerUnit(domain.getProduct().getPrice().value().getAmount());
+        entity.setQuantity(domain.getQuantity().getValue());
+        entity.setSubtotal(domain.getSubTotal().getAmount());
+
+        return entity;
     }
 
     private static Product productToDomain (PurchaseItemEntity entity) {
@@ -28,7 +30,7 @@ public class PurchaseItemMapper {
     }
 
     public static PurchaseItem toDomain (PurchaseItemEntity entity) {
-        return new PurchaseItem(
+        return PurchaseItem.create(
                 productToDomain(entity),
                 new Quantity(entity.getQuantity()));
     }
