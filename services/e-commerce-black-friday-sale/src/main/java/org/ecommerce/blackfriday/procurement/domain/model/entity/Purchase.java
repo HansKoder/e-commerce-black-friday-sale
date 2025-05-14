@@ -45,6 +45,10 @@ public class Purchase extends BaseEntity<PurchaseId> {
         return new Purchase(provider, PurchaseStatus.CREATE, PurchaseDate.now(), items);
     }
 
+    public static Purchase rebuild (Provider provider, PurchaseStatus status, PurchaseDate date, List<PurchaseItem> items) {
+        return new Purchase(provider, status, date, items);
+    }
+
     public BigDecimal getTotal () {
         return items.stream()
                 .map(item -> item.getSubTotal().getAmount())
