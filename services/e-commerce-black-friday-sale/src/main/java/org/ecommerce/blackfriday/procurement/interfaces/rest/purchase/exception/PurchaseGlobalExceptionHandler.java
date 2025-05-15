@@ -18,8 +18,8 @@ public class PurchaseGlobalExceptionHandler {
 
     @ExceptionHandler(InvalidStatusPurchaseDomainException.class)
     ResponseEntity<ApiErrorResponse> invalidStatusPurchaseDomainException (InvalidStatusPurchaseDomainException ex) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(new ApiErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage()));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(new ApiErrorResponse(HttpStatus.BAD_REQUEST.value(), ex.getMessage()));
     }
 
 

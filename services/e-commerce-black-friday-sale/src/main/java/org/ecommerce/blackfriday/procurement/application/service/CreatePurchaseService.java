@@ -1,37 +1,23 @@
 package org.ecommerce.blackfriday.procurement.application.service;
 
+import org.ecommerce.blackfriday.procurement.domain.events.PurchaseStatusChangeEvent;
 import org.ecommerce.blackfriday.procurement.domain.model.entity.Purchase;
 import org.ecommerce.blackfriday.procurement.domain.model.repository.PurchaseRepository;
-import org.ecommerce.blackfriday.procurement.infrastructure.persistence.jpa.audit.adapter.PurchaseStatusHistoryRepo;
-import org.ecommerce.blackfriday.procurement.infrastructure.persistence.jpa.audit.entity.PurchaseStatusHistoryEntity;
 import org.ecommerce.blackfriday.procurement.infrastructure.persistence.jpa.purchase.entity.PurchaseStatusJPA;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
-import java.util.UUID;
 
 @Service
 public class CreatePurchaseService {
 
     private final PurchaseRepository purchaseRepository;
-    private final PurchaseStatusHistoryRepo purchaseStatusHistoryRepo;
+    private final ApplicationEventPublisher eventPublisher;
 
-    public CreatePurchaseService(PurchaseRepository repository, PurchaseStatusHistoryRepo purchaseStatusHistoryRepo) {
+    public CreatePurchaseService(PurchaseRepository repository, ApplicationEventPublisher eventPublisher) {
         this.purchaseRepository = repository;
-        this.purchaseStatusHistoryRepo = purchaseStatusHistoryRepo;
-    }
-
-    private void saveHistoryCreated (UUID purchaseId) {
-        PurchaseStatusHistoryEntity history = new PurchaseStatusHistoryEntity();
-
-        history.setId(UUID.randomUUID());
-        history.setPurchaseId(purchaseId);
-        history.setNewStatus(PurchaseStatusJPA.CREATE);
-        history.setDate(LocalDateTime.now());
-
-        purchaseStatusHistoryRepo.save(history);
-        System.out.println("[USE_CASE] (history) status Created, param history {" + history + "}");
+        this.eventPublisher = eventPublisher;
     }
 
     public Purchase handler (Purchase domain) {
@@ -40,7 +26,7 @@ public class CreatePurchaseService {
         System.out.println("[USE_CASE] (handler) Create Purchase, param Purchase {" + domain + "}");
         purchaseRepository.save(domain);
 
-        saveHistoryCreated(domain.getId().getValue());
+        eventPublisher.publishEvent(new PurchaseStatusChangeEvent.Builder(domain.getId().getValue(), PurchaseStatusJPA.CREATE).build());
 
         return domain;
     }
