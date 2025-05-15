@@ -1,7 +1,7 @@
-package org.ecommerce.blackfriday.procurement.infraestructure.persistence.h2.mapper;
+package org.ecommerce.blackfriday.procurement.infrastructure.persistence.jpa.purchase.mapper;
 
 import org.ecommerce.blackfriday.procurement.domain.model.entity.Provider;
-import org.ecommerce.blackfriday.procurement.infraestructure.persistence.h2.entity.ProviderEmbeddable;
+import org.ecommerce.blackfriday.procurement.infrastructure.persistence.jpa.purchase.entity.ProviderEmbeddable;
 
 import java.util.Objects;
 

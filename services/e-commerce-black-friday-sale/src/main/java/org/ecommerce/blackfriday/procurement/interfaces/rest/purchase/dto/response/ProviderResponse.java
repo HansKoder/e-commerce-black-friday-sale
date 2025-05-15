@@ -66,4 +66,13 @@ public class ProviderResponse {
             return providerResponse;
         }
     }
+
+    @Override
+    public String toString() {
+        return "ProviderResponse{" +
+                "name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

@@ -1,17 +1,17 @@
-package org.ecommerce.blackfriday.procurement.infraestructure.persistence.h2.mapper;
+package org.ecommerce.blackfriday.procurement.infrastructure.persistence.jpa.purchase.mapper;
 
 import org.ecommerce.blackfriday.procurement.domain.model.entity.Purchase;
 import org.ecommerce.blackfriday.procurement.domain.model.entity.PurchaseItem;
 import org.ecommerce.blackfriday.procurement.domain.model.valueobject.PurchaseDate;
 import org.ecommerce.blackfriday.procurement.domain.model.valueobject.PurchaseId;
-import org.ecommerce.blackfriday.procurement.infraestructure.persistence.h2.entity.PurchaseEntity;
-import org.ecommerce.blackfriday.procurement.infraestructure.persistence.h2.entity.PurchaseItemEntity;
-import org.ecommerce.blackfriday.procurement.infraestructure.persistence.h2.entity.PurchaseStatusJPA;
+import org.ecommerce.blackfriday.procurement.infrastructure.persistence.jpa.purchase.entity.PurchaseEntity;
+import org.ecommerce.blackfriday.procurement.infrastructure.persistence.jpa.purchase.entity.PurchaseItemEntity;
 
 import java.util.List;
 
 public class PurchaseMapper {
     public static Purchase toDomain (PurchaseEntity entity) {
+        System.out.println("[MAPPER SERVICE] (toDomain) entity {" + entity + "}");
         List<PurchaseItem> items = entity.getItems()
                 .stream().map(PurchaseItemMapper::toDomain)
                 .toList();
@@ -36,6 +36,7 @@ public class PurchaseMapper {
         entity.setTotal(domain.getTotal());
         entity.setStatus(PurchaseStatusMapper.toEntity(domain.getStatus()));
         entity.setItems(items);
+        entity.setProvider(ProviderMapper.toJpa(domain.getProvider()));
 
         return entity;
     }

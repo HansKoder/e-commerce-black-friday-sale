@@ -5,42 +5,44 @@ import org.ecommerce.blackfriday.procurement.domain.model.repository.PurchaseRep
 import org.ecommerce.blackfriday.procurement.infrastructure.persistence.jpa.audit.adapter.PurchaseStatusHistoryRepo;
 import org.ecommerce.blackfriday.procurement.infrastructure.persistence.jpa.audit.entity.PurchaseStatusHistoryEntity;
 import org.ecommerce.blackfriday.procurement.infrastructure.persistence.jpa.purchase.entity.PurchaseStatusJPA;
+import org.ecommerce.blackfriday.procurement.interfaces.rest.purchase.exception.PurchaseNotFoundRestException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 import java.util.UUID;
 
 @Service
-public class CreatePurchaseService {
+public class CanceledPurchaseService {
 
     private final PurchaseRepository purchaseRepository;
     private final PurchaseStatusHistoryRepo purchaseStatusHistoryRepo;
 
-    public CreatePurchaseService(PurchaseRepository repository, PurchaseStatusHistoryRepo purchaseStatusHistoryRepo) {
-        this.purchaseRepository = repository;
+    public CanceledPurchaseService(PurchaseRepository purchaseRepository, PurchaseStatusHistoryRepo purchaseStatusHistoryRepo) {
+        this.purchaseRepository = purchaseRepository;
         this.purchaseStatusHistoryRepo = purchaseStatusHistoryRepo;
     }
 
-    private void saveHistoryCreated (UUID purchaseId) {
+    private void history (UUID purchaseId, String comment) {
         PurchaseStatusHistoryEntity history = new PurchaseStatusHistoryEntity();
 
         history.setId(UUID.randomUUID());
         history.setPurchaseId(purchaseId);
         history.setNewStatus(PurchaseStatusJPA.CREATE);
         history.setDate(LocalDateTime.now());
+        history.setComment(comment);
 
         purchaseStatusHistoryRepo.save(history);
-        System.out.println("[USE_CASE] (history) status Created, param history {" + history + "}");
+        System.out.println("[USE_CASE] (history) Canceled, param history {" + history + "}");
     }
 
-    public Purchase handler (Purchase domain) {
-        if (Objects.isNull(domain)) throw new IllegalArgumentException("Domain must be mandatory");
+    public Purchase handler (UUID purchaseId, String comment) {
+        Purchase domain = purchaseRepository.findById(purchaseId)
+                .orElseThrow(() -> new PurchaseNotFoundRestException(purchaseId.toString()));
 
-        System.out.println("[USE_CASE] (handler) Create Purchase, param Purchase {" + domain + "}");
-        purchaseRepository.save(domain);
+        System.out.println("[USE_CASE] (handler) Canceled Purchase, param Purchase {" + domain + "}");
 
-        saveHistoryCreated(domain.getId().getValue());
+        domain.canceled();
+        history(purchaseId, comment);
 
         return domain;
     }

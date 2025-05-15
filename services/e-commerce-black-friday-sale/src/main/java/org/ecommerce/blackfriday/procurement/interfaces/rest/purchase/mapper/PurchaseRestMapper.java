@@ -27,6 +27,7 @@ public class PurchaseRestMapper {
     }
 
     public static GetPurchaseResponse toResponse (Purchase domain) {
+        System.out.println("[MAPPER REST] (toResponse) param domain {  " + domain + "}" );
         if (Objects.isNull(domain)) return null;
 
         List<PurchaseItemResponse> items = domain.getItems()

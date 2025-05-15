@@ -1,4 +1,4 @@
-package org.ecommerce.blackfriday.procurement.infraestructure.persistence.h2.entity;
+package org.ecommerce.blackfriday.procurement.infrastructure.persistence.jpa.purchase.entity;
 
 
 import jakarta.persistence.Embeddable;
@@ -77,5 +77,14 @@ public class ProviderEmbeddable {
             providerEmbeddable.setEmail(email);
             return providerEmbeddable;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "ProviderEmbeddable{" +
+                "name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

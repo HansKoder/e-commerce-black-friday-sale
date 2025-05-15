@@ -1,7 +1,7 @@
-package org.ecommerce.blackfriday.procurement.infraestructure.persistence.h2.mapper;
+package org.ecommerce.blackfriday.procurement.infrastructure.persistence.jpa.purchase.mapper;
 
 import org.ecommerce.blackfriday.procurement.domain.model.valueobject.PurchaseStatus;
-import org.ecommerce.blackfriday.procurement.infraestructure.persistence.h2.entity.PurchaseStatusJPA;
+import org.ecommerce.blackfriday.procurement.infrastructure.persistence.jpa.purchase.entity.PurchaseStatusJPA;
 
 import java.util.Objects;
 

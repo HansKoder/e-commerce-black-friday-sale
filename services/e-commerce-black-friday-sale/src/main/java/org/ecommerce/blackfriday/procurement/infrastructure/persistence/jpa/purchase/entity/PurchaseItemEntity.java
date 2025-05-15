@@ -1,4 +1,4 @@
-package org.ecommerce.blackfriday.procurement.infraestructure.persistence.h2.entity;
+package org.ecommerce.blackfriday.procurement.infrastructure.persistence.jpa.purchase.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

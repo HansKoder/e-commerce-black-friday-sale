@@ -9,4 +9,14 @@ public record PurchaseItemResponse(
         int quantity,
         BigDecimal subtotal
 ) {
+    @Override
+    public String toString() {
+        return "PurchaseItemResponse{" +
+                "uuid='" + uuid + '\'' +
+                ", productId='" + productId + '\'' +
+                ", costPerUnit=" + costPerUnit +
+                ", quantity=" + quantity +
+                ", subtotal=" + subtotal +
+                '}';
+    }
 }

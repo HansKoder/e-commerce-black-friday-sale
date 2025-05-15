@@ -1,6 +1,7 @@
 package org.ecommerce.blackfriday.procurement.domain.model.entity;
 
 import org.ecommerce.blackfriday.common.domain.model.entity.BaseEntity;
+import org.ecommerce.blackfriday.procurement.domain.model.exception.InvalidStatusPurchaseDomainException;
 import org.ecommerce.blackfriday.procurement.domain.model.valueobject.PurchaseDate;
 import org.ecommerce.blackfriday.procurement.domain.model.valueobject.PurchaseId;
 import org.ecommerce.blackfriday.procurement.domain.model.valueobject.PurchaseStatus;
@@ -11,7 +12,7 @@ import java.util.UUID;
 
 public class Purchase extends BaseEntity<PurchaseId> {
     private final Provider provider;
-    private final PurchaseStatus status;
+    private PurchaseStatus status;
     private final PurchaseDate purchaseDate;
     private final List<PurchaseItem> items;
 
@@ -46,6 +47,24 @@ public class Purchase extends BaseEntity<PurchaseId> {
 
     public static Purchase rebuild (PurchaseId uuid, Provider provider, PurchaseStatus status, PurchaseDate date, List<PurchaseItem> items) {
         return new Purchase(uuid, provider, status, date, items);
+    }
+
+    private String msgInvalidStatus (String fun) {
+        return "To " + fun + " this purchase with the ID " + getId().getValue() + ", must have a status [CREATED] valid";
+    }
+
+    public void canceled () {
+            if (!status.equals(PurchaseStatus.CREATE) )
+                throw new InvalidStatusPurchaseDomainException(msgInvalidStatus("[CANCELED]"));
+
+            status = PurchaseStatus.CANCELED;
+    }
+
+    public void received () {
+            if (!status.equals(PurchaseStatus.CREATE) )
+                throw new InvalidStatusPurchaseDomainException(msgInvalidStatus("[RECEIVED]"));
+
+            status = PurchaseStatus.CANCELED;
     }
 
     public BigDecimal getTotal () {

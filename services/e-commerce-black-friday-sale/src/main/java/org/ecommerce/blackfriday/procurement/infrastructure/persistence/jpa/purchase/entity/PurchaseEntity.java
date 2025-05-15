@@ -1,6 +1,5 @@
-package org.ecommerce.blackfriday.procurement.infraestructure.persistence.h2.entity;
+package org.ecommerce.blackfriday.procurement.infrastructure.persistence.jpa.purchase.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -77,5 +76,17 @@ public class PurchaseEntity {
 
     public void setItems(List<PurchaseItemEntity> items) {
         this.items = items;
+    }
+
+    @Override
+    public String toString() {
+        return "PurchaseEntity{" +
+                "id=" + id +
+                ", provider=" + provider +
+                ", total=" + total +
+                ", status=" + status +
+                ", date=" + date +
+                ", items=" + items +
+                '}';
     }
 }
