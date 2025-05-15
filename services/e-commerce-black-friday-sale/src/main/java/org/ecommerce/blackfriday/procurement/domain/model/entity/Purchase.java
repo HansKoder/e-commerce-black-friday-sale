@@ -54,17 +54,19 @@ public class Purchase extends BaseEntity<PurchaseId> {
     }
 
     public void canceled () {
-            if (!status.equals(PurchaseStatus.CREATE) )
-                throw new InvalidStatusPurchaseDomainException(msgInvalidStatus("[CANCELED]"));
+        System.out.println("[DOMAIN] canceled");
+        if (!status.equals(PurchaseStatus.CREATE) )
+            throw new InvalidStatusPurchaseDomainException(msgInvalidStatus("[CANCELED]"));
 
-            status = PurchaseStatus.CANCELED;
+        status = PurchaseStatus.CANCELED;
     }
 
     public void received () {
-            if (!status.equals(PurchaseStatus.CREATE) )
-                throw new InvalidStatusPurchaseDomainException(msgInvalidStatus("[RECEIVED]"));
+        System.out.println("[DOMAIN] canceled");
+        if (!status.equals(PurchaseStatus.CREATE) )
+            throw new InvalidStatusPurchaseDomainException(msgInvalidStatus("[RECEIVED]"));
 
-            status = PurchaseStatus.CANCELED;
+        status = PurchaseStatus.CANCELED;
     }
 
     public BigDecimal getTotal () {

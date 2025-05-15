@@ -8,6 +8,7 @@ public record GetPurchaseResponse (
     String uuid,
     LocalDateTime date,
     ProviderResponse provider,
+    String status,
     List<PurchaseItemResponse> items,
     BigDecimal total
 ) { }

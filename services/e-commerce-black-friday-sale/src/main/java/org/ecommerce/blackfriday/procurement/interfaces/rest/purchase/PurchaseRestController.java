@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import org.ecommerce.blackfriday.procurement.application.service.CanceledPurchaseService;
 import org.ecommerce.blackfriday.procurement.application.service.CreatePurchaseService;
 import org.ecommerce.blackfriday.procurement.application.service.GetPurchaseService;
+import org.ecommerce.blackfriday.procurement.application.service.ReceivedPurchaseService;
 import org.ecommerce.blackfriday.procurement.domain.model.entity.Purchase;
 import org.ecommerce.blackfriday.procurement.interfaces.rest.purchase.dto.request.CanceledPurchaseRequest;
 import org.ecommerce.blackfriday.procurement.interfaces.rest.purchase.dto.request.CreatePurchaseRequest;
@@ -24,11 +25,17 @@ public class PurchaseRestController {
     private final CreatePurchaseService createPurchaseService;
     private final CanceledPurchaseService canceledPurchaseService;
     private final GetPurchaseService getPurchaseService;
+    private final ReceivedPurchaseService receivedPurchaseService;
 
-    public PurchaseRestController(CreatePurchaseService createPurchaseService, CanceledPurchaseService canceledPurchaseService, GetPurchaseService getPurchaseService) {
+    public PurchaseRestController(
+            CreatePurchaseService createPurchaseService,
+            CanceledPurchaseService canceledPurchaseService,
+            GetPurchaseService getPurchaseService,
+            ReceivedPurchaseService receivedPurchaseService) {
         this.createPurchaseService = createPurchaseService;
         this.canceledPurchaseService = canceledPurchaseService;
         this.getPurchaseService = getPurchaseService;
+        this.receivedPurchaseService = receivedPurchaseService;
     }
 
     @PostMapping("/create")
@@ -50,4 +57,10 @@ public class PurchaseRestController {
         return ResponseEntity.ok(PurchaseRestMapper.toResponse(getPurchaseService.handler(uuid)));
     }
 
+    @PutMapping("/received")
+    public ResponseEntity<GetPurchaseResponse> received (@Valid @RequestBody CanceledPurchaseRequest request) {
+        Purchase domain = receivedPurchaseService.handler(UUID.fromString(request.purchaseId()), request.comment());
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(PurchaseRestMapper.toResponse(domain));
+    }
 }

@@ -38,6 +38,7 @@ public class PurchaseRestMapper {
                 domain.getId().getValue().toString(),
                 domain.getPurchaseDate().value(),
                 ProviderRestMapper.toResponse(domain.getProvider()),
+                domain.getStatus().name(),
                 items,
                 domain.getTotal()
         );

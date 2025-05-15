@@ -12,12 +12,12 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Service
-public class CanceledPurchaseService {
+public class ReceivedPurchaseService {
 
     private final PurchaseRepository purchaseRepository;
     private final PurchaseStatusHistoryRepo purchaseStatusHistoryRepo;
 
-    public CanceledPurchaseService(PurchaseRepository purchaseRepository, PurchaseStatusHistoryRepo purchaseStatusHistoryRepo) {
+    public ReceivedPurchaseService(PurchaseRepository purchaseRepository, PurchaseStatusHistoryRepo purchaseStatusHistoryRepo) {
         this.purchaseRepository = purchaseRepository;
         this.purchaseStatusHistoryRepo = purchaseStatusHistoryRepo;
     }
@@ -32,19 +32,22 @@ public class CanceledPurchaseService {
         history.setComment(comment);
 
         purchaseStatusHistoryRepo.save(history);
-        System.out.println("[USE_CASE] (history) Canceled, param history {" + history + "}");
+        System.out.println("[USE_CASE] (history) new, param history {" + history + "}");
     }
+
 
     public Purchase handler (UUID purchaseId, String comment) {
         Purchase domain = purchaseRepository.findById(purchaseId)
                 .orElseThrow(() -> new PurchaseNotFoundRestException(purchaseId.toString()));
 
-        System.out.println("[USE_CASE] (handler) Canceled Purchase, param Purchase {" + domain + "}");
+        System.out.println("[USE_CASE] (handler) Received Purchase, param Purchase {" + domain + "}");
 
-        domain.canceled();
+        domain.received();
         purchaseRepository.save(domain);
+
         history(purchaseId, comment);
 
         return domain;
     }
+
 }

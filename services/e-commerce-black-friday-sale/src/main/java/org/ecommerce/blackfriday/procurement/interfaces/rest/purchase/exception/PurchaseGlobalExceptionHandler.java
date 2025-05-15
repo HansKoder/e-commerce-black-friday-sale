@@ -1,6 +1,7 @@
 package org.ecommerce.blackfriday.procurement.interfaces.rest.purchase.exception;
 
 import org.ecommerce.blackfriday.common.interfaces.rest.dto.ApiErrorResponse;
+import org.ecommerce.blackfriday.procurement.domain.model.exception.InvalidStatusPurchaseDomainException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -14,5 +15,12 @@ public class PurchaseGlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(new ApiErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage()));
     }
+
+    @ExceptionHandler(InvalidStatusPurchaseDomainException.class)
+    ResponseEntity<ApiErrorResponse> invalidStatusPurchaseDomainException (InvalidStatusPurchaseDomainException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(new ApiErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage()));
+    }
+
 
 }
