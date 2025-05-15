@@ -1,9 +1,6 @@
-package org.ecommerce.blackfriday.cart.domain.model.entity;
+package org.ecommerce.blackfriday.common.domain.model.entity;
 
-import org.ecommerce.blackfriday.cart.domain.model.exception.InvalidPriceDomainException;
-import org.ecommerce.blackfriday.cart.domain.model.valueobject.ProductPrice;
-import org.ecommerce.blackfriday.common.domain.model.entity.BaseEntity;
-import org.ecommerce.blackfriday.common.domain.model.valueobject.Money;
+import org.ecommerce.blackfriday.common.domain.model.valueobject.ProductPrice;
 import org.ecommerce.blackfriday.common.domain.model.valueobject.ProductId;
 
 import java.util.Objects;
@@ -64,5 +61,13 @@ public class Product extends BaseEntity<ProductId> {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), getId());
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productName='" + productName + '\'' +
+                ", price=" + price +
+                '}';
     }
 }

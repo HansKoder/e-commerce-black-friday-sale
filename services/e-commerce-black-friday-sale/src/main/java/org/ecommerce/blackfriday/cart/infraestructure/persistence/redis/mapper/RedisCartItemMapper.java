@@ -1,9 +1,9 @@
 package org.ecommerce.blackfriday.cart.infraestructure.persistence.redis.mapper;
 
 import org.ecommerce.blackfriday.cart.domain.model.entity.CartItem;
-import org.ecommerce.blackfriday.cart.domain.model.entity.Product;
+import org.ecommerce.blackfriday.common.domain.model.entity.Product;
 import org.ecommerce.blackfriday.cart.domain.model.valueobject.CartItemId;
-import org.ecommerce.blackfriday.cart.domain.model.valueobject.ProductPrice;
+import org.ecommerce.blackfriday.common.domain.model.valueobject.ProductPrice;
 import org.ecommerce.blackfriday.cart.domain.model.valueobject.Quantity;
 import org.ecommerce.blackfriday.cart.infraestructure.persistence.redis.model.RedisCartItemModel;
 import org.ecommerce.blackfriday.common.domain.model.valueobject.Money;

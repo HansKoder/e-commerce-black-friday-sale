@@ -1,6 +1,6 @@
 package org.ecommerce.blackfriday.cart.domain.model.valueobject;
 
-import org.ecommerce.blackfriday.cart.domain.model.exception.InvalidQuantityDomainException;
+import org.ecommerce.blackfriday.common.domain.model.exception.InvalidQuantityDomainException;
 
 import java.util.Objects;
 

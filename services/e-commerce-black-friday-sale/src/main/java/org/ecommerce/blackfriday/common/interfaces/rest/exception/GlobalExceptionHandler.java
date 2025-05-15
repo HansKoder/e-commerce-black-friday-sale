@@ -1,6 +1,6 @@
 package org.ecommerce.blackfriday.common.interfaces.rest.exception;
 
-import org.ecommerce.blackfriday.cart.domain.model.exception.InvalidQuantityDomainException;
+import org.ecommerce.blackfriday.common.domain.model.exception.InvalidQuantityDomainException;
 import org.ecommerce.blackfriday.common.interfaces.rest.dto.ApiErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
