@@ -67,4 +67,13 @@ public class Provider extends BaseEntity<ProviderId> {
             return provider;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Provider{" +
+                "name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

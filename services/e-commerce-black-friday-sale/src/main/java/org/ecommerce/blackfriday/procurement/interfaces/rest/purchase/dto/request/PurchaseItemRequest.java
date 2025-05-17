@@ -14,4 +14,13 @@ public record PurchaseItemRequest(
         BigDecimal costPerUnit,
         @Min(value = 1, message = "The quantity must be greater or equal to 1")
         int quantity
-) { }
+) {
+        @Override
+        public String toString() {
+                return "PurchaseItemRequest{" +
+                        "productId=" + productId +
+                        ", costPerUnit=" + costPerUnit +
+                        ", quantity=" + quantity +
+                        '}';
+        }
+}

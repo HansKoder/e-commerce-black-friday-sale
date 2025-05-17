@@ -5,14 +5,14 @@ meta {
 }
 
 put {
-  url: http://localhost:8080/api/v1/purchase/received
+  url: {{baseURL}}/v1/purchase/received
   body: json
   auth: inherit
 }
 
 body:json {
   {
-    "purchaseId": "271248af-810b-40e4-a6cd-dd785ef12a83",
-    "comment": "Provider canceled the request"
+    "purchaseId": "{{purcahaseId}}",
+    "comment": "Provider arrived with products"
   }
 }

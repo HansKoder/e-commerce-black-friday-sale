@@ -7,4 +7,13 @@ public record CreatePurchaseRequest (
         LocalDateTime date,
         ProviderRequest provider,
         List<PurchaseItemRequest> items
-) { }
+) {
+    @Override
+    public String toString() {
+        return "CreatePurchaseRequest{" +
+                "date=" + date +
+                ", provider=" + provider +
+                ", items=" + items +
+                '}';
+    }
+}

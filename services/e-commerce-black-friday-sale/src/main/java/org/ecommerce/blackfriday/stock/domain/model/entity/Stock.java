@@ -4,6 +4,7 @@ import org.ecommerce.blackfriday.common.domain.model.entity.BaseEntity;
 import org.ecommerce.blackfriday.common.domain.model.valueobject.ProductId;
 import org.ecommerce.blackfriday.stock.domain.model.exception.StockMustBePositive;
 import org.ecommerce.blackfriday.stock.domain.model.valueobject.StockId;
+import org.ecommerce.blackfriday.stock.infrastructure.StockLogger;
 
 import java.util.UUID;
 
@@ -34,7 +35,7 @@ public class Stock extends BaseEntity<StockId> {
     }
 
     public void increase (int value) {
-        System.out.println("[DOMAIN] (increase) params amount {" + amount + "}, increase this value {" + value + "}");
+        StockLogger.info("[DOMAIN] (IncreaseStock) params amount {}, quantity {}", amount, value);
         if (value < 1)
             throw new StockMustBePositive(productId.getValue().toString());
 
@@ -42,7 +43,7 @@ public class Stock extends BaseEntity<StockId> {
     }
 
     public void decrease (int value) {
-        System.out.println("[DOMAIN] (decrease) params amount {" + amount + "}, increase this value {" + value + "}");
+        StockLogger.info("[DOMAIN] (DecreaseStock) params amount {}, quantity {}", amount, value);
         if (value < 1 || (amount - value) < 1)
             throw new StockMustBePositive(productId.getValue().toString());
 

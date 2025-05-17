@@ -1,0 +1,54 @@
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+    <!-- Appender general -->
+    <appender name="GENERAL_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/general.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/general-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>15</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Appender para Purchase -->
+    <appender name="PURCHASE_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/purchase.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/purchase-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Appender para Stock -->
+    <appender name="STOCK_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/stock.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/stock-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Loggers por módulo -->
+    <logger name="purchase" level="DEBUG" additivity="false">
+        <appender-ref ref="PURCHASE_FILE"/>
+    </logger>
+
+    <logger name="stock" level="DEBUG" additivity="false">
+        <appender-ref ref="STOCK_FILE"/>
+    </logger>
+
+    <!-- Logger raíz -->
+    <root level="INFO">
+        <appender-ref ref="GENERAL_FILE"/>
+    </root>
+</configuration>

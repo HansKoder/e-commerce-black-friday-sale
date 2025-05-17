@@ -6,8 +6,10 @@ import org.ecommerce.blackfriday.procurement.application.service.CreatePurchaseS
 import org.ecommerce.blackfriday.procurement.application.service.GetPurchaseService;
 import org.ecommerce.blackfriday.procurement.application.service.ReceivedPurchaseService;
 import org.ecommerce.blackfriday.procurement.domain.model.entity.Purchase;
+import org.ecommerce.blackfriday.procurement.infrastructure.PurchaseLogger;
 import org.ecommerce.blackfriday.procurement.interfaces.rest.purchase.dto.request.CanceledPurchaseRequest;
 import org.ecommerce.blackfriday.procurement.interfaces.rest.purchase.dto.request.CreatePurchaseRequest;
+import org.ecommerce.blackfriday.procurement.interfaces.rest.purchase.dto.request.ReceivedPurchaseRequest;
 import org.ecommerce.blackfriday.procurement.interfaces.rest.purchase.dto.response.GetPurchaseResponse;
 import org.ecommerce.blackfriday.procurement.interfaces.rest.purchase.mapper.PurchaseRestMapper;
 import org.springframework.http.HttpStatus;
@@ -40,6 +42,7 @@ public class PurchaseRestController {
 
     @PostMapping("/create")
     public ResponseEntity<GetPurchaseResponse> create (@Valid @RequestBody CreatePurchaseRequest request) {
+        PurchaseLogger.info("[API] (create purchase), params request {}", request);
         Purchase domain = createPurchaseService.handler(PurchaseRestMapper.toDomain(request));
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(PurchaseRestMapper.toResponse(domain));
@@ -58,7 +61,8 @@ public class PurchaseRestController {
     }
 
     @PutMapping("/received")
-    public ResponseEntity<GetPurchaseResponse> received (@Valid @RequestBody CanceledPurchaseRequest request) {
+    public ResponseEntity<GetPurchaseResponse> received (@Valid @RequestBody ReceivedPurchaseRequest request) {
+        PurchaseLogger.info("[API] (received purchase), params request {}", request);
         Purchase domain = receivedPurchaseService.handler(UUID.fromString(request.purchaseId()), request.comment());
         return ResponseEntity.status(HttpStatus.OK)
                 .body(PurchaseRestMapper.toResponse(domain));

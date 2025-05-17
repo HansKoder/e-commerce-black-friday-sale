@@ -3,6 +3,7 @@ package org.ecommerce.blackfriday.stock.interfaces.rest.stock;
 import jakarta.validation.Valid;
 import org.ecommerce.blackfriday.stock.application.usecase.AdjustStockUseCase;
 import org.ecommerce.blackfriday.stock.application.usecase.GetStockUseCase;
+import org.ecommerce.blackfriday.stock.infrastructure.StockLogger;
 import org.ecommerce.blackfriday.stock.interfaces.rest.stock.dto.request.UpdateStockRequest;
 import org.ecommerce.blackfriday.stock.interfaces.rest.stock.dto.response.GetStockResponse;
 import org.ecommerce.blackfriday.stock.interfaces.rest.stock.mapper.StockRestMapper;
@@ -23,14 +24,15 @@ public class StockRestController {
         this.getStockUseCase = getStockUseCase;
     }
 
-    @GetMapping("/{productId}")
+    @GetMapping("/product/{productId}")
     ResponseEntity<GetStockResponse> getByProductId (@PathVariable("productId") String productId) {
+        StockLogger.info("[API] (get stock productId) param productId {}", productId);
         return ResponseEntity.ok(StockRestMapper.toResponse(getStockUseCase.handler(productId)));
     }
 
     @PostMapping("/update")
     ResponseEntity<GetStockResponse> update (@Valid @RequestBody UpdateStockRequest request) {
-        System.out.println("[REST.STOCK] request -> " + request);
+        StockLogger.info("[API] (update stock) param request {}", request);
         return ResponseEntity.ok(StockRestMapper.toResponse(adjustStockUseCase.handler(request)));
     }
 }
