@@ -1,0 +1,19 @@
+meta {
+  name: Increase
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/api/v1/stock/update
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "productId": "ab4370a3-5a83-445a-82fe-9916e131d109",
+    "value": 3,
+    "operation": "INCREASE"
+  }
+}
