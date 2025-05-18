@@ -5,7 +5,15 @@ import jakarta.validation.constraints.NotNull;
 
 public record CanceledPurchaseRequest (
         @NotNull(message = "PurchaseId must be mandatory")
-        @NotEmpty(message = "PurcahseId mest be completed ")
+        @NotEmpty(message = "PurchaseId mest be completed ")
         String purchaseId,
         String comment
-) { }
+) {
+        @Override
+        public String toString() {
+                return "CanceledPurchaseRequest{" +
+                        "purchaseId='" + purchaseId + '\'' +
+                        ", comment='" + comment + '\'' +
+                        '}';
+        }
+}

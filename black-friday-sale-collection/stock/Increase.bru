@@ -1,0 +1,19 @@
+meta {
+  name: Increase
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseURL}}/v1/stock/update
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "productId": "{{productId}}",
+    "value": 3,
+    "operation": "INCREASE"
+  }
+}

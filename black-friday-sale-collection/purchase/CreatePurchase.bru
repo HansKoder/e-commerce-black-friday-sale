@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: http://localhost:8080/api/v1/purchase/create
+  url: {{baseURL}}/v1/purchase/create
   body: json
   auth: inherit
 }
@@ -17,12 +17,12 @@ body:json {
     },
     "items": [
       {
-        "productId": "ab4370a3-5a83-445a-82fe-9916e131d109",
+        "productId": "{{productId}}",
         "costPerUnit": 120,
-        "quantity": 1
+        "quantity": 3
       },
       {
-        "productId": "069931ca-0ee0-477b-9c85-4d0dcdc7f95a",
+        "productId": "{{productId2}}",
         "costPerUnit": 100,
         "quantity": 2
       }

@@ -1,0 +1,11 @@
+meta {
+  name: StockProduct2
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseURL}}/v1/stock/product/{{productId2}}
+  body: none
+  auth: inherit
+}

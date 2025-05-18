@@ -66,7 +66,7 @@ public class Purchase extends BaseEntity<PurchaseId> {
         if (!status.equals(PurchaseStatus.CREATE) )
             throw new InvalidStatusPurchaseDomainException(msgInvalidStatus("[RECEIVED]"));
 
-        status = PurchaseStatus.CANCELED;
+        status = PurchaseStatus.RECEIVED;
     }
 
     public BigDecimal getTotal () {
