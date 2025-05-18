@@ -1,7 +1,7 @@
 package org.ecommerce.blackfriday.product.managment.interfaces.rest.product.exception;
 
 import org.ecommerce.blackfriday.common.interfaces.rest.dto.ApiErrorResponse;
-import org.ecommerce.blackfriday.product.managment.domain.exception.ProductDomainException;
+import org.ecommerce.blackfriday.product.managment.domain.model.exception.ProductDomainException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

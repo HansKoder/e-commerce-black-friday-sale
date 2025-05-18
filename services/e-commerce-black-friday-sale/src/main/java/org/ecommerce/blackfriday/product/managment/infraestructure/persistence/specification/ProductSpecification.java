@@ -3,7 +3,7 @@ package org.ecommerce.blackfriday.product.managment.infraestructure.persistence.
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.Path;
 import jakarta.persistence.criteria.Predicate;
-import org.ecommerce.blackfriday.product.managment.domain.query.ProductQuery;
+import org.ecommerce.blackfriday.product.managment.domain.model.model.ProductQuery;
 import org.ecommerce.blackfriday.product.managment.infraestructure.persistence.entity.ProductEntity;
 import org.springframework.data.jpa.domain.Specification;
 

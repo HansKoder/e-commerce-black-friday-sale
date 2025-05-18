@@ -18,6 +18,9 @@ public class ProductEntity {
 
     private BigDecimal price;
 
+    @Enumerated(EnumType.STRING)
+    private ProductStatusJPA status;
+
     public ProductEntity() {
     }
 
@@ -53,5 +56,22 @@ public class ProductEntity {
         this.price = price;
     }
 
+    public ProductStatusJPA getStatus() {
+        return status;
+    }
 
+    public void setStatus(ProductStatusJPA status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", status=" + status +
+                '}';
+    }
 }

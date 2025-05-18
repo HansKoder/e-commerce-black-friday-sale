@@ -1,4 +1,4 @@
-package org.ecommerce.blackfriday.product.managment.domain.query;
+package org.ecommerce.blackfriday.product.managment.domain.model.model;
 
 import org.ecommerce.blackfriday.common.domain.model.query.Pagination;
 

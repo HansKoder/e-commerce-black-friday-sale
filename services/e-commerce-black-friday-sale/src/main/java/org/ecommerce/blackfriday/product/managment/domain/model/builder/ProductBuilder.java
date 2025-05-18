@@ -1,11 +1,11 @@
-package org.ecommerce.blackfriday.product.managment.domain.builder;
+package org.ecommerce.blackfriday.product.managment.domain.model.builder;
 
 import org.ecommerce.blackfriday.common.domain.model.valueobject.Money;
 import org.ecommerce.blackfriday.common.domain.model.valueobject.ProductId;
-import org.ecommerce.blackfriday.product.managment.domain.entity.Product;
-import org.ecommerce.blackfriday.product.managment.domain.valueobject.ProductDescription;
-import org.ecommerce.blackfriday.product.managment.domain.valueobject.ProductName;
-import org.ecommerce.blackfriday.product.managment.domain.valueobject.ProductStatus;
+import org.ecommerce.blackfriday.product.managment.domain.model.entity.Product;
+import org.ecommerce.blackfriday.product.managment.domain.model.valueobject.ProductDescription;
+import org.ecommerce.blackfriday.product.managment.domain.model.valueobject.ProductName;
+import org.ecommerce.blackfriday.product.managment.domain.model.valueobject.ProductStatus;
 
 public final class ProductBuilder {
     private ProductName productName;

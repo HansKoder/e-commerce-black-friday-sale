@@ -1,4 +1,4 @@
-package org.ecommerce.blackfriday.product.managment.domain.valueobject;
+package org.ecommerce.blackfriday.product.managment.domain.model.valueobject;
 
 import java.util.Objects;
 

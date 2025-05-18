@@ -1,8 +1,8 @@
 package org.ecommerce.blackfriday.product.managment.application.service;
 
-import org.ecommerce.blackfriday.product.managment.domain.entity.Product;
-import org.ecommerce.blackfriday.product.managment.domain.repository.ProductRepository;
-import org.ecommerce.blackfriday.product.managment.domain.valueobject.ProductStatus;
+import org.ecommerce.blackfriday.product.managment.domain.model.entity.Product;
+import org.ecommerce.blackfriday.product.managment.domain.model.repository.ProductRepository;
+import org.ecommerce.blackfriday.product.managment.domain.model.valueobject.ProductStatus;
 import org.springframework.stereotype.Service;
 
 @Service

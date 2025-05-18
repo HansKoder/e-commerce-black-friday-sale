@@ -1,4 +1,4 @@
-package org.ecommerce.blackfriday.product.managment.domain.exception;
+package org.ecommerce.blackfriday.product.managment.domain.model.exception;
 
 import org.ecommerce.blackfriday.common.domain.model.exception.DomainException;
 

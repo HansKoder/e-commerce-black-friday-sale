@@ -1,19 +1,20 @@
 package org.ecommerce.blackfriday.product.managment.infraestructure.persistence.adapter;
 
-import org.ecommerce.blackfriday.product.managment.domain.entity.Product;
-import org.ecommerce.blackfriday.product.managment.domain.query.ProductQuery;
-import org.ecommerce.blackfriday.product.managment.domain.repository.ProductRepository;
+import org.ecommerce.blackfriday.product.managment.domain.model.entity.Product;
+import org.ecommerce.blackfriday.product.managment.domain.model.model.ProductQuery;
+import org.ecommerce.blackfriday.product.managment.domain.model.repository.ProductRepository;
 import org.ecommerce.blackfriday.product.managment.infraestructure.persistence.entity.ProductEntity;
 import org.ecommerce.blackfriday.product.managment.infraestructure.persistence.mapper.ProductEntityMapper;
 import org.ecommerce.blackfriday.product.managment.infraestructure.persistence.specification.ProductSpecification;
 import org.ecommerce.blackfriday.product.managment.infraestructure.persistence.springdata.SpringDataProductRepository;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public class JpaProductRepository implements ProductRepository {
@@ -44,5 +45,11 @@ public class JpaProductRepository implements ProductRepository {
                 .stream()
                 .map(ProductEntityMapper::toDomain)
                 .toList();
+    }
+
+    @Override
+    public Optional<Product> findById(UUID productId) {
+        return springDataRepo.findById(productId)
+                .map(ProductEntityMapper::toDomain);
     }
 }
