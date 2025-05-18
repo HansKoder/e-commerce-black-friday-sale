@@ -6,3 +6,11 @@
 17:59:02.301 [task-4] INFO  stock - [DOMAIN] (IncreaseStock) params amount 0, quantity 2
 17:59:17.881 [http-nio-8080-exec-8] INFO  stock - [API] (get stock productId) param productId e3f89c70-1234-4d2d-a8b6-55de09ae72a9
 17:59:21.233 [http-nio-8080-exec-9] INFO  stock - [API] (get stock productId) param productId 9ae1cb6d-1e21-4e32-8f62-d84edbdfa6cd
+22:18:30.943 [task-5] INFO  stock - [LISTENER] (increaseStockEvent) params : event IncreaseStockEvent{productId=ProductId{}8ee898c7-d31c-49d8-ab0e-f78bd6bba03d, quantity=3}
+22:18:30.944 [task-5] INFO  stock - [USE CASE] (IncreaseStock) params productId 8ee898c7-d31c-49d8-ab0e-f78bd6bba03d quantity 3
+22:18:30.944 [task-6] INFO  stock - [LISTENER] (increaseStockEvent) params : event IncreaseStockEvent{productId=ProductId{}0509237a-f623-4dcf-afc9-794a9ca823b5, quantity=2}
+22:18:30.944 [task-6] INFO  stock - [USE CASE] (IncreaseStock) params productId 0509237a-f623-4dcf-afc9-794a9ca823b5 quantity 2
+22:18:31.060 [task-5] INFO  stock - [DOMAIN] (IncreaseStock) params amount 0, quantity 3
+22:18:31.060 [task-6] INFO  stock - [DOMAIN] (IncreaseStock) params amount 0, quantity 2
+22:19:06.627 [http-nio-8080-exec-8] INFO  stock - [API] (get stock productId) param productId 8ee898c7-d31c-49d8-ab0e-f78bd6bba03d
+22:19:09.945 [http-nio-8080-exec-9] INFO  stock - [API] (get stock productId) param productId 0509237a-f623-4dcf-afc9-794a9ca823b5
