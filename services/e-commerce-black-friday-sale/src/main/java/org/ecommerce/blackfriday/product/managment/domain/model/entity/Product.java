@@ -1,12 +1,12 @@
-package org.ecommerce.blackfriday.product.managment.domain.entity;
+package org.ecommerce.blackfriday.product.managment.domain.model.entity;
 
 import org.ecommerce.blackfriday.common.domain.model.entity.AggregateRoot;
 import org.ecommerce.blackfriday.common.domain.model.valueobject.Money;
 import org.ecommerce.blackfriday.common.domain.model.valueobject.ProductId;
-import org.ecommerce.blackfriday.product.managment.domain.exception.ProductDomainException;
-import org.ecommerce.blackfriday.product.managment.domain.valueobject.ProductDescription;
-import org.ecommerce.blackfriday.product.managment.domain.valueobject.ProductName;
-import org.ecommerce.blackfriday.product.managment.domain.valueobject.ProductStatus;
+import org.ecommerce.blackfriday.product.managment.domain.model.exception.ProductDomainException;
+import org.ecommerce.blackfriday.product.managment.domain.model.valueobject.ProductDescription;
+import org.ecommerce.blackfriday.product.managment.domain.model.valueobject.ProductName;
+import org.ecommerce.blackfriday.product.managment.domain.model.valueobject.ProductStatus;
 
 import java.util.Objects;
 

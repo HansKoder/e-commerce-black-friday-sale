@@ -8,6 +8,7 @@ public class GetProductResponse {
     private String productName;
     private String productDescription;
     private BigDecimal price;
+    private String status;
 
     public String getUuid() {
         return uuid;
@@ -41,5 +42,11 @@ public class GetProductResponse {
         this.price = price;
     }
 
+    public String getStatus() {
+        return status;
+    }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

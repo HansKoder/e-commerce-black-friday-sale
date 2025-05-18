@@ -9,6 +9,7 @@ public final class GetProductResponseBuilder {
     private String productName;
     private String productDescription;
     private BigDecimal price;
+    private String status;
 
     private GetProductResponseBuilder() {
     }
@@ -37,12 +38,19 @@ public final class GetProductResponseBuilder {
         return this;
     }
 
+    public GetProductResponseBuilder withStatus(String status) {
+        this.status = status;
+        return this;
+    }
+
     public GetProductResponse build() {
-        GetProductResponse getProductResponse = new GetProductResponse();
-        getProductResponse.setUuid(uuid);
-        getProductResponse.setProductName(productName);
-        getProductResponse.setProductDescription(productDescription);
-        getProductResponse.setPrice(price);
-        return getProductResponse;
+        GetProductResponse response = new GetProductResponse();
+        response.setUuid(uuid);
+        response.setProductName(productName);
+        response.setProductDescription(productDescription);
+        response.setPrice(price);
+        response.setStatus(status);
+
+        return response;
     }
 }

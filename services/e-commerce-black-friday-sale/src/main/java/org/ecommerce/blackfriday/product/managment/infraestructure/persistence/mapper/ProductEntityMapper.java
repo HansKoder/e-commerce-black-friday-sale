@@ -2,10 +2,11 @@ package org.ecommerce.blackfriday.product.managment.infraestructure.persistence.
 
 import org.ecommerce.blackfriday.common.domain.model.valueobject.Money;
 import org.ecommerce.blackfriday.common.domain.model.valueobject.ProductId;
-import org.ecommerce.blackfriday.product.managment.domain.builder.ProductBuilder;
-import org.ecommerce.blackfriday.product.managment.domain.entity.Product;
-import org.ecommerce.blackfriday.product.managment.domain.valueobject.ProductDescription;
-import org.ecommerce.blackfriday.product.managment.domain.valueobject.ProductName;
+import org.ecommerce.blackfriday.product.managment.domain.model.builder.ProductBuilder;
+import org.ecommerce.blackfriday.product.managment.domain.model.entity.Product;
+import org.ecommerce.blackfriday.product.managment.domain.model.valueobject.ProductDescription;
+import org.ecommerce.blackfriday.product.managment.domain.model.valueobject.ProductName;
+import org.ecommerce.blackfriday.product.managment.domain.model.valueobject.ProductStatus;
 import org.ecommerce.blackfriday.product.managment.infraestructure.persistence.entity.ProductEntity;
 
 import java.util.Optional;
@@ -18,6 +19,7 @@ public class ProductEntityMapper {
         productEntity.setId(product.getId().getValue());
         productEntity.setName(product.getProductName().name());
         productEntity.setDescription(product.getProductDescription().description());
+        productEntity.setStatus(ProductStatusMapper.toJpa(product.getStatus()));
 
         if (Optional.ofNullable(product.getPrice()).isPresent())
             productEntity.setPrice(product.getPrice().getAmount());
@@ -31,6 +33,7 @@ public class ProductEntityMapper {
                 .withProductName(new ProductName(productEntity.getName()))
                 .withProductDescription(new ProductDescription(productEntity.getDescription()))
                 .withPrice(new Money(productEntity.getPrice()))
+                .withStatus(ProductStatusMapper.toDomain(productEntity.getStatus()))
                 .build();
     }
 

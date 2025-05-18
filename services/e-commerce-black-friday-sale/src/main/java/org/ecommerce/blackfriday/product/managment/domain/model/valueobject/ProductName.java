@@ -1,6 +1,6 @@
-package org.ecommerce.blackfriday.product.managment.domain.valueobject;
+package org.ecommerce.blackfriday.product.managment.domain.model.valueobject;
 
-import org.ecommerce.blackfriday.product.managment.domain.exception.InvalidProductNameDomainException;
+import org.ecommerce.blackfriday.product.managment.domain.model.exception.InvalidProductNameDomainException;
 
 import java.util.Objects;
 
