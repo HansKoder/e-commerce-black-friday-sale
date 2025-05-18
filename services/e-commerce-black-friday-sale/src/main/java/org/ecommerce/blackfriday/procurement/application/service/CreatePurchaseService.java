@@ -5,7 +5,8 @@ import org.ecommerce.blackfriday.procurement.domain.model.entity.Purchase;
 import org.ecommerce.blackfriday.procurement.domain.model.entity.PurchaseItem;
 import org.ecommerce.blackfriday.procurement.domain.model.repository.PurchaseRepository;
 import org.ecommerce.blackfriday.procurement.infrastructure.PurchaseLogger;
-import org.ecommerce.blackfriday.procurement.infrastructure.gateway.ProductACL;
+import org.ecommerce.blackfriday.procurement.infrastructure.gateway.PurchaseProductACL;
+import org.ecommerce.blackfriday.procurement.infrastructure.gateway.ProductChecker;
 import org.ecommerce.blackfriday.procurement.infrastructure.persistence.jpa.purchase.entity.PurchaseStatusJPA;
 import org.ecommerce.blackfriday.procurement.interfaces.rest.purchase.exception.PurchaseItemInvalidException;
 import org.springframework.context.ApplicationEventPublisher;
@@ -15,19 +16,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 public class CreatePurchaseService {
 
     private final PurchaseRepository purchaseRepository;
     private final ApplicationEventPublisher eventPublisher;
-    private final ProductACL productACL;
+    private final ProductChecker productACL;
 
     public CreatePurchaseService(
             PurchaseRepository repository,
             ApplicationEventPublisher eventPublisher,
-            ProductACL productACL) {
+            PurchaseProductACL productACL) {
         this.purchaseRepository = repository;
         this.eventPublisher = eventPublisher;
         this.productACL = productACL;

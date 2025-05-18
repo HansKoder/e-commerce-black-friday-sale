@@ -1,4 +1,4 @@
-package org.ecommerce.blackfriday.procurement.infrastructure.gateway;
+package org.ecommerce.blackfriday.stock.infrastructure.gateway;
 
 import java.util.UUID;
 
