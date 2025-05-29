@@ -7,7 +7,9 @@ import org.ecommerce.blackfriday.cart.application.service.SaveCartItemService;
 import org.ecommerce.blackfriday.cart.domain.model.entity.Cart;
 import org.ecommerce.blackfriday.cart.domain.model.valueobject.CartItemId;
 import org.ecommerce.blackfriday.cart.domain.model.valueobject.CustomerId;
+import org.ecommerce.blackfriday.cart.infraestructure.ratelimit.RateLimitingService;
 import org.ecommerce.blackfriday.cart.interfaces.rest.common.dto.GetCartResponse;
+import org.ecommerce.blackfriday.cart.interfaces.rest.common.exception.RateLimitExceededException;
 import org.ecommerce.blackfriday.cart.interfaces.rest.item.dto.DeleteCartItemRequest;
 import org.ecommerce.blackfriday.cart.interfaces.rest.item.dto.SaveCartItemRequest;
 import org.ecommerce.blackfriday.cart.interfaces.rest.common.mapper.CartItemMapper;
@@ -17,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeoutException;
@@ -27,17 +30,27 @@ public class CartItemRestController {
 
     private final SaveCartItemService saveCartItemService;
     private final RemoveCartItemService removeCartItemService;
+    private final RateLimitingService rateLimitingService;
 
     public CartItemRestController(
             SaveCartItemService service,
-            RemoveCartItemService removeCartItemService) {
+            RemoveCartItemService removeCartItemService, RateLimitingService rateLimitingService) {
         this.saveCartItemService = service;
         this.removeCartItemService = removeCartItemService;
+        this.rateLimitingService = rateLimitingService;
     }
 
     @PostMapping("/save")
     ResponseEntity<GetCartResponse> addCartItem (@Valid @RequestBody SaveCartItemRequest cartDto) {
+
         System.out.println("Add Cart Item " + cartDto.toString());
+
+        if (Objects.isNull(cartDto.getCustomerId())) throw new IllegalArgumentException("CustomerId is mandatory");
+
+        if (!rateLimitingService.allowRequest(cartDto.getCustomerId())) {
+            throw new RateLimitExceededException("The Service Save Item is not available, It has many request");
+        }
+
         Cart domain = saveCartItemService
                 .addCartItem(cartDto.getCustomerId(), CartItemMapper.toDomain(cartDto));
         return ResponseEntity
