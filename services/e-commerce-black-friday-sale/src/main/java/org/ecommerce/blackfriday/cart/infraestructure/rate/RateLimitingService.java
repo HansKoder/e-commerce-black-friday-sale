@@ -1,4 +1,4 @@
-package org.ecommerce.blackfriday.cart.infraestructure.ratelimit;
+package org.ecommerce.blackfriday.cart.infraestructure.rate;
 
 import io.github.bucket4j.Bandwidth;
 import io.github.bucket4j.Bucket;
