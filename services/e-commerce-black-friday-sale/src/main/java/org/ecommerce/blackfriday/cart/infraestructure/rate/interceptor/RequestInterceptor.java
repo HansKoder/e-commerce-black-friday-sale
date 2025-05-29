@@ -14,7 +14,7 @@ public class RequestInterceptor implements HandlerInterceptor {
 
     private Bucket buildBucket() {
         return Bucket.builder()
-                .addLimit(limit -> limit.capacity(3).refillGreedy(3, Duration.ofMinutes(1)))
+                .addLimit(limit -> limit.capacity(20).refillGreedy(20, Duration.ofMinutes(1)))
                 .build();
     }
 

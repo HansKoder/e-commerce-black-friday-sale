@@ -28,5 +28,11 @@ public class CartGlobalExceptionHandler {
                 .body(new ApiErrorResponse(HttpStatus.TOO_MANY_REQUESTS.value(), ex.getMessage()));
     }
 
+    @ExceptionHandler(TimeoutException.class)
+    public ResponseEntity<ApiErrorResponse> timeoutException (TimeoutException ex) {
+        return ResponseEntity.status(HttpStatus.REQUEST_TIMEOUT)
+                .body(new ApiErrorResponse(HttpStatus.REQUEST_TIMEOUT.value(), ex.getMessage()));
+    }
+
 
 }
