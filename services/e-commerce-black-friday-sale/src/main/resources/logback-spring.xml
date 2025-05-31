@@ -38,6 +38,18 @@
         </encoder>
     </appender>
 
+    <!-- Appender para Cart -->
+    <appender name="CART_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/cart.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/cart-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
     <!-- Loggers por módulo -->
     <logger name="purchase" level="DEBUG" additivity="false">
         <appender-ref ref="PURCHASE_FILE"/>
@@ -45,6 +57,10 @@
 
     <logger name="stock" level="DEBUG" additivity="false">
         <appender-ref ref="STOCK_FILE"/>
+    </logger>
+
+    <logger name="cart" level="DEBUG" additivity="false">
+        <appender-ref ref="CART_FILE"/>
     </logger>
 
     <!-- Logger raíz -->

@@ -2,6 +2,7 @@ package org.ecommerce.blackfriday.cart.infraestructure.persistence.redis.adapter
 
 import org.ecommerce.blackfriday.cart.domain.model.entity.Cart;
 import org.ecommerce.blackfriday.cart.domain.model.repository.CartRepository;
+import org.ecommerce.blackfriday.cart.infraestructure.CartLogger;
 import org.ecommerce.blackfriday.cart.infraestructure.persistence.redis.mapper.RedisCartMapper;
 import org.ecommerce.blackfriday.cart.infraestructure.persistence.redis.model.RedisCartModel;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -20,14 +21,14 @@ public class RedisCartRepository implements CartRepository {
 
     @Override
     public Optional<Cart> getCartByCustomer(String customerId) {
-        System.out.println("Redis Cart Repository GET " + customerId);
+        CartLogger.info("Redis Cart Repository GET {}", customerId);
         return Optional.ofNullable(redisTemplate.opsForValue().get(customerId))
                 .map(RedisCartMapper::toDomain);
     }
 
     @Override
     public void save(String customerId, Cart cart) {
-        System.out.println("Redis Cart Repo Save " + cart.toString());
+        CartLogger.info("Redis Cart Repo Save {}, customerId {} ", cart, customerId);
         redisTemplate.opsForValue().set(customerId, RedisCartMapper.toRedisCart(cart));
     }
 }

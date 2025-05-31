@@ -58,22 +58,3 @@ logging:
         boot:
           autoconfigure:
             web: DEBUG
-
-
-resilience4j:
-  circuitbreaker:
-    instances:
-      getCartService:
-        registerHealthIndicator: true
-        slidingWindowSize: 10
-        minimumNumberOfCalls: 5
-        failureRateThreshold: 5
-        waitDurationInOpenState: 10s
-        permittedNumberOfCallsInHalfOpenState: 5
-  retry:
-    instances:
-      getCartService:
-        maxAttempts: 3
-        waitDuration: 500ms
-        retryExceptions:
-          - java.util.NoSuchElementException

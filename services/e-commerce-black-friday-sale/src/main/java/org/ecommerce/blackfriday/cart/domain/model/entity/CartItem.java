@@ -94,4 +94,14 @@ public class CartItem extends BaseEntity<CartItemId> {
     public int hashCode() {
         return Objects.hash(super.hashCode(), product, quantity, getId());
     }
+
+    @Override
+    public String toString() {
+        return "CartItem{" +
+                "product=" + product +
+                ", quantity=" + quantity +
+                ", cachedTotal=" + cachedTotal +
+                ", isDirty=" + isDirty +
+                '}';
+    }
 }

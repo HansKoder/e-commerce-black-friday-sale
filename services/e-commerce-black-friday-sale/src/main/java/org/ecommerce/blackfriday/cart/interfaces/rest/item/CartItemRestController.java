@@ -6,6 +6,7 @@ import org.ecommerce.blackfriday.cart.application.service.SaveCartItemService;
 import org.ecommerce.blackfriday.cart.domain.model.entity.Cart;
 import org.ecommerce.blackfriday.cart.domain.model.valueobject.CartItemId;
 import org.ecommerce.blackfriday.cart.domain.model.valueobject.CustomerId;
+import org.ecommerce.blackfriday.cart.infraestructure.CartLogger;
 import org.ecommerce.blackfriday.cart.infraestructure.rate.RateLimitingService;
 import org.ecommerce.blackfriday.cart.interfaces.rest.common.dto.GetCartResponse;
 import org.ecommerce.blackfriday.cart.interfaces.rest.common.exception.RateLimitExceededException;
@@ -26,26 +27,17 @@ public class CartItemRestController {
 
     private final SaveCartItemService saveCartItemService;
     private final RemoveCartItemService removeCartItemService;
-    private final RateLimitingService rateLimitingService;
 
     public CartItemRestController(
             SaveCartItemService service,
-            RemoveCartItemService removeCartItemService, RateLimitingService rateLimitingService) {
+            RemoveCartItemService removeCartItemService) {
         this.saveCartItemService = service;
         this.removeCartItemService = removeCartItemService;
-        this.rateLimitingService = rateLimitingService;
     }
 
     @PostMapping("/save")
     ResponseEntity<GetCartResponse> addCartItem (@Valid @RequestBody SaveCartItemRequest cartDto) {
-
-        System.out.println("Add Cart Item " + cartDto.toString());
-
-        if (Objects.isNull(cartDto.getCustomerId())) throw new IllegalArgumentException("CustomerId is mandatory");
-
-        if (!rateLimitingService.allowRequest(cartDto.getCustomerId())) {
-            throw new RateLimitExceededException("The Service Save Item is not available, It has many request");
-        }
+        CartLogger.info("Add Cart Item, item {}", cartDto.toString());
 
         Cart domain = saveCartItemService
                 .addCartItem(cartDto.getCustomerId(), CartItemMapper.toDomain(cartDto));

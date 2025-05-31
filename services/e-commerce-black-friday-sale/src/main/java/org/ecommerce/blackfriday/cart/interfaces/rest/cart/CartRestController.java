@@ -3,6 +3,7 @@ package org.ecommerce.blackfriday.cart.interfaces.rest.cart;
 import org.ecommerce.blackfriday.cart.application.service.GetCartByCustomerService;
 import org.ecommerce.blackfriday.cart.domain.model.entity.Cart;
 import org.ecommerce.blackfriday.cart.domain.model.valueobject.CustomerId;
+import org.ecommerce.blackfriday.cart.infraestructure.CartLogger;
 import org.ecommerce.blackfriday.cart.interfaces.rest.common.dto.GetCartResponse;
 import org.ecommerce.blackfriday.cart.interfaces.rest.common.mapper.CartMapper;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,7 @@ public class CartRestController {
 
     @GetMapping("/customer/{customerId}")
     ResponseEntity<GetCartResponse> getCartByCustomerId (@PathVariable("customerId") String customerId) {
+        CartLogger.info("Rest - Get Cart By CustomerId %s", customerId);
         Cart response = getCartByCustomerService.getCart(new CustomerId(UUID.fromString(customerId)));
         return ResponseEntity.ok(CartMapper.toDto(response, customerId));
     }
