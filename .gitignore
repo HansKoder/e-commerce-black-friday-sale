@@ -38,3 +38,10 @@ build/
 .DS_Store
 
 **/node_modules/
+
+# Archivos de log generales
+*.log
+
+# Carpeta de logs común
+logs/
+!**/logs/*.log

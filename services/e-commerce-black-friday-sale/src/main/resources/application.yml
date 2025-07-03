@@ -58,5 +58,3 @@ logging:
         boot:
           autoconfigure:
             web: DEBUG
-
-

@@ -18,6 +18,5 @@ public class GetCartByCustomerService {
     public Cart getCart (CustomerId customer) {
         return cartRepository.getCartByCustomer(customer.getValue().toString())
                 .orElseThrow(() -> new CartByCustomerNotFoundRestException(customer.getValue().toString()));
-
     }
 }

@@ -1,6 +1,7 @@
 package org.ecommerce.blackfriday.cart.infraestructure.persistence.redis.mapper;
 
 import org.ecommerce.blackfriday.cart.domain.model.entity.CartItem;
+import org.ecommerce.blackfriday.cart.infraestructure.CartLogger;
 import org.ecommerce.blackfriday.common.domain.model.entity.Product;
 import org.ecommerce.blackfriday.cart.domain.model.valueobject.CartItemId;
 import org.ecommerce.blackfriday.common.domain.model.valueobject.ProductPrice;
@@ -15,6 +16,7 @@ import java.util.UUID;
 public class RedisCartItemMapper {
 
     public static CartItem toDomain (RedisCartItemModel itemModel) {
+        CartLogger.info("Redis Cart Item Mapper, cartModel {}", itemModel.toString());
         CartItemId cartItemId = new CartItemId(UUID.fromString(itemModel.cartId()));
 
         ProductId productId = new ProductId(UUID.fromString(itemModel.productId()));
@@ -29,6 +31,7 @@ public class RedisCartItemMapper {
     }
 
     public static RedisCartItemModel toRedisCart (CartItem domain) {
+        CartLogger.info("Redis Cart Item Mapper,toEntity to Redis {}", domain.toString());
         String cartId = domain.getId().getValue().toString();
         String productId = domain.getProduct().getId().getValue().toString();
         BigDecimal price = domain.getProduct().getPrice().value().getAmount();

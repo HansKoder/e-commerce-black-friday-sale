@@ -1,13 +1,15 @@
 package org.ecommerce.blackfriday.cart.interfaces.rest.item;
 
-import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
 import jakarta.validation.Valid;
 import org.ecommerce.blackfriday.cart.application.service.RemoveCartItemService;
 import org.ecommerce.blackfriday.cart.application.service.SaveCartItemService;
 import org.ecommerce.blackfriday.cart.domain.model.entity.Cart;
 import org.ecommerce.blackfriday.cart.domain.model.valueobject.CartItemId;
 import org.ecommerce.blackfriday.cart.domain.model.valueobject.CustomerId;
+import org.ecommerce.blackfriday.cart.infraestructure.CartLogger;
+import org.ecommerce.blackfriday.cart.infraestructure.rate.RateLimitingService;
 import org.ecommerce.blackfriday.cart.interfaces.rest.common.dto.GetCartResponse;
+import org.ecommerce.blackfriday.cart.interfaces.rest.common.exception.RateLimitExceededException;
 import org.ecommerce.blackfriday.cart.interfaces.rest.item.dto.DeleteCartItemRequest;
 import org.ecommerce.blackfriday.cart.interfaces.rest.item.dto.SaveCartItemRequest;
 import org.ecommerce.blackfriday.cart.interfaces.rest.common.mapper.CartItemMapper;
@@ -15,11 +17,9 @@ import org.ecommerce.blackfriday.cart.interfaces.rest.common.mapper.CartMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Objects;
 import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeoutException;
 
 @RestController
 @RequestMapping("api/v1/cart/items")
@@ -37,7 +37,8 @@ public class CartItemRestController {
 
     @PostMapping("/save")
     ResponseEntity<GetCartResponse> addCartItem (@Valid @RequestBody SaveCartItemRequest cartDto) {
-        System.out.println("Add Cart Item " + cartDto.toString());
+        CartLogger.info("Add Cart Item, item {}", cartDto.toString());
+
         Cart domain = saveCartItemService
                 .addCartItem(cartDto.getCustomerId(), CartItemMapper.toDomain(cartDto));
         return ResponseEntity
