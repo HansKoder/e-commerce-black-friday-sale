@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: http://localhost:8080/api/v1/cart/items/save
+  url: {{baseURL}}{{cartService}}/items/save
   body: json
   auth: none
 }
@@ -13,8 +13,8 @@ post {
 body:json {
   {
     "customerId": "{{customerId}}",
-    "productId": "e5f25d37-2d39-4cb9-95bf-0dd6286546a6",
-    "cant": 2,
-    "price": 710
+    "productId": "{{productId}}",
+    "cant": 11,
+    "price": 1000
   }
 }

@@ -5,7 +5,7 @@ meta {
 }
 
 get {
-  url: http://localhost:8080/api/v1/cart/customer/{{cartId}}
+  url: {{baseURL}}{{cartService}}/customer/{{customerId}}
   body: none
   auth: inherit
 }

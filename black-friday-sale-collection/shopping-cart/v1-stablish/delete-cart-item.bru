@@ -5,7 +5,7 @@ meta {
 }
 
 delete {
-  url: http://localhost:8080/api/v1/cart/items/delete
+  url: {{baseURL}}{{cartService}}/items/delete
   body: json
   auth: inherit
 }
@@ -13,6 +13,6 @@ delete {
 body:json {
   {
     "customerId": "{{customerId}}",
-    "cartItemId": "7c6a028b-0141-480a-8f5d-83ab7ba719c3"
+    "cartItemId": "871abe8c-c12e-44ad-9e92-219399d30369"
   }
 }

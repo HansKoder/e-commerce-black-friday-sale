@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpSession;
 import org.ecommerce.blackfriday.cart.infraestructure.CartLogger;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.util.ContentCachingRequestWrapper;
 
 import java.time.Duration;
 
