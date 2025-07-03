@@ -1,0 +1,11 @@
+meta {
+  name: getCartByCustomer-v2
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{baseURLV2}}{{cartServiceV2}}/customer/{{customerId}}
+  body: none
+  auth: inherit
+}

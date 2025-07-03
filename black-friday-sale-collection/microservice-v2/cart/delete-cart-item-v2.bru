@@ -1,0 +1,18 @@
+meta {
+  name: delete-cart-item-v2
+  type: http
+  seq: 7
+}
+
+delete {
+  url: {{baseURLV2}}{{cartServiceV2}}/items/delete
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "customerId": "{{customerId}}",
+    "cartItemId": "b519210f-772a-41b9-b93d-1ecc5881b805"
+  }
+}
