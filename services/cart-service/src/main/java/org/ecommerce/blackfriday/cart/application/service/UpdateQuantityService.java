@@ -1,5 +1,6 @@
 package org.ecommerce.blackfriday.cart.application.service;
 
+import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
 import org.ecommerce.blackfriday.cart.domain.model.entity.Cart;
 import org.ecommerce.blackfriday.cart.domain.model.repository.CartRepository;
@@ -16,7 +17,8 @@ public class UpdateQuantityService {
         this.cartRepository = cartRepository;
     }
 
-    public Cart update (CustomerId customer, CartItemId cartItem, int quantity) {
+    public Uni<Cart> update (CustomerId customer, CartItemId cartItem, int quantity) {
+        /*
         Cart domain = cartRepository.getCartByCustomer(customer.getValue().toString())
                 .orElseThrow(() -> new CartNotFoundException(customer.getValue().toString()));
 
@@ -24,5 +26,12 @@ public class UpdateQuantityService {
         cartRepository.save(customer.getValue().toString(), domain);
 
         return domain;
+         */
+
+        return cartRepository.getCartByCustomer(customer.getValue().toString())
+                .onItem().transform(optionalCart ->
+                        optionalCart.orElseThrow(() -> new CartNotFoundException(customer.getValue().toString())))
+                .invoke(domain -> domain.updateQuantity(cartItem.getValue().toString(), quantity))
+                .call(cart -> cartRepository.save(customer.getValue().toString(), cart));
     }
 }

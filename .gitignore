@@ -12,24 +12,13 @@ target/
 *.iml
 *.ipr
 
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
+!**/services/**/.idea/
+!**/services/**/.idea/jarRepositories.xml
+!**/services/**/.idea/compiler.xml
+!**/services/**/.idea/libraries/
+
+
 
 ### VS Code ###
 .vscode/
