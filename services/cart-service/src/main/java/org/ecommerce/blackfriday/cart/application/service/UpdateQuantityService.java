@@ -18,16 +18,6 @@ public class UpdateQuantityService {
     }
 
     public Uni<Cart> update (CustomerId customer, CartItemId cartItem, int quantity) {
-        /*
-        Cart domain = cartRepository.getCartByCustomer(customer.getValue().toString())
-                .orElseThrow(() -> new CartNotFoundException(customer.getValue().toString()));
-
-        domain.updateQuantity(cartItem.getValue().toString(), quantity);
-        cartRepository.save(customer.getValue().toString(), domain);
-
-        return domain;
-         */
-
         return cartRepository.getCartByCustomer(customer.getValue().toString())
                 .onItem().transform(optionalCart ->
                         optionalCart.orElseThrow(() -> new CartNotFoundException(customer.getValue().toString())))

@@ -19,15 +19,6 @@ public class RemoveCartItemService {
     }
 
     public Uni<Void> removeCartByCustomerId (CustomerId customer, CartItemId cartItemId) {
-        /*
-        Cart domain = cartRepository.getCartByCustomer(customer.getValue().toString())
-                .orElseThrow(() -> new CartNotFoundException(customer.getValue().toString()));
-
-        domain.deleteCartItem(cartItemId.getValue().toString());
-
-        cartRepository.save(customer.getValue().toString(), domain);
-         */
-
         return cartRepository.getCartByCustomer(customer.getValue().toString())
                 .onItem().transform(optionalCart ->
                         optionalCart.orElseThrow(() -> new CartNotFoundException(customer.getValue().toString())))

@@ -41,15 +41,6 @@ public class CartItemResource {
     @DELETE
     @Path("delete")
     public Uni<Response> removeCartItem (@Valid DeleteCartItemRequest deleteCartItemRequest) {
-        /**
-        removeCartItemService.removeCartByCustomerId(
-                new CustomerId(UUID.fromString(deleteCartItemRequest.getCustomerId())),
-                new CartItemId(UUID.fromString(deleteCartItemRequest.getCartItemId()))
-        );
-
-        return ResponseEntity.noContent().build();
-         */
-
         return removeCartItemService.removeCartByCustomerId(
                 new CustomerId(UUID.fromString(deleteCartItemRequest.getCustomerId())),
                 new CartItemId(UUID.fromString(deleteCartItemRequest.getCartItemId()))

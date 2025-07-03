@@ -18,18 +18,6 @@ public class IncrementQuantityService {
     }
 
     public Uni<Cart> incrementQuantity (CustomerId customer, CartItemId cartItemId) {
-        /*
-        Cart domain = cartRepository.getCartByCustomer(customer.getValue().toString())
-                .orElseThrow(() -> new CartNotFoundException(customer.getValue().toString()));
-
-        domain.incrementQuantity(cartItemId.getValue().toString());
-
-        this.cartRepository.save(customer.getValue().toString(), domain);
-
-        return domain;
-
-         */
-
         return cartRepository.getCartByCustomer(customer.getValue().toString())
                 .onItem().transform(optionalCart ->
                         optionalCart.orElseThrow(() -> new CartNotFoundException(customer.getValue().toString())))
