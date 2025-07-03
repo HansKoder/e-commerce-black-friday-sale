@@ -2,6 +2,7 @@ package org.ecommerce.blackfriday.cart.application.service;
 
 import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import org.ecommerce.blackfriday.cart.domain.model.repository.CartRepository;
 import org.ecommerce.blackfriday.cart.domain.model.valueobject.CartItemId;
 import org.ecommerce.blackfriday.cart.domain.model.valueobject.CustomerId;
@@ -12,6 +13,7 @@ public class RemoveCartItemService {
 
     private final CartRepository cartRepository;
 
+    @Inject
     public RemoveCartItemService(CartRepository cartRepository) {
         this.cartRepository = cartRepository;
     }
