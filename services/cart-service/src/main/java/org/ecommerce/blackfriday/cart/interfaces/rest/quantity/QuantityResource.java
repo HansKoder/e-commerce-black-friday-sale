@@ -43,7 +43,8 @@ public class QuantityResource {
                 .incrementQuantity(
                         new CustomerId(UUID.fromString(request.customerId())),
                         new CartItemId(UUID.fromString(request.cartItemId()))
-                ).map(cart -> CartMapper.toDto(cart, request.customerId()))
+                )
+                .map(cart -> CartMapper.toDto(cart, request.customerId()))
                 .map(response -> Response.ok(response).build());
     }
 
@@ -53,7 +54,8 @@ public class QuantityResource {
         return decrementQuantityService.decrement(
                         new CustomerId(UUID.fromString(request.customerId())),
                         new CartItemId(UUID.fromString(request.cartItemId()))
-                ).map(cart -> CartMapper.toDto(cart, request.customerId()))
+                )
+                .map(cart -> CartMapper.toDto(cart, request.customerId()))
                 .map(response -> Response.ok(response).build());
     }
 
