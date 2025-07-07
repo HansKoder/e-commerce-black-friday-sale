@@ -1,0 +1,18 @@
+meta {
+  name: increment-quantity-v2
+  type: http
+  seq: 7
+}
+
+put {
+  url: {{baseURLV2}}{{cartServiceV2}}/item/quantity/increment
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "customerId": "{{customerId}}",
+    "cartItemId": "33d659ef-2fd7-4b15-a155-fef4365af2bb"
+  }
+}
