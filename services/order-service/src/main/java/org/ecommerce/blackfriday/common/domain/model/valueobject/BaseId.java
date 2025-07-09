@@ -25,4 +25,11 @@ public abstract class BaseId<T> {
     public int hashCode() {
         return Objects.hashCode(value);
     }
+
+    @Override
+    public String toString() {
+        return "BaseId{" +
+                "value=" + value +
+                '}';
+    }
 }

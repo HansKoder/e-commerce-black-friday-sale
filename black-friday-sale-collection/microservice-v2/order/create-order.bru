@@ -1,0 +1,18 @@
+meta {
+  name: create-order
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:9082/api/v2/order/create-order
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "cartId": "1aeca459-7485-45ba-907b-ac0de5d41450",
+    "customerId": "d5b26d5f-3767-41ea-90c3-1089a361376b"
+  }
+}

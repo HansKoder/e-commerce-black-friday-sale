@@ -8,7 +8,7 @@ public class Money {
 
     private final BigDecimal amount;
 
-    public static BigDecimal ZERO = BigDecimal.ZERO;
+    public static Money ZERO = new Money(BigDecimal.ZERO);
 
     public Money(BigDecimal amount) {
         this.amount = amount;
