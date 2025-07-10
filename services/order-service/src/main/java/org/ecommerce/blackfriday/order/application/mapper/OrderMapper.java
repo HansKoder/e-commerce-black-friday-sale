@@ -8,24 +8,33 @@ import org.ecommerce.blackfriday.order.domain.model.entity.Order;
 import org.ecommerce.blackfriday.order.domain.model.entity.OrderItem;
 import org.ecommerce.blackfriday.order.domain.model.entity.Product;
 import org.ecommerce.blackfriday.order.domain.model.valueobject.CustomerId;
+import org.ecommerce.blackfriday.order.domain.model.valueobject.OrderId;
 import org.ecommerce.blackfriday.order.domain.model.valueobject.OrderItemId;
 import org.ecommerce.blackfriday.order.infraestructure.client.dto.Cart;
 import org.ecommerce.blackfriday.order.infraestructure.client.dto.CartItem;
 
+import java.util.List;
 import java.util.UUID;
 
 public class OrderMapper {
 
     public static Order toDomain (Cart cartDto) {
         Log.infof("[Mapper] order toDomain, cartDTO: %s", cartDto);
+        // OrderId orderId = new OrderId(UUID.randomUUID());
         Order domain = Order.Builder.anOrder()
                 .customerId(new CustomerId(UUID.fromString(cartDto.customerId())))
-                .items(cartDto.items().stream().map(OrderMapper::orderItemToDomain).toList())
+                .items(buildItems(cartDto.items()))
                 .total(new Money(cartDto.total()))
                 .build();
 
         Log.infof("[Mapper] from dto to domain, this order is mapped %s", domain);
         return domain;
+    }
+
+    private static List<OrderItem> buildItems (List<CartItem> cartItems) {
+        return cartItems.stream()
+                .map(OrderMapper::orderItemToDomain)
+                .toList();
     }
 
     private static OrderItem orderItemToDomain (CartItem cartItemDto) {
@@ -42,10 +51,14 @@ public class OrderMapper {
 
     private static Product productToDomain (CartItem cartItem) {
         Log.infof("[Mapper] product to domain, payload: %s", cartItem);
-        return Product.Builder.aProduct()
+        Product product = Product.Builder.aProduct()
                 .id(new ProductId(UUID.fromString(cartItem.productId())))
                 .price(new Money(cartItem.price()))
                 .build();
+
+        Log.infof("[Mapper] product to domain, mapped, this is the product domain: %s", product);
+
+        return product;
     }
 
     public static OrderResponse toResponse (Order domain) {

@@ -4,7 +4,7 @@ import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
-import org.ecommerce.blackfriday.order.application.port.output.CartServicePort;
+import org.ecommerce.blackfriday.order.application.port.output.client.CartServicePort;
 import org.ecommerce.blackfriday.order.infraestructure.client.dto.Cart;
 import org.ecommerce.blackfriday.order.infraestructure.client.exception.CartNotFoundException;
 

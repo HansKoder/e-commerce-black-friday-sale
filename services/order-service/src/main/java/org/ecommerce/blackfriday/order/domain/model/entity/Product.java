@@ -19,11 +19,13 @@ public class Product extends BaseEntity<ProductId> {
     private Product(Builder builder) {
         this.name = builder.name;
         this.price = builder.price;
+        this.setId(builder.id);
     }
 
     @Override
     public String toString() {
         return "Product{" +
+                "id='" + getId() + '\'' +
                 "name='" + name + '\'' +
                 ", price=" + price +
                 '}';

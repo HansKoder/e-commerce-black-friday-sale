@@ -11,6 +11,8 @@ import jakarta.ws.rs.core.MediaType;
 import org.ecommerce.blackfriday.order.application.dto.CreateOrderCommand;
 import org.ecommerce.blackfriday.order.application.dto.OrderResponse;
 import org.ecommerce.blackfriday.order.application.port.input.service.OrderApplicationService;
+import org.ecommerce.blackfriday.order.domain.model.entity.Order;
+import org.ecommerce.blackfriday.order.infraestructure.client.dto.Cart;
 
 @Path(value = "api/v2/order")
 @Produces(MediaType.APPLICATION_JSON)
