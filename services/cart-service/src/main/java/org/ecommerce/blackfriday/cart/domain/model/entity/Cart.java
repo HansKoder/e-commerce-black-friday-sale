@@ -13,16 +13,19 @@ public class Cart extends BaseEntity<CartId> {
 
     private final List<CartItem> cartItems;
     private BigDecimal total = BigDecimal.ZERO;
+    private boolean order;
 
     private Cart() {
         cartItems = new ArrayList<>();
         setId(new CartId(UUID.randomUUID()));
+        order = false;
     }
 
     private Cart (CartId cartId, List<CartItem> items) {
         this.cartItems = new ArrayList<>(items);
         setId(cartId);
         calculateTotal();
+        order = false;
     }
 
     public static Cart create () {
@@ -92,6 +95,9 @@ public class Cart extends BaseEntity<CartId> {
 
     public BigDecimal getTotal () {
         return total;
+    }
+
+    private void cartIsEnableToUpdate () {
     }
 
     @Override

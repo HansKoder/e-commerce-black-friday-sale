@@ -31,6 +31,6 @@ public class RedisCartRepository implements CartRepository {
 
     @Override
     public Uni<Void> save(String customerId, Cart cart) {
-        return commands.setex(customerId, 3600, RedisCartMapper.toRedisCart(cart));
+        return commands.setex(customerId, 120, RedisCartMapper.toRedisCart(cart));
     }
 }

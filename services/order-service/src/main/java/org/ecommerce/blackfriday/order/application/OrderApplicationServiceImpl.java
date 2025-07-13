@@ -8,8 +8,6 @@ import org.ecommerce.blackfriday.order.application.dto.CreateOrderCommand;
 import org.ecommerce.blackfriday.order.application.dto.OrderResponse;
 import org.ecommerce.blackfriday.order.application.port.input.service.OrderApplicationService;
 import org.ecommerce.blackfriday.order.application.port.input.usecase.CreateOrderUseCase;
-import org.ecommerce.blackfriday.order.domain.model.entity.Order;
-import org.ecommerce.blackfriday.order.infraestructure.client.dto.Cart;
 
 @ApplicationScoped
 public class OrderApplicationServiceImpl implements OrderApplicationService {
