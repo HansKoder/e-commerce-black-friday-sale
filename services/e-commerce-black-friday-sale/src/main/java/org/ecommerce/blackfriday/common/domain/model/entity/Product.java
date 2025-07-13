@@ -67,7 +67,7 @@ public class Product extends BaseEntity<ProductId> {
     public String toString() {
         return "Product{" +
                 "productName='" + productName + '\'' +
-                ", price=" + price +
+                ", price=" + price.value().getAmount() +
                 '}';
     }
 }

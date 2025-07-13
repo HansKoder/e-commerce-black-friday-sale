@@ -6,6 +6,7 @@ import org.ecommerce.blackfriday.cart.domain.model.valueobject.CustomerId;
 import org.ecommerce.blackfriday.cart.infraestructure.CartLogger;
 import org.ecommerce.blackfriday.cart.interfaces.rest.common.dto.GetCartResponse;
 import org.ecommerce.blackfriday.cart.interfaces.rest.common.mapper.CartMapper;
+import org.slf4j.MDC;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class CartRestController {
 
     @GetMapping("/customer/{customerId}")
     ResponseEntity<GetCartResponse> getCartByCustomerId (@PathVariable("customerId") String customerId) {
-        CartLogger.info("Rest - Get Cart By CustomerId %s", customerId);
+        CartLogger.info("[CART] [REST], method{getCartByCustomerId}, customerId:{}", customerId);
         Cart response = getCartByCustomerService.getCart(new CustomerId(UUID.fromString(customerId)));
         return ResponseEntity.ok(CartMapper.toDto(response, customerId));
     }

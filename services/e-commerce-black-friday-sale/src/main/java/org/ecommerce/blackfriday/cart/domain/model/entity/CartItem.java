@@ -1,5 +1,6 @@
 package org.ecommerce.blackfriday.cart.domain.model.entity;
 
+import org.ecommerce.blackfriday.cart.infraestructure.CartLogger;
 import org.ecommerce.blackfriday.common.domain.model.entity.Product;
 import org.ecommerce.blackfriday.cart.domain.model.valueobject.Quantity;
 import org.ecommerce.blackfriday.common.domain.model.entity.BaseEntity;
@@ -12,12 +13,20 @@ import java.util.UUID;
 
 public class CartItem extends BaseEntity<CartItemId> {
 
-    private final Product product;
+    private Product product;
     private Quantity quantity;
 
     private BigDecimal cachedTotal = BigDecimal.ZERO;
     private boolean isDirty = true;
 
+    private CartItem (Builder builder) {
+        product = builder.product;
+        quantity = builder.quantity;
+        setId(builder.id);
+        markDirty();
+    }
+
+    @Deprecated
     private CartItem(Product product, Quantity quantity) {
         this.product = product;
         this.quantity = quantity;
@@ -25,6 +34,7 @@ public class CartItem extends BaseEntity<CartItemId> {
         markDirty();
     }
 
+    @Deprecated
     private CartItem(CartItemId cartItemId, Product product, Quantity quantity) {
         this.product = product;
         this.quantity = quantity;
@@ -32,10 +42,12 @@ public class CartItem extends BaseEntity<CartItemId> {
         markDirty();
     }
 
+    @Deprecated
     public static CartItem create (Product product, Quantity quantity) {
         return new CartItem(product, quantity);
     }
 
+    @Deprecated
     public static CartItem recreate (CartItemId cartItemId, Product product, Quantity quantity) {
         return new CartItem(cartItemId, product, quantity);
     }
@@ -68,9 +80,12 @@ public class CartItem extends BaseEntity<CartItemId> {
     }
 
     public BigDecimal getSubTotal () {
+        CartLogger.info("[CART] (DOMAIN) (step 1) method{cartItem.getSubtotal}, info [cartItem: {}]", this);
+
         if (isDirty) {
             cachedTotal = product.getPrice().value().multiply(quantity.value()).getAmount();
             isDirty = false;
+            CartLogger.info("[CART] (DOMAIN) (step 2) compute subtotal, subtotal cached: {}", cachedTotal);
         }
 
         return cachedTotal;
@@ -100,8 +115,40 @@ public class CartItem extends BaseEntity<CartItemId> {
         return "CartItem{" +
                 "product=" + product +
                 ", quantity=" + quantity +
-                ", cachedTotal=" + cachedTotal +
-                ", isDirty=" + isDirty +
+                ", dirty=" + isDirty +
+                ", subtotal=" + cachedTotal +
                 '}';
+    }
+
+    public static final class Builder {
+        private Product product;
+        private Quantity quantity;
+        private CartItemId id;
+
+        private Builder() {
+        }
+
+        public static Builder aCartItem() {
+            return new Builder();
+        }
+
+        public Builder product(Product product) {
+            this.product = product;
+            return this;
+        }
+
+        public Builder quantity(Quantity quantity) {
+            this.quantity = quantity;
+            return this;
+        }
+
+        public Builder id(CartItemId id) {
+            this.id = id;
+            return this;
+        }
+
+        public CartItem build() {
+            return new CartItem(this);
+        }
     }
 }

@@ -8,6 +8,7 @@ import org.ecommerce.blackfriday.cart.infraestructure.persistence.redis.model.Re
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.time.Duration;
 import java.util.Optional;
 
 @Repository
@@ -29,6 +30,6 @@ public class RedisCartRepository implements CartRepository {
     @Override
     public void save(String customerId, Cart cart) {
         CartLogger.info("Redis Cart Repo Save {}, customerId {} ", cart, customerId);
-        redisTemplate.opsForValue().set(customerId, RedisCartMapper.toRedisCart(cart));
+        redisTemplate.opsForValue().set(customerId, RedisCartMapper.toRedisCart(cart), Duration.ofMinutes(2));
     }
 }

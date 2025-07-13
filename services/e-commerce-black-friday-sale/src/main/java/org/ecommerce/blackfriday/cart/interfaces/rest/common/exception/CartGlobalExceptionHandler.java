@@ -1,6 +1,7 @@
 package org.ecommerce.blackfriday.cart.interfaces.rest.common.exception;
 
 import org.ecommerce.blackfriday.cart.domain.model.exception.CartItemNotFoundDomainException;
+import org.ecommerce.blackfriday.cart.domain.model.exception.OrderInProcessException;
 import org.ecommerce.blackfriday.common.interfaces.rest.dto.ApiErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,5 +35,10 @@ public class CartGlobalExceptionHandler {
                 .body(new ApiErrorResponse(HttpStatus.REQUEST_TIMEOUT.value(), ex.getMessage()));
     }
 
+    @ExceptionHandler(OrderInProcessException.class)
+    public ResponseEntity<ApiErrorResponse> orderInProcess (OrderInProcessException ex) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(new ApiErrorResponse(HttpStatus.CONFLICT.value(), ex.getMessage()));
+    }
 
 }

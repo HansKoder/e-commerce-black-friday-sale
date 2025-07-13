@@ -6,5 +6,6 @@ import java.util.List;
 public record RedisCartModel (
         String cartId,
         List<RedisCartItemModel> items,
-        BigDecimal total
+        BigDecimal total,
+        CartStatusRedis status
 ) { }

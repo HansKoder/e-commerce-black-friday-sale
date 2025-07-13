@@ -23,4 +23,10 @@ public class StockRestController {
         return ResponseEntity.ok(StockRestMapper.toResponse(getStockUseCase.handler(productId)));
     }
 
+    @GetMapping("/hello-world")
+    public ResponseEntity<?> sayHello () {
+        return ResponseEntity.ok("Hello ");
+    }
+
+
 }
