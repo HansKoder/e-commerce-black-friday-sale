@@ -1,8 +1,8 @@
-package org.ecommerce.blackfriday.order.infraestructure.client.dto;
+package org.ecommerce.blackfriday.order.infraestructure.client.model;
 
 import java.math.BigDecimal;
 
-public record CartItem (
+public record CartItemModel(
         String cartItemId,
         String productId,
         BigDecimal price,

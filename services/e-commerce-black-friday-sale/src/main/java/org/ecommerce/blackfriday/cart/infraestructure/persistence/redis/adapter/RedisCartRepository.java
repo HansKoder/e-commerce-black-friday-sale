@@ -30,6 +30,6 @@ public class RedisCartRepository implements CartRepository {
     @Override
     public void save(String customerId, Cart cart) {
         CartLogger.info("Redis Cart Repo Save {}, customerId {} ", cart, customerId);
-        redisTemplate.opsForValue().set(customerId, RedisCartMapper.toRedisCart(cart), Duration.ofMinutes(2));
+        redisTemplate.opsForValue().set(customerId, RedisCartMapper.toRedisCart(cart), Duration.ofMinutes(5));
     }
 }

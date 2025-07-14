@@ -8,17 +8,16 @@ import org.ecommerce.blackfriday.order.domain.model.entity.Order;
 import org.ecommerce.blackfriday.order.domain.model.entity.OrderItem;
 import org.ecommerce.blackfriday.order.domain.model.entity.Product;
 import org.ecommerce.blackfriday.order.domain.model.valueobject.CustomerId;
-import org.ecommerce.blackfriday.order.domain.model.valueobject.OrderId;
 import org.ecommerce.blackfriday.order.domain.model.valueobject.OrderItemId;
-import org.ecommerce.blackfriday.order.infraestructure.client.dto.Cart;
-import org.ecommerce.blackfriday.order.infraestructure.client.dto.CartItem;
+import org.ecommerce.blackfriday.order.infraestructure.client.model.CartModel;
+import org.ecommerce.blackfriday.order.infraestructure.client.model.CartItemModel;
 
 import java.util.List;
 import java.util.UUID;
 
 public class OrderMapper {
 
-    public static Order toDomain (Cart cartDto) {
+    public static Order toDomain (CartModel cartDto) {
         Log.infof("[Mapper] order toDomain, cartDTO: %s", cartDto);
         // OrderId orderId = new OrderId(UUID.randomUUID());
         Order domain = Order.Builder.anOrder()
@@ -31,13 +30,13 @@ public class OrderMapper {
         return domain;
     }
 
-    private static List<OrderItem> buildItems (List<CartItem> cartItems) {
+    private static List<OrderItem> buildItems (List<CartItemModel> cartItems) {
         return cartItems.stream()
                 .map(OrderMapper::orderItemToDomain)
                 .toList();
     }
 
-    private static OrderItem orderItemToDomain (CartItem cartItemDto) {
+    private static OrderItem orderItemToDomain (CartItemModel cartItemDto) {
         Log.infof("[Mapper] orderItem toDomain, payload %s", cartItemDto);
         return OrderItem.Builder
                 .anOrderItem()
@@ -49,7 +48,7 @@ public class OrderMapper {
                 .build();
     }
 
-    private static Product productToDomain (CartItem cartItem) {
+    private static Product productToDomain (CartItemModel cartItem) {
         Log.infof("[Mapper] product to domain, payload: %s", cartItem);
         Product product = Product.Builder.aProduct()
                 .id(new ProductId(UUID.fromString(cartItem.productId())))

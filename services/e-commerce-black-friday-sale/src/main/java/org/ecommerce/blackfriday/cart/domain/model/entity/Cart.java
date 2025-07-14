@@ -135,7 +135,7 @@ public class Cart extends BaseEntity<CartId> {
         return total;
     }
 
-    private void cartIsEnabled () {
+    public void cartIsEnabled () {
         CartLogger.info("[CART] (DOMAIN) method{cartIsEnabled}, info [id: {}, status: {}]", getId().getValue().toString(), status.name());
         if (!status.equals(CartStatus.CART))
             throw new OrderInProcessException("The cart id " + getId().getValue().toString() + " is in order process");

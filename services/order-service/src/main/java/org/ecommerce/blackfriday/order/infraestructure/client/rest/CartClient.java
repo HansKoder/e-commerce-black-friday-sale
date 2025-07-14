@@ -1,4 +1,4 @@
-package org.ecommerce.blackfriday.order.infraestructure.client;
+package org.ecommerce.blackfriday.order.infraestructure.client.rest;
 
 import io.smallrye.mutiny.Uni;
 import jakarta.ws.rs.GET;
