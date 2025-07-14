@@ -16,10 +16,10 @@ public class SaveCartItemService {
     }
 
     public Cart addCartItem (String customerId, CartItem cartItem) {
-        CartLogger.info("Use Case Save Cart Item {}, customerId {}", cartItem, customerId);
+        CartLogger.info("[CART] (USE CASE), (step 1), method{addCartItem}, info: [cartItem: {}, customerId: {}]", cartItem, customerId);
 
-        Cart domain = cartRepository.getCartByCustomer(customerId).orElse(Cart.create());
-        CartLogger.info("Cart Domain after search in redis {}", domain);
+        Cart domain = cartRepository.getCartByCustomer(customerId).orElse(Cart.initCart());
+        CartLogger.info("[CART] (USE CASE) (step 2), getCart from redis cluster or init cart, info: [domain: {}]", domain);
         domain.addCartItem(cartItem);
 
         cartRepository.save(customerId, domain);

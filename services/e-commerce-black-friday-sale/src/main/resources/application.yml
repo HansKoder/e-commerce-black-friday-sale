@@ -58,3 +58,7 @@ logging:
         boot:
           autoconfigure:
             web: DEBUG
+
+grpc:
+  server:
+    port: 9090

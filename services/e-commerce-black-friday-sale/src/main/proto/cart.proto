@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package cart;
+
+option java_multiple_files = true;
+option java_package = "org.ecommerce.blackfriday.cart.grpc";
+option java_outer_classname = "CartProto";
+
+message CartItem {
+    string cart_item_id = 1;
+    string product_id = 2;
+    string price = 3;
+    int32 quantity = 4;
+    string total = 5;
+}
+
+message CartResponse {
+    string customer_id = 1;
+    string cart_id = 2;
+    repeated CartItem items = 3;
+    string total = 4;
+}
+
+message CartRequest {
+    string customer_id = 1;
+}
+
+service CartService {
+    rpc GetCartEnabled (CartRequest) returns (CartResponse) {}
+}
