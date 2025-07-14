@@ -21,7 +21,7 @@ public class CreateOrderService implements CreateOrderUseCase {
     private final OrderRepository orderRepository;
 
     @Inject
-    public CreateOrderService(CartClientPort cartClientPort, OrderDomainService orderDomainService, OrderRepository orderRepository) {
+    public CreateOrderService(@Named("grpc") CartClientPort cartClientPort, OrderDomainService orderDomainService, OrderRepository orderRepository) {
         this.cartClientPort = cartClientPort;
         this.orderDomainService = orderDomainService;
         this.orderRepository = orderRepository;

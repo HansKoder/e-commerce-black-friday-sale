@@ -1,18 +1,16 @@
 package org.ecommerce.blackfriday.order.infraestructure.client.rest;
 
 import io.smallrye.mutiny.Uni;
-import jakarta.annotation.Priority;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.inject.Alternative;
 import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.ecommerce.blackfriday.order.application.port.output.client.CartClientPort;
 import org.ecommerce.blackfriday.order.infraestructure.client.model.CartModel;
 import org.ecommerce.blackfriday.order.infraestructure.client.rest.exception.CartNotFoundException;
 
-@Alternative
-@Priority(2)
 @ApplicationScoped
+@Named("rest")
 public class RestCartServiceAdapter implements CartClientPort {
 
     @Inject

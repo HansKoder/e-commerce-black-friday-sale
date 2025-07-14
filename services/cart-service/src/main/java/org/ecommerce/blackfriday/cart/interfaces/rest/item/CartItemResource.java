@@ -11,6 +11,7 @@ import org.ecommerce.blackfriday.cart.application.service.SaveCartItemService;
 import org.ecommerce.blackfriday.cart.domain.model.valueobject.CartItemId;
 import org.ecommerce.blackfriday.cart.domain.model.valueobject.CustomerId;
 import org.ecommerce.blackfriday.cart.interfaces.rest.common.mapper.CartItemMapper;
+import org.ecommerce.blackfriday.cart.interfaces.rest.common.mapper.CartMapper;
 import org.ecommerce.blackfriday.cart.interfaces.rest.item.dto.DeleteCartItemRequest;
 import org.ecommerce.blackfriday.cart.interfaces.rest.item.dto.SaveCartItemRequest;
 
@@ -35,7 +36,8 @@ public class CartItemResource {
     public Uni<Response> addCartItem (@Valid SaveCartItemRequest request) {
         return saveCartItemService
                 .addCartItem(request.getCustomerId(), CartItemMapper.toDomain(request))
-                .map(cart -> Response.status(Response.Status.CREATED).entity(cart).build());
+                .map(cart -> CartMapper.toDto(cart, request.getCustomerId()))
+                .map(response -> Response.status(Response.Status.CREATED).entity(response).build());
     }
 
     @DELETE

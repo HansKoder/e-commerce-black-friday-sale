@@ -2,10 +2,12 @@ package org.ecommerce.blackfriday.order.infraestructure.client.grpc;
 
 import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Named;
 import org.ecommerce.blackfriday.order.application.port.output.client.CartClientPort;
 import org.ecommerce.blackfriday.order.infraestructure.client.model.CartModel;
 
 @ApplicationScoped
+@Named("grpc")
 public class GrpcCartServiceAdapter implements CartClientPort {
 
     private final CartClientGrpc cartClientGrpc;

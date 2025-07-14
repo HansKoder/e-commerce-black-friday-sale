@@ -8,13 +8,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class GetCartEnabledService {
 
-    // status added ok.
-    // proto - generated code ok
-    // server - pending
-    // use case - getCartEnabled - pending
-    // before continuing test all use cases - ok
-    // add correlationId - ok
-
     private final CartRepository cartRepository;
 
     public GetCartEnabledService(CartRepository cartRepository) {

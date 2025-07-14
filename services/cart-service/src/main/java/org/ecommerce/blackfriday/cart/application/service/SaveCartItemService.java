@@ -19,7 +19,7 @@ public class SaveCartItemService {
 
     public Uni<Cart> addCartItem (String customerId, CartItem cartItem) {
         return cartRepository.getCartByCustomer(customerId)
-                .onItem().transform(optional -> optional.orElse(Cart.create()))
+                .onItem().transform(optional -> optional.orElse(Cart.initCart()))
                 .invoke(domain -> domain.addCartItem(cartItem))
                 .call(domain -> cartRepository.save(customerId, domain));
     }

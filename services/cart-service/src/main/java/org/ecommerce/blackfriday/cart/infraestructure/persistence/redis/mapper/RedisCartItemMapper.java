@@ -14,6 +14,7 @@ import java.util.UUID;
 
 public class RedisCartItemMapper {
 
+
     public static CartItem toDomain (RedisCartItemModel itemModel) {
         CartItemId cartItemId = new CartItemId(UUID.fromString(itemModel.cartId()));
 
@@ -25,7 +26,12 @@ public class RedisCartItemMapper {
                 .withPrice(price)
                 .build();
 
-        return CartItem.recreate(cartItemId, product, new Quantity(itemModel.quantity()));
+        return CartItem.Builder
+                .aCartItem()
+                .id(cartItemId)
+                .product(product)
+                .quantity(new Quantity(itemModel.quantity()))
+                .build();
     }
 
     public static RedisCartItemModel toRedisCart (CartItem domain) {

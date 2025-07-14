@@ -1,4 +1,4 @@
-package org.ecommerce.blackfriday.cart.infraestructure.grcp.cart;
+package org.ecommerce.blackfriday.cart.infraestructure.grpc.cart;
 
 import org.ecommerce.blackfriday.cart.domain.model.entity.Cart;
 import org.ecommerce.blackfriday.cart.grpc.CartItem;
@@ -6,7 +6,7 @@ import org.ecommerce.blackfriday.cart.grpc.CartResponse;
 
 import java.util.List;
 
-public class CartServiceMapper {
+public class GrpcCartMapper {
 
     public static CartResponse fromDomainToResponse (Cart domain) {
         return CartResponse.newBuilder()
@@ -19,7 +19,7 @@ public class CartServiceMapper {
     private static List<CartItem> getListItemResponse (Cart domain) {
         return domain.getCartItems()
                 .stream()
-                .map(CartServiceMapper::fromDomainToResponse)
+                .map(GrpcCartMapper::fromDomainToResponse)
                 .toList();
     }
 
@@ -32,4 +32,6 @@ public class CartServiceMapper {
                 .setTotal(domainItem.getTotal().getAmount().toString())
                 .build();
     }
+
+
 }

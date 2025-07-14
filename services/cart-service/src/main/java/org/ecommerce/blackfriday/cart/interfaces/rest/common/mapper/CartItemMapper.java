@@ -1,6 +1,7 @@
 package org.ecommerce.blackfriday.cart.interfaces.rest.common.mapper;
 
 import org.ecommerce.blackfriday.cart.domain.model.entity.CartItem;
+import org.ecommerce.blackfriday.cart.domain.model.valueobject.CartItemId;
 import org.ecommerce.blackfriday.common.domain.model.entity.Product;
 import org.ecommerce.blackfriday.common.domain.model.valueobject.ProductPrice;
 import org.ecommerce.blackfriday.cart.domain.model.valueobject.Quantity;
@@ -13,13 +14,19 @@ import java.util.UUID;
 
 public class CartItemMapper {
 
-    public static CartItem toDomain (SaveCartItemRequest dto) {
-        Product product = new Product.Builder()
-                .withProductId(new ProductId(UUID.fromString(dto.getProductId())))
-                .withPrice(new ProductPrice(new Money(dto.getPrice())))
+    public static CartItem toDomain (SaveCartItemRequest request) {
+        return CartItem.Builder.aCartItem()
+                .id(new CartItemId(UUID.randomUUID()))
+                .product(buildProduct(request))
+                .quantity(new Quantity(request.getCant()))
                 .build();
+    }
 
-        return CartItem.create(product, new Quantity(dto.getCant()));
+    private static Product buildProduct (SaveCartItemRequest request) {
+        return new Product.Builder()
+                .withProductId(new ProductId(UUID.fromString(request.getProductId())))
+                .withPrice(new ProductPrice(new Money(request.getPrice())))
+                .build();
     }
 
     public static CartItemResponse toDTO (CartItem domain) {
