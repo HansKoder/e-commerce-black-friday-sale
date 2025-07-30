@@ -1,0 +1,11 @@
+meta {
+  name: mark-cart
+  type: http
+  seq: 7
+}
+
+put {
+  url: {{baseURL}}{{cartService}}/mark/{{customerId}}
+  body: none
+  auth: inherit
+}

@@ -142,10 +142,13 @@ public class Cart extends BaseEntity<CartId> {
     }
 
     public void markOrderInProcess () {
-        if (status.equals(CartStatus.CART))
-            throw new OrderInProcessException("The cart id " + getId().getValue().toString() + " already has an order in process");
+        cartIsEnabled();
 
         status = CartStatus.ORDER_PROCESS;
+    }
+
+    public void unMarkOrderInProcess () {
+        status = CartStatus.CART;
     }
 
     @Override
