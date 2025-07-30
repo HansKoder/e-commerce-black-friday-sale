@@ -2,13 +2,12 @@ package org.ecommerce.blackfriday.cart.interfaces.rest.cart;
 
 import io.smallrye.mutiny.Uni;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.ecommerce.blackfriday.cart.application.service.GetCartByCustomerService;
+import org.ecommerce.blackfriday.cart.application.service.MarkCartService;
+import org.ecommerce.blackfriday.cart.application.service.UnMarkCartService;
 import org.ecommerce.blackfriday.cart.domain.model.valueobject.CustomerId;
 import org.ecommerce.blackfriday.cart.interfaces.rest.common.mapper.CartMapper;
 import org.jboss.resteasy.reactive.RestPath;
@@ -21,10 +20,17 @@ import java.util.UUID;
 public class CartResource {
 
     private final GetCartByCustomerService getCartByCustomerService;
+    private final MarkCartService markCartService;
+    private final UnMarkCartService unMarkCartService;
 
     @Inject
-    public CartResource(GetCartByCustomerService getCartByCustomerService) {
+    public CartResource(
+            GetCartByCustomerService getCartByCustomerService,
+            MarkCartService markCartService,
+            UnMarkCartService unMarkCartService) {
         this.getCartByCustomerService = getCartByCustomerService;
+        this.markCartService = markCartService;
+        this.unMarkCartService = unMarkCartService;
     }
 
     @GET
@@ -33,5 +39,22 @@ public class CartResource {
         return getCartByCustomerService.getCart(new CustomerId(UUID.fromString(customerId)))
                 .map(cart -> CartMapper.toDto(cart, customerId))
                 .map(response -> Response.ok(response).build());
+    }
+
+    @PUT
+    @Path("mark/{customerId}")
+    public Uni<Response> markCart (@PathParam("customerId") String customerId) {
+        return markCartService.handler(customerId)
+                .onItem().transform(response -> Response.noContent().build())
+                .log()
+                .onFailure().invoke(err -> System.out.println(err.getMessage()));
+
+    }
+
+    @PUT
+    @Path("unmark/{customerId}")
+    public Uni<Response> unmarkCart (@PathParam("customerId") String customerId) {
+        return unMarkCartService.handler(customerId)
+                .onItem().transform(response -> Response.noContent().build());
     }
 }
