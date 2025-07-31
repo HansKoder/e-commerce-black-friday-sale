@@ -1,0 +1,18 @@
+meta {
+  name: authorize-credit-card-approved
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:9071/api/payment-gateway/authorize-card
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "accountNumber": "9ebfcae5",
+    "amount": 200
+  }
+}
